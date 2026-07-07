@@ -219,6 +219,8 @@ def save_ai_questions_to_db(db: Session, data: SaveGeneratedQuestionsRequest) ->
                     language=data.language
                 )
                 new_questions.append(new_q)
+                # Add to existing_normalized to prevent intra-batch duplicates
+                existing_normalized[norm_question_text] = True
 
         if new_questions:
             db.bulk_save_objects(new_questions)
