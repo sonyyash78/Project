@@ -10612,3 +10612,49 @@ RuntimeError: Failed to generate content after 5 attempts. Last error: Gemini re
 2026-07-06 14:19:13 | INFO     | examside             | Loaded Key 2: AQ.A*********************************************BB-Q
 2026-07-06 14:19:13 | INFO     | examside             | Loaded Key 3: AQ.A*********************************************fYkA
 2026-07-06 14:19:13 | INFO     | examside             | Starting ExamSIDE API v2.0.0 (development)
+2026-07-07 10:27:10 | ERROR    | examside             | Schema migration error: (pymysql.err.OperationalError) (1824, "Failed to open the referenced table 'users'")
+[SQL: 
+                    CREATE TABLE refresh_tokens (
+                        id INTEGER PRIMARY KEY AUTO_INCREMENT,
+                        user_id INTEGER NOT NULL,
+                        token_hash VARCHAR(500) NOT NULL,
+                        device_name VARCHAR(200) DEFAULT NULL,
+                        device_ip VARCHAR(50) DEFAULT NULL,
+                        user_agent VARCHAR(500) DEFAULT NULL,
+                        expires_at DATETIME NOT NULL,
+                        is_revoked BOOLEAN DEFAULT FALSE,
+                        created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+                        UNIQUE KEY uq_token_hash (token_hash),
+                        INDEX ix_rt_user_id (user_id),
+                        INDEX ix_rt_token_hash (token_hash),
+                        FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+                    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+                ]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2026-07-07 10:29:42 | INFO     | examside             | Initialized GeminiKeyManager with 3 keys.
+2026-07-07 10:29:42 | INFO     | examside             | Loaded Key 1: AQ.A*********************************************lUew
+2026-07-07 10:29:42 | INFO     | examside             | Loaded Key 2: AQ.A*********************************************BB-Q
+2026-07-07 10:29:42 | INFO     | examside             | Loaded Key 3: AQ.A*********************************************fYkA
+2026-07-07 10:29:42 | INFO     | examside             | Starting ExamSIDE API v2.0.0 (development)
+2026-07-07 10:29:46 | INFO     | examside             | Migration: Created table subscription_plans
+2026-07-07 10:29:46 | INFO     | examside             | Migration: Created table subscriptions
+2026-07-07 10:29:46 | INFO     | examside             | Migration: Created table payments
+2026-07-07 10:29:46 | INFO     | examside             | Migration: Created table invoices
+2026-07-07 10:29:46 | INFO     | examside             | Migration: Created table coupon_codes
+2026-07-07 10:29:46 | INFO     | examside             | Migration: Created table referrals
+2026-07-07 10:29:46 | INFO     | examside             | Migration: Created table wallet
+2026-07-07 10:29:46 | INFO     | examside             | Migration: Created table wallet_transactions
+2026-07-07 10:29:46 | INFO     | examside             | Migration: Created table premium_features
+2026-07-07 10:29:46 | INFO     | examside             | Migration: Added column users.referral_code
+2026-07-07 10:29:46 | INFO     | examside             | Migration: Added column users.referred_by
+2026-07-07 10:29:46 | INFO     | examside             | Migration: Seeded admin user yash12@gmail.com
+2026-07-07 10:29:46 | INFO     | examside             | Schema migrations completed successfully.
+2026-07-07 10:31:32 | INFO     | examside             | Initialized GeminiKeyManager with 3 keys.
+2026-07-07 10:31:32 | INFO     | examside             | Loaded Key 1: AQ.A*********************************************lUew
+2026-07-07 10:31:32 | INFO     | examside             | Loaded Key 2: AQ.A*********************************************BB-Q
+2026-07-07 10:31:32 | INFO     | examside             | Loaded Key 3: AQ.A*********************************************fYkA
+2026-07-07 10:31:32 | INFO     | examside             | Starting ExamSIDE API v2.0.0 (development)
+2026-07-07 10:31:33 | INFO     | examside             | Migration: Seeded subscription plans and premium features
+2026-07-07 10:31:33 | INFO     | examside             | Schema migrations completed successfully.
+2026-07-07 10:31:41 | INFO     | examside             | [79254ae3] GET /docs → 200 (1.49ms)
+2026-07-07 10:31:42 | INFO     | examside             | [134c7e51] GET /openapi.json → 200 (845.13ms)

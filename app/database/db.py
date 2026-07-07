@@ -742,8 +742,6 @@ engine = create_engine(
     echo=False,
 )
 
-run_schema_migrations(engine)
-
 SessionLocal = sessionmaker(
     autocommit=False,
     autoflush=False,

@@ -10,7 +10,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy import text
 
 
-from app.database.db import Base, engine, get_db
+from app.database.db import Base, engine, get_db, run_schema_migrations
 from app.routes.auth_routes import router as auth_router
 from app.routes.exam_routes import router as exam_router
 from app.routes.subject_routes import router as subject_router
@@ -110,6 +110,7 @@ register_middleware(app)
 
 # ── Ensure tables are available ───────────────────────────────
 Base.metadata.create_all(bind=engine)
+run_schema_migrations(engine)
 
 # ── Routes ────────────────────────────────────────────────────
 app.include_router(auth_router)

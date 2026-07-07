@@ -19,6 +19,8 @@ def create_exam(db: Session, exam: ExamCreate):
         normalized_name=norm_name,
         category=exam.category,
         image=exam.image,
+        positive_marks=exam.positive_marks,
+        negative_marks=exam.negative_marks,
     )
 
     db.add(new_exam)
@@ -74,6 +76,10 @@ def update_exam(db: Session, exam_id: int, exam_update):
         exam.category = exam_update.category
     if exam_update.image is not None:
         exam.image = exam_update.image
+    if exam_update.positive_marks is not None:
+        exam.positive_marks = exam_update.positive_marks
+    if exam_update.negative_marks is not None:
+        exam.negative_marks = exam_update.negative_marks
 
     db.commit()
     db.refresh(exam)
