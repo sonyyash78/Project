@@ -13,21 +13,42 @@ from app.models.exam_model import Exam
 from app.models.subject_model import Subject
 from app.models.chapter_model import Chapter
 from app.models.question_model import Question
+from app.utils.normalization import normalize_entity_name
 
 def seed_data():
     db = SessionLocal()
     try:
-        print("Starting mock data generation...")
+        print("Starting comprehensive mock data generation...")
 
-        # 1. Create standard exams if none exist
+        # 1. Define standard exams to ensure they exist
+        target_exams = [
+            {"exam_name": "JEE Main", "category": "Engineering", "image": "https://example.com/jee.png"},
+            {"exam_name": "JEE Advanced", "category": "Engineering", "image": "https://example.com/jeea.png"},
+            {"exam_name": "NEET", "category": "Medical", "image": "https://example.com/neet.png"},
+            {"exam_name": "GATE", "category": "Engineering", "image": "https://example.com/gate.png"},
+            {"exam_name": "CAT", "category": "Management", "image": "https://example.com/cat.png"},
+            {"exam_name": "UPSC Civil Services", "category": "Government", "image": "https://example.com/upsc.png"},
+            {"exam_name": "SSC CGL Tier I", "category": "Government", "image": "https://example.com/ssc.png"},
+            {"exam_name": "NDA", "category": "Defence", "image": "https://example.com/nda.png"},
+            {"exam_name": "CLAT", "category": "Law", "image": "https://example.com/clat.png"},
+        ]
+
+        print("Ensuring all target exams exist...")
+        for t_exam in target_exams:
+            norm_name = normalize_entity_name(t_exam["exam_name"])
+            existing = db.query(Exam).filter(Exam.normalized_name == norm_name).first()
+            if not existing:
+                print(f"Creating missing exam: {t_exam['exam_name']}")
+                new_exam = Exam(
+                    exam_name=t_exam["exam_name"], 
+                    normalized_name=norm_name, 
+                    category=t_exam["category"], 
+                    image=t_exam["image"]
+                )
+                db.add(new_exam)
+        
+        db.commit()
         exams = db.query(Exam).all()
-        if not exams:
-            print("No exams found. Creating default exams...")
-            exam1 = Exam(exam_name="JEE Main", normalized_name="jee main", category="Engineering", image="https://example.com/jee.png")
-            exam2 = Exam(exam_name="NEET", normalized_name="neet", category="Medical", image="https://example.com/neet.png")
-            db.add_all([exam1, exam2])
-            db.commit()
-            exams = db.query(Exam).all()
         
         for exam in exams:
             print(f"\nProcessing Exam: {exam.exam_name}")
@@ -36,16 +57,20 @@ def seed_data():
             subjects = db.query(Subject).filter(Subject.exam_id == exam.id).all()
             if not subjects:
                 print(f"  No subjects found for {exam.exam_name}. Creating defaults...")
-                subj_names = ["Physics", "Chemistry"]
-                if "JEE" in exam.exam_name.upper():
-                    subj_names.append("Mathematics")
+                subj_names = []
+                if "JEE" in exam.exam_name.upper() or "GATE" in exam.exam_name.upper():
+                    subj_names = ["Physics", "Chemistry", "Mathematics"]
                 elif "NEET" in exam.exam_name.upper():
-                    subj_names.append("Biology")
+                    subj_names = ["Physics", "Chemistry", "Biology"]
+                elif "CAT" in exam.exam_name.upper():
+                    subj_names = ["Quantitative Ability", "Logical Reasoning", "Verbal Ability"]
+                elif "CLAT" in exam.exam_name.upper():
+                    subj_names = ["English", "Legal Reasoning", "Logical Reasoning", "Quantitative Techniques"]
                 else:
-                    subj_names.append("General Studies")
+                    subj_names = ["General Awareness", "Quantitative Aptitude", "Reasoning", "English Language"]
                 
                 for s_name in subj_names:
-                    subj = Subject(exam_id=exam.id, name=s_name, normalized_name=s_name.lower())
+                    subj = Subject(exam_id=exam.id, name=s_name, normalized_name=normalize_entity_name(s_name))
                     db.add(subj)
                 db.commit()
                 subjects = db.query(Subject).filter(Subject.exam_id == exam.id).all()
@@ -57,14 +82,13 @@ def seed_data():
                 chapters = db.query(Chapter).filter(Chapter.subject_id == subject.id).all()
                 if not chapters:
                     print(f"    No chapters found for {subject.name}. Creating 'Mock Chapter'...")
-                    chap = Chapter(subject_id=subject.id, name=f"{subject.name} - Mock Chapter", normalized_name=f"{subject.name.lower()} mock")
+                    chap = Chapter(subject_id=subject.id, name=f"{subject.name} - Basics", normalized_name=normalize_entity_name(f"{subject.name} Basics"))
                     db.add(chap)
                     db.commit()
                     chapters = db.query(Chapter).filter(Chapter.subject_id == subject.id).all()
 
                 # 4. Generate 20 questions for each chapter
                 for chapter in chapters:
-                    # Check how many questions already exist for this exam + chapter
                     existing_q_count = db.query(Question).filter(
                         Question.exam_id == exam.id, 
                         Question.chapter_id == chapter.id
@@ -80,18 +104,18 @@ def seed_data():
                             new_q = Question(
                                 exam_id=exam.id,
                                 chapter_id=chapter.id,
-                                question=f"Mock Question {q_num} for {subject.name} ({exam.exam_name}). What is the correct answer?",
+                                question=f"Mock Question {q_num} for {subject.name} ({exam.exam_name}). What is the core principle of this topic?",
                                 question_type="mcq",
-                                option_a=f"Option A for Q{q_num}",
-                                option_b=f"Option B for Q{q_num}",
-                                option_c=f"Option C for Q{q_num}",
-                                option_d=f"Option D for Q{q_num}",
+                                option_a=f"Option A - Standard valid point",
+                                option_b=f"Option B - Common misconception",
+                                option_c=f"Option C - Partially correct",
+                                option_d=f"Option D - Completely incorrect",
                                 correct_answer="A",
-                                solution=f"The correct answer is Option A because this is a mock question generated automatically.",
+                                solution=f"The correct answer is Option A. This is an auto-generated mock question for {exam.exam_name}.",
                                 difficulty="Medium",
-                                marks=4.0,
-                                negative_marks=-1.0,
-                                topic="Mock Topic",
+                                marks=exam.positive_marks if exam.positive_marks else 4.0,
+                                negative_marks=exam.negative_marks if exam.negative_marks else -1.0,
+                                topic="Fundamental Concepts",
                                 language="en",
                                 status="active"
                             )
@@ -103,7 +127,7 @@ def seed_data():
                     else:
                         print(f"    Already has {existing_q_count} questions (>= 20) in chapter {chapter.name}. Skipping.")
 
-        print("\nAll done! Database is successfully populated with 20 questions per subject.")
+        print("\nAll done! Database is successfully populated with 20 questions per subject for all exams.")
     except Exception as e:
         db.rollback()
         print(f"An error occurred: {e}")
@@ -112,3 +136,4 @@ def seed_data():
 
 if __name__ == "__main__":
     seed_data()
+
