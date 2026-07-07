@@ -1,0 +1,155 @@
+2026-06-29 13:10:26 | INFO     | examside.security    | Login: yash12@gmail.com from 127.0.0.1
+2026-06-29 13:10:39 | INFO     | examside.security    | Password reset requested: yash12@gmail.com
+2026-06-29 13:10:43 | INFO     | examside.security    | Logout: yash12@gmail.com
+2026-06-29 13:10:45 | WARNING  | examside.security    | Refresh token not found or revoked
+2026-06-29 13:10:47 | WARNING  | examside.security    | Login failed — email not found: fake@test.com
+2026-06-29 13:10:49 | WARNING  | examside.security    | Login failed — email not found: fake@test.com
+2026-06-29 13:10:51 | WARNING  | examside.security    | Login failed — email not found: fake@test.com
+2026-06-29 13:10:53 | WARNING  | examside.security    | Login failed — email not found: fake@test.com
+2026-06-30 10:53:04 | WARNING  | examside.security    | Refresh token not found or revoked
+2026-06-30 11:17:02 | WARNING  | examside.security    | Refresh token not found or revoked
+2026-06-30 11:17:50 | INFO     | examside.security    | Login: yash12@gmail.com from 127.0.0.1
+2026-06-30 11:19:47 | INFO     | examside.security    | Login: yash12@gmail.com from 127.0.0.1
+2026-06-30 11:36:07 | INFO     | examside.security    | Login: yash12@gmail.com from 127.0.0.1
+2026-06-30 11:44:12 | INFO     | examside.security    | Logout: yash12@gmail.com
+2026-06-30 11:52:33 | INFO     | examside.security    | Login: yash12@gmail.com from 127.0.0.1
+2026-06-30 12:04:56 | INFO     | examside.security    | Login: yashsony23478@gmail.com from 127.0.0.1
+2026-06-30 12:05:01 | INFO     | examside.security    | Logout: yashsony23478@gmail.com
+2026-06-30 12:05:44 | INFO     | examside.security    | Login: soni12@gmail.com from 127.0.0.1
+2026-06-30 12:35:13 | INFO     | examside.security    | Password reset requested: yash12@gmail.com
+2026-06-30 12:40:31 | INFO     | examside.security    | Password reset requested: yash12@gmail.com
+2026-06-30 12:41:09 | INFO     | examside.security    | Password reset requested: yash12@gmail.com
+2026-06-30 12:41:57 | INFO     | examside.security    | Logout: yash12@gmail.com
+2026-06-30 12:43:52 | INFO     | examside.security    | Password reset requested: yash12@gmail.com
+2026-06-30 12:51:19 | INFO     | examside.security    | Password reset requested: yash12@gmail.com
+2026-06-30 12:57:23 | INFO     | examside.security    | Login: yash12@gmail.com from 127.0.0.1
+2026-06-30 13:02:05 | INFO     | examside.security    | Logout: yash12@gmail.com
+2026-06-30 13:46:45 | INFO     | examside.security    | Login: yash12@gmail.com from 127.0.0.1
+2026-06-30 17:00:30 | INFO     | examside.security    | New signup: test_aspirant_1782819028@examside.com
+2026-06-30 17:00:32 | INFO     | examside.security    | Login: test_aspirant_1782819028@examside.com from 127.0.0.1
+2026-06-30 17:10:15 | INFO     | examside.security    | New signup: test_aspirant_1782819613@examside.com
+2026-06-30 17:10:17 | INFO     | examside.security    | Login: test_aspirant_1782819613@examside.com from 127.0.0.1
+2026-06-30 17:10:56 | INFO     | examside.security    | New signup: test_aspirant_1782819654@examside.com
+2026-06-30 17:10:59 | INFO     | examside.security    | Login: test_aspirant_1782819654@examside.com from 127.0.0.1
+2026-06-30 17:11:22 | INFO     | examside.security    | Logout: test_aspirant_1782819654@examside.com
+2026-06-30 17:15:57 | INFO     | examside.security    | New signup: admin_1782819955@examside.com
+2026-06-30 17:15:59 | INFO     | examside.security    | Login: admin_1782819955@examside.com from 127.0.0.1
+2026-06-30 17:16:24 | INFO     | examside.security    | New signup: admin_1782819982@examside.com
+2026-06-30 17:16:27 | INFO     | examside.security    | Login: admin_1782819982@examside.com from 127.0.0.1
+2026-06-30 17:16:56 | INFO     | examside.security    | New signup: admin_1782820013@examside.com
+2026-06-30 17:16:58 | INFO     | examside.security    | Login: admin_1782820013@examside.com from 127.0.0.1
+2026-06-30 17:17:20 | INFO     | examside.security    | New signup: admin_1782820038@examside.com
+2026-06-30 17:17:23 | INFO     | examside.security    | Login: admin_1782820038@examside.com from 127.0.0.1
+2026-06-30 17:18:02 | INFO     | examside.security    | New signup: admin_1782820080@examside.com
+2026-06-30 17:18:04 | INFO     | examside.security    | Login: admin_1782820080@examside.com from 127.0.0.1
+2026-06-30 17:18:31 | INFO     | examside.security    | New signup: admin_1782820109@examside.com
+2026-06-30 17:18:34 | INFO     | examside.security    | Login: admin_1782820109@examside.com from 127.0.0.1
+2026-06-30 17:19:55 | INFO     | examside.security    | New signup: user_1782820192@examside.com
+2026-06-30 17:19:57 | INFO     | examside.security    | Login: user_1782820192@examside.com from 127.0.0.1
+2026-06-30 17:23:15 | INFO     | examside.security    | New signup: student_1782820392@examside.com
+2026-06-30 17:23:17 | INFO     | examside.security    | Login: student_1782820392@examside.com from 127.0.0.1
+2026-06-30 17:23:45 | INFO     | examside.security    | New signup: student_1782820422@examside.com
+2026-06-30 17:23:47 | INFO     | examside.security    | Login: student_1782820422@examside.com from 127.0.0.1
+2026-06-30 17:24:26 | INFO     | examside.security    | New signup: student_1782820463@examside.com
+2026-06-30 17:24:28 | INFO     | examside.security    | Login: student_1782820463@examside.com from 127.0.0.1
+2026-06-30 17:25:29 | INFO     | examside.security    | New signup: audit_user_1782820527@examside.com
+2026-06-30 17:25:31 | INFO     | examside.security    | Login: audit_user_1782820527@examside.com from 127.0.0.1
+2026-06-30 17:26:09 | INFO     | examside.security    | New signup: audit_user_1782820567@examside.com
+2026-06-30 17:26:11 | INFO     | examside.security    | Login: audit_user_1782820567@examside.com from 127.0.0.1
+2026-06-30 17:32:05 | INFO     | examside.security    | New signup: admin_mgr_1782820922@examside.com
+2026-06-30 17:32:07 | INFO     | examside.security    | Login: admin_mgr_1782820922@examside.com from 127.0.0.1
+2026-06-30 17:32:11 | INFO     | examside.security    | New signup: student_target_1782820922@examside.com
+2026-06-30 17:38:32 | INFO     | examside.security    | New signup: audit_user_1782821310@examside.com
+2026-06-30 17:38:35 | INFO     | examside.security    | Login: audit_user_1782821310@examside.com from 127.0.0.1
+2026-06-30 17:39:33 | INFO     | examside.security    | New signup: admin_mgr_1782821371@examside.com
+2026-06-30 17:39:35 | INFO     | examside.security    | Login: admin_mgr_1782821371@examside.com from 127.0.0.1
+2026-06-30 17:39:40 | INFO     | examside.security    | New signup: student_target_1782821371@examside.com
+2026-06-30 17:39:55 | INFO     | examside.security    | New signup: user_1782821392@examside.com
+2026-06-30 17:39:57 | INFO     | examside.security    | Login: user_1782821392@examside.com from 127.0.0.1
+2026-06-30 17:40:22 | INFO     | examside.security    | New signup: test_aspirant_1782821420@examside.com
+2026-06-30 17:40:25 | INFO     | examside.security    | Login: test_aspirant_1782821420@examside.com from 127.0.0.1
+2026-06-30 17:40:48 | INFO     | examside.security    | Logout: test_aspirant_1782821420@examside.com
+2026-06-30 19:16:33 | INFO     | examside.security    | Login: yashsony23478@gmail.com from 127.0.0.1
+2026-06-30 19:33:02 | INFO     | examside.security    | Logout: yashsony23478@gmail.com
+2026-06-30 19:33:29 | INFO     | examside.security    | Login: yash12@gmail.com from 127.0.0.1
+2026-06-30 19:45:46 | INFO     | examside.security    | Logout: yash12@gmail.com
+2026-06-30 19:45:55 | INFO     | examside.security    | Password reset requested: yashsony23478@gmail.com
+2026-06-30 19:46:16 | INFO     | examside.security    | Login: yashsony23478@gmail.com from 127.0.0.1
+2026-06-30 19:46:21 | INFO     | examside.security    | Logout: yashsony23478@gmail.com
+2026-06-30 19:46:31 | INFO     | examside.security    | Password reset requested: yashsony23478@gmail.com
+2026-06-30 19:47:03 | INFO     | examside.security    | Login: yashsony23478@gmail.com from 127.0.0.1
+2026-06-30 20:11:13 | INFO     | examside.security    | New signup: admin_smart_1782830471@examside.com
+2026-06-30 20:11:15 | INFO     | examside.security    | Login: admin_smart_1782830471@examside.com from 127.0.0.1
+2026-06-30 20:13:36 | INFO     | examside.security    | New signup: admin_smart_1782830613@examside.com
+2026-06-30 20:13:38 | INFO     | examside.security    | Login: admin_smart_1782830613@examside.com from 127.0.0.1
+2026-06-30 20:14:06 | INFO     | examside.security    | New signup: admin_smart_1782830644@examside.com
+2026-06-30 20:14:08 | INFO     | examside.security    | Login: admin_smart_1782830644@examside.com from 127.0.0.1
+2026-06-30 20:16:16 | INFO     | examside.security    | Login: yashsony23478@gmail.com from 127.0.0.1
+2026-07-01 08:34:13 | WARNING  | examside.security    | Login failed — email not found: yashsony23478@gmail.com
+2026-07-01 08:34:14 | WARNING  | examside.security    | Login failed — email not found: yashsony23478@gmail.com
+2026-07-01 08:34:14 | WARNING  | examside.security    | Login failed — email not found: yashsony23478@gmail.com
+2026-07-01 08:34:14 | WARNING  | examside.security    | Login failed — email not found: yashsony23478@gmail.com
+2026-07-01 08:34:28 | WARNING  | examside.security    | Login failed — email not found: yash12@gmail.com
+2026-07-01 08:49:54 | WARNING  | examside.security    | Login failed — email not found: yashsony23478@gmail.com
+2026-07-01 08:49:55 | WARNING  | examside.security    | Login failed — email not found: yashsony23478@gmail.com
+2026-07-01 08:49:56 | WARNING  | examside.security    | Login failed — email not found: yashsony23478@gmail.com
+2026-07-01 08:50:21 | WARNING  | examside.security    | Login failed — email not found: yashsony23478@gmail.com
+2026-07-01 08:56:44 | WARNING  | examside.security    | Login failed — email not found: yashsony23478@gmail.com
+2026-07-01 08:56:46 | WARNING  | examside.security    | Login failed — email not found: yashsony23478@gmail.com
+2026-07-01 08:59:25 | INFO     | examside.security    | Login: yash12@gmail.com from 127.0.0.1
+2026-07-01 09:45:34 | INFO     | examside.security    | Login: yash12@gmail.com from 127.0.0.1
+2026-07-01 11:01:50 | INFO     | examside.security    | Login: yash12@gmail.com from 127.0.0.1
+2026-07-01 11:08:09 | INFO     | examside.security    | Login: yash12@gmail.com from 127.0.0.1
+2026-07-01 11:16:10 | INFO     | examside.security    | New signup: admin_ai_1782884767@examside.com
+2026-07-01 11:16:12 | INFO     | examside.security    | Login: admin_ai_1782884767@examside.com from 127.0.0.1
+2026-07-01 11:20:08 | INFO     | examside.security    | Login: yash12@gmail.com from 127.0.0.1
+2026-07-01 11:24:07 | INFO     | examside.security    | New signup: admin_selftest_1782885245@examside.com
+2026-07-01 11:24:09 | INFO     | examside.security    | Login: admin_selftest_1782885245@examside.com from 127.0.0.1
+2026-07-01 11:28:05 | INFO     | examside.security    | New signup: admin_selftest_1782885482@examside.com
+2026-07-01 11:28:07 | INFO     | examside.security    | Login: admin_selftest_1782885482@examside.com from 127.0.0.1
+2026-07-01 11:32:46 | INFO     | examside.security    | Login: yash12@gmail.com from 127.0.0.1
+2026-07-01 11:57:52 | INFO     | examside.security    | New signup: admin_save_1782887270@examside.com
+2026-07-01 11:59:09 | INFO     | examside.security    | New signup: admin_save_1782887347@examside.com
+2026-07-01 11:59:11 | INFO     | examside.security    | Login: admin_save_1782887347@examside.com from 127.0.0.1
+2026-07-01 12:01:28 | INFO     | examside.security    | New signup: admin_save_1782887486@examside.com
+2026-07-01 12:01:31 | INFO     | examside.security    | Login: admin_save_1782887486@examside.com from 127.0.0.1
+2026-07-01 13:29:14 | INFO     | examside.security    | Login: yash12@gmail.com from 127.0.0.1
+2026-07-01 15:56:28 | WARNING  | examside.security    | Login failed — email not found: yashsony23478@gmail.com
+2026-07-01 15:56:41 | WARNING  | examside.security    | Login failed — email not found: yashsony23478@gmail.com
+2026-07-01 16:02:09 | WARNING  | examside.security    | Login failed — email not found: yashsony23478@gmail.com
+2026-07-01 16:07:16 | INFO     | examside.security    | New signup: yashsony23478@gmail.com
+2026-07-01 16:07:24 | INFO     | examside.security    | Login: yashsony23478@gmail.com from 127.0.0.1
+2026-07-01 16:07:36 | INFO     | examside.security    | Logout: yashsony23478@gmail.com
+2026-07-01 16:07:47 | INFO     | examside.security    | Login: yash12@gmail.com from 127.0.0.1
+2026-07-01 16:18:28 | INFO     | examside.security    | Logout: yash12@gmail.com
+2026-07-01 16:20:07 | INFO     | examside.security    | Login: yashsony23478@gmail.com from 127.0.0.1
+2026-07-01 16:20:21 | INFO     | examside.security    | Logout: yashsony23478@gmail.com
+2026-07-01 16:20:48 | CRITICAL | examside.security    | Account locked after 5 failed attempts: yash12@gmail.com
+2026-07-01 16:20:53 | INFO     | examside.security    | Password reset requested: yash12@gmail.com
+2026-07-01 16:21:10 | WARNING  | examside.security    | Login blocked — account locked: yash12@gmail.com
+2026-07-01 16:21:50 | INFO     | examside.security    | New signup: sony12@gmail.com
+2026-07-01 16:23:01 | INFO     | examside.security    | Login: sony12@gmail.com from 127.0.0.1
+2026-07-01 17:10:47 | INFO     | examside.security    | Login: yash12@gmail.com from 127.0.0.1
+2026-07-01 17:11:34 | INFO     | examside.security    | Logout: yash12@gmail.com
+2026-07-01 17:11:50 | WARNING  | examside.security    | Login failed — email not found: soni12@gmail.com
+2026-07-01 17:11:56 | WARNING  | examside.security    | Login failed — email not found: soni12@gmail.com
+2026-07-01 17:12:16 | INFO     | examside.security    | Login: sony12@gmail.com from 127.0.0.1
+2026-07-02 21:57:17 | CRITICAL | examside.security    | Account locked after 5 failed attempts: yashsony23478@gmail.com
+2026-07-02 21:59:07 | INFO     | examside.security    | New signup: dd@gmail.com
+2026-07-02 21:59:09 | INFO     | examside.security    | Login: dd@gmail.com from 127.0.0.1
+2026-07-02 21:59:21 | INFO     | examside.security    | Logout: dd@gmail.com
+2026-07-02 21:59:25 | WARNING  | examside.security    | Login blocked — account locked: yashsony23478@gmail.com
+2026-07-02 21:59:36 | INFO     | examside.security    | Login: yash12@gmail.com from 127.0.0.1
+2026-07-02 21:59:53 | INFO     | examside.security    | Logout: yash12@gmail.com
+2026-07-02 22:00:07 | WARNING  | examside.security    | Login blocked — account locked: yashsony23478@gmail.com
+2026-07-02 22:00:23 | WARNING  | examside.security    | Login failed — email not found: soni12@gmail.com
+2026-07-02 22:00:27 | WARNING  | examside.security    | Login failed — email not found: soni12@gmail.com
+2026-07-02 22:01:09 | INFO     | examside.security    | Login: sony12@gmail.com from 127.0.0.1
+2026-07-05 10:40:08 | INFO     | examside.security    | Login: yash12@gmail.com from 127.0.0.1
+2026-07-05 10:40:17 | INFO     | examside.security    | Logout: yash12@gmail.com
+2026-07-05 10:40:33 | WARNING  | examside.security    | Login failed — email not found: soni12@gmail.com
+2026-07-05 10:40:41 | WARNING  | examside.security    | Login failed — email not found: soni12@gmail.com
+2026-07-05 10:40:44 | WARNING  | examside.security    | Login failed — email not found: soni12@gmail.com
+2026-07-05 10:41:13 | WARNING  | examside.security    | Login failed — email not found: soni12@gmail.com
+2026-07-05 10:41:15 | WARNING  | examside.security    | Login failed — email not found: soni12@gmail.com
+2026-07-05 10:43:27 | INFO     | examside.security    | Login: yash12@gmail.com from 127.0.0.1
