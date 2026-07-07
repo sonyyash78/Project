@@ -564,9 +564,14 @@ const TestInterface = () => {
         <div className="w-full">
           <EmptyState
             icon={<FaBookOpen />}
-            title="Unable to start this exam session"
-            description={error || 'No questions were returned for this exam configuration.'}
+            title={error ? "Unable to start this exam session" : "Questions Coming Soon!"}
+            description={error || "We are currently generating high-quality questions for this exam chapter. Please check back later!"}
           />
+          <div className="mt-8 text-center">
+            <button onClick={() => navigate(-1)} className="rounded-2xl border border-white/10 bg-white/[0.04] px-6 py-3 text-sm font-bold text-[var(--text-secondary)] hover:text-white transition">
+              <FaArrowLeft className="mr-2 inline" /> Go Back
+            </button>
+          </div>
         </div>
       </div>
     );
