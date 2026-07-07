@@ -1,4 +1,7 @@
+import random
+
 def build_generation_prompt(request, count: int, difficulty: str) -> str:
+    seed = random.randint(1000, 9999999)
     return f"""You are an elite academic content creator specializing in top-tier competitive exams like IIT JEE Advanced, NEET, and Olympiads.
 Generate {count} distinct {difficulty} level {request.question_type} questions for the following context:
 Exam: {request.exam}
@@ -6,6 +9,13 @@ Subject: {request.subject}
 Chapter: {request.chapter}
 {f'Topic: {request.topic}' if request.topic else ''}
 Language: {request.language}
+
+CRITICAL RANDOMIZATION INSTRUCTIONS:
+- RANDOM SEED: {seed}
+- The questions MUST be entirely unique, diverse, and highly randomized.
+- DO NOT generate the same standard textbook questions. 
+- Create novel scenarios, different numerical values, and explore various sub-topics within the chapter.
+- Ensure no two questions are structurally identical.
 
 CRITICAL DIFFICULTY INSTRUCTIONS:
 If the Exam is "JEE Advanced" or the difficulty is "Hard":

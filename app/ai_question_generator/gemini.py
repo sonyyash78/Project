@@ -38,6 +38,7 @@ async def generate_content_with_retry(prompt: str, max_retries: int = 5) -> list
                 contents=prompt,
                 config=types.GenerateContentConfig(
                     response_mime_type="application/json",
+                    temperature=1.0,
                 )
             )
             
