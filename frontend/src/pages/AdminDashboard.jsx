@@ -1418,15 +1418,20 @@ const AdminDashboard = () => {
                 <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
                   {[
                     { label: 'Gross Revenue', value: `₹${(revenueData.gross_revenue || 0).toLocaleString()}`, color: '#6366f1' },
+                    { label: 'Annual Revenue', value: `₹${(revenueData.annual_revenue || 0).toLocaleString()}`, color: '#14b8a6' },
                     { label: 'Active Subscribers', value: revenueData.active_subscribers || 0, color: '#8b5cf6' },
                     { label: 'Daily Revenue', value: `₹${(revenueData.daily_revenue || 0).toLocaleString()}`, color: '#f59e0b' },
-                    { label: 'Monthly Revenue', value: `₹${(revenueData.monthly_revenue || 0).toLocaleString()}`, color: '#ec4899' },
-                    { label: 'Annual Revenue', value: `₹${(revenueData.annual_revenue || 0).toLocaleString()}`, color: '#14b8a6' },
                     { label: 'Conversion Rate', value: `${revenueData.conversion_rate || 0}%`, color: '#f43f5e' },
                   ].map((stat) => (
                     <div key={stat.label} style={{ background: 'var(--bg-glass)', border: '1px solid var(--border-subtle)', borderRadius: 20, padding: 22 }}>
                       <div style={{ fontSize: 11, fontWeight: 700, color: 'var(--text-muted)', textTransform: 'uppercase', marginBottom: 8 }}>{stat.label}</div>
                       <div style={{ fontSize: 28, fontWeight: 900, color: stat.color }}>{stat.value}</div>
+                    </div>
+                  ))}
+                  {revenueData.monthly_breakdown?.map((mb, idx) => (
+                    <div key={mb.month} style={{ background: 'var(--bg-glass)', border: '1px solid var(--border-subtle)', borderRadius: 20, padding: 22 }}>
+                      <div style={{ fontSize: 11, fontWeight: 700, color: 'var(--text-muted)', textTransform: 'uppercase', marginBottom: 8 }}>{mb.month} Revenue</div>
+                      <div style={{ fontSize: 28, fontWeight: 900, color: idx % 2 === 0 ? '#10b981' : '#ec4899' }}>₹{mb.revenue.toLocaleString()}</div>
                     </div>
                   ))}
                 </div>

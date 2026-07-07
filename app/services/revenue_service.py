@@ -42,6 +42,17 @@ def get_revenue_dashboard(db):
     cursor.execute("SELECT COUNT(id) FROM users")
     total_users = cursor.fetchone()[0] or 1
 
+    cursor.execute(
+        """
+        SELECT DATE_FORMAT(created_at, '%M %Y') as month_name, COALESCE(SUM(total), 0) as revenue
+        FROM invoices
+        WHERE status = 'paid'
+        GROUP BY DATE_FORMAT(created_at, '%Y-%m'), month_name
+        ORDER BY DATE_FORMAT(created_at, '%Y-%m') DESC
+        """
+    )
+    monthly_breakdown = [{"month": r[0], "revenue": float(r[1])} for r in cursor.fetchall()]
+
     return {
         "gross_revenue": gross_rev,
         "daily_revenue": daily_rev,
@@ -51,6 +62,7 @@ def get_revenue_dashboard(db):
         "arr": arr,
         "active_subscribers": subscribers,
         "conversion_rate": round((subscribers / total_users) * 100, 2),
+        "monthly_breakdown": monthly_breakdown,
     }
 
 
