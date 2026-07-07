@@ -1415,11 +1415,9 @@ const AdminDashboard = () => {
               <TableSkeleton rows={4} cols={4} />
             ) : revenueData ? (
               <>
-                <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+                <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
                   {[
                     { label: 'Gross Revenue', value: `₹${(revenueData.gross_revenue || 0).toLocaleString()}`, color: '#6366f1' },
-                    { label: 'MRR', value: `₹${(revenueData.mrr || 0).toLocaleString()}`, color: '#10b981' },
-                    { label: 'ARR', value: `₹${(revenueData.arr || 0).toLocaleString()}`, color: '#06b6d4' },
                     { label: 'Active Subscribers', value: revenueData.active_subscribers || 0, color: '#8b5cf6' },
                     { label: 'Daily Revenue', value: `₹${(revenueData.daily_revenue || 0).toLocaleString()}`, color: '#f59e0b' },
                     { label: 'Monthly Revenue', value: `₹${(revenueData.monthly_revenue || 0).toLocaleString()}`, color: '#ec4899' },
