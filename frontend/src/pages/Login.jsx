@@ -6,7 +6,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import {
   FaGraduationCap, FaEnvelope, FaLock, FaUser,
   FaArrowRight, FaEye, FaEyeSlash, FaCheck,
-  FaShieldAlt, FaTrophy, FaChartLine
+  FaShieldAlt, FaTrophy, FaChartLine, FaGift
 } from 'react-icons/fa';
 import toast from 'react-hot-toast';
 
@@ -19,6 +19,7 @@ const Login = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [referralCode, setReferralCode] = useState('');
   const [loading, setLoading] = useState(false);
   const [showPass, setShowPass] = useState(false);
 
@@ -60,10 +61,11 @@ const Login = () => {
     setLoading(true);
     try {
       if (isSignUp) {
-        await authService.signup(name, email, password);
+        await authService.signup(name, email, password, referralCode);
         toast.success('Account created! Please sign in.');
         setIsSignUp(false);
         setName('');
+        setReferralCode('');
       } else {
         const userProfile = await login(email, password);
         toast.success(`Welcome back, ${userProfile.name}! 🎉`);
@@ -265,6 +267,38 @@ const Login = () => {
                 )}
               </AnimatePresence>
 
+              {/* Referral Code field (sign up only) */}
+              <AnimatePresence>
+                {isSignUp && (
+                  <motion.div
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: 'auto', opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                    transition={{ duration: 0.2 }}
+                    style={{ overflow: 'hidden' }}
+                  >
+                    <label style={{ display: 'block', fontSize: 12, fontWeight: 600, color: 'var(--text-secondary)', marginBottom: 6, textTransform: 'uppercase', letterSpacing: '0.06em' }}>
+                      Referral Code (Optional)
+                    </label>
+                    <div style={{ position: 'relative' }}>
+                      <FaGift style={{
+                        position: 'absolute', left: 14, top: '50%', transform: 'translateY(-50%)',
+                        fontSize: 13, color: 'var(--text-muted)',
+                      }} />
+                      <input
+                        id="referralCode"
+                        type="text"
+                        value={referralCode}
+                        onChange={e => setReferralCode(e.target.value.toUpperCase())}
+                        placeholder="ENTER CODE"
+                        className="input-field"
+                        style={{ paddingLeft: 40 }}
+                      />
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+
               {/* Email field */}
               <div>
                 <label style={{ display: 'block', fontSize: 12, fontWeight: 600, color: 'var(--text-secondary)', marginBottom: 6, textTransform: 'uppercase', letterSpacing: '0.06em' }}>
@@ -394,6 +428,7 @@ const Login = () => {
                   setName('');
                   setEmail('');
                   setPassword('');
+                  setReferralCode('');
                 }}
                 style={{
                   background: 'none', border: 'none', cursor: 'pointer',

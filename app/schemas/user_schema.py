@@ -12,6 +12,7 @@ class UserCreate(BaseModel):
     name: str = Field(..., min_length=2, max_length=200)
     email: EmailStr
     password: str = Field(..., min_length=8, max_length=128)
+    referral_code: Optional[str] = None
 
 
 class UserLogin(BaseModel):

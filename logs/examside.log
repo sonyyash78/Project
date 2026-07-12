@@ -10658,3 +10658,221 @@ RuntimeError: Failed to generate content after 5 attempts. Last error: Gemini re
 2026-07-07 10:31:33 | INFO     | examside             | Schema migrations completed successfully.
 2026-07-07 10:31:41 | INFO     | examside             | [79254ae3] GET /docs → 200 (1.49ms)
 2026-07-07 10:31:42 | INFO     | examside             | [134c7e51] GET /openapi.json → 200 (845.13ms)
+2026-07-12 17:14:26 | INFO     | examside             | Initialized GeminiKeyManager with 3 keys.
+2026-07-12 17:14:26 | INFO     | examside             | Loaded Key 1: AQ.A*********************************************lUew
+2026-07-12 17:14:26 | INFO     | examside             | Loaded Key 2: AQ.A*********************************************BB-Q
+2026-07-12 17:14:26 | INFO     | examside             | Loaded Key 3: AQ.A*********************************************fYkA
+2026-07-12 17:14:26 | INFO     | examside             | Starting ExamSIDE API v2.0.0 (development)
+2026-07-12 17:14:27 | INFO     | examside             | Schema migrations completed successfully.
+2026-07-12 17:15:27 | WARNING  | examside             | SMTP not configured — email logged to console.
+  To: user1_eMCcephWvZ@example.com
+  Subject: Verify Your ExamSIDE Email
+  Body preview: 
+    <div style="font-family: 'Inter', sans-serif; max-width: 600px; margin: 0 auto; padding: 40px 20px;">
+        <div style="text-align: center; margin-bottom: 32px;">
+            <h1 style="color: #6366f1; font-size: 28px; margin: 0;">Exam<span style="color: #8b5cf6;">SIDE</span></h1>
+        </div>
+        <div style="background: #1e1b4b; border-radius: 16px; padding: 32px; color: #e2e8f0;">
+            <h2 style="color: white; margin-top: 0;">Verify Your Email</h2>
+            <p>Welcome to ExamSIDE! Please verify your email address to activate your account:</p>
+            <div style="text-align: center; margin: 28px 0;">
+                <a href="https://project-eight-hazel-68.vercel.app/verify-email?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ1c2VyMV9lTUNjZXBoV3ZaQGV4YW1wbGUuY29tIiwicHVycG9zZSI6ImVtYWlsX3ZlcmlmaWNhdGlvbiIsImV4cCI6MTc4Mzk0MzEyNywiaWF0IjoxNzgzODU2NzI3fQ.v6z-H0KSStxGo-H16fkChgz_NMKD6fopKVq6pFqMUn8"
+                   style="display: inline-block; padding: 14px 32px; background: linear-gradient(135deg, #10b981, #059669);
+                          color: white; text-decoration: none; border-radius: 12px; font-weight: 700; font-size: 14px;">
+                    Verify Email
+                </a>
+            </div>
+            <p style="color: #94a3b8; font-size: 13px;">This link expires in 24 hours.</p>
+        </div>
+        <p style="color: #64748b; font-size: 11px; text-align: center; margin-top: 20px;">
+            © ExamSIDE — India's premier exam preparation platform
+        </p>
+    </div>
+    
+2026-07-12 17:15:27 | WARNING  | examside             | SMTP not configured — email logged to console.
+  To: user1_eMCcephWvZ@example.com
+  Subject: Welcome to ExamSIDE, User One!
+  Body preview: 
+    <div style="font-family: 'Inter', sans-serif; max-width: 600px; margin: 0 auto; padding: 40px 20px;">
+        <div style="text-align: center; margin-bottom: 32px;">
+            <h1 style="color: #6366f1; font-size: 28px; margin: 0;">Exam<span style="color: #8b5cf6;">SIDE</span></h1>
+        </div>
+        <div style="background: #1e1b4b; border-radius: 16px; padding: 32px; color: #e2e8f0;">
+            <h2 style="color: white; margin-top: 0;">Welcome, User One! 🎉</h2>
+            <p>You've joined India's premier exam preparation platform. Here's what you can do:</p>
+            <ul style="color: #cbd5e1; line-height: 2;">
+                <li>📚 Access 12,000+ past year questions</li>
+                <li>📝 Take chapter-wise practice tests</li>
+                <li>🏆 Compete on leaderboards</li>
+                <li>📊 Track your performance analytics</li>
+            </ul>
+            <div style="text-align: center; margin: 28px 0;">
+                <a href="https://project-eight-hazel-68.vercel.app/dashboard"
+                   style="display: inline-block; padding: 14px 32px; background: linear-gradient(135deg, #6366f1, #8b5cf6);
+                          color: white; text-decoration: none; border-radius: 12px; font-weight: 700; font-size: 14px;">
+                    Start Preparing
+                </a>
+            </div>
+        </div>
+    </div>
+    
+2026-07-12 17:15:27 | INFO     | examside.security    | New signup: user1_eMCcephWvZ@example.com
+2026-07-12 17:15:27 | WARNING  | examside             | SMTP not configured — email logged to console.
+  To: user2_vNRgVuQyip@example.com
+  Subject: Verify Your ExamSIDE Email
+  Body preview: 
+    <div style="font-family: 'Inter', sans-serif; max-width: 600px; margin: 0 auto; padding: 40px 20px;">
+        <div style="text-align: center; margin-bottom: 32px;">
+            <h1 style="color: #6366f1; font-size: 28px; margin: 0;">Exam<span style="color: #8b5cf6;">SIDE</span></h1>
+        </div>
+        <div style="background: #1e1b4b; border-radius: 16px; padding: 32px; color: #e2e8f0;">
+            <h2 style="color: white; margin-top: 0;">Verify Your Email</h2>
+            <p>Welcome to ExamSIDE! Please verify your email address to activate your account:</p>
+            <div style="text-align: center; margin: 28px 0;">
+                <a href="https://project-eight-hazel-68.vercel.app/verify-email?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ1c2VyMl92TlJnVnVReWlwQGV4YW1wbGUuY29tIiwicHVycG9zZSI6ImVtYWlsX3ZlcmlmaWNhdGlvbiIsImV4cCI6MTc4Mzk0MzEyNywiaWF0IjoxNzgzODU2NzI3fQ.vQvb2vWQz4yN8NgzSBT73on0I4ticHiCl2MAnA8ZHKs"
+                   style="display: inline-block; padding: 14px 32px; background: linear-gradient(135deg, #10b981, #059669);
+                          color: white; text-decoration: none; border-radius: 12px; font-weight: 700; font-size: 14px;">
+                    Verify Email
+                </a>
+            </div>
+            <p style="color: #94a3b8; font-size: 13px;">This link expires in 24 hours.</p>
+        </div>
+        <p style="color: #64748b; font-size: 11px; text-align: center; margin-top: 20px;">
+            © ExamSIDE — India's premier exam preparation platform
+        </p>
+    </div>
+    
+2026-07-12 17:15:27 | WARNING  | examside             | SMTP not configured — email logged to console.
+  To: user2_vNRgVuQyip@example.com
+  Subject: Welcome to ExamSIDE, User Two!
+  Body preview: 
+    <div style="font-family: 'Inter', sans-serif; max-width: 600px; margin: 0 auto; padding: 40px 20px;">
+        <div style="text-align: center; margin-bottom: 32px;">
+            <h1 style="color: #6366f1; font-size: 28px; margin: 0;">Exam<span style="color: #8b5cf6;">SIDE</span></h1>
+        </div>
+        <div style="background: #1e1b4b; border-radius: 16px; padding: 32px; color: #e2e8f0;">
+            <h2 style="color: white; margin-top: 0;">Welcome, User Two! 🎉</h2>
+            <p>You've joined India's premier exam preparation platform. Here's what you can do:</p>
+            <ul style="color: #cbd5e1; line-height: 2;">
+                <li>📚 Access 12,000+ past year questions</li>
+                <li>📝 Take chapter-wise practice tests</li>
+                <li>🏆 Compete on leaderboards</li>
+                <li>📊 Track your performance analytics</li>
+            </ul>
+            <div style="text-align: center; margin: 28px 0;">
+                <a href="https://project-eight-hazel-68.vercel.app/dashboard"
+                   style="display: inline-block; padding: 14px 32px; background: linear-gradient(135deg, #6366f1, #8b5cf6);
+                          color: white; text-decoration: none; border-radius: 12px; font-weight: 700; font-size: 14px;">
+                    Start Preparing
+                </a>
+            </div>
+        </div>
+    </div>
+    
+2026-07-12 17:15:27 | INFO     | examside.security    | New signup: user2_vNRgVuQyip@example.com
+2026-07-12 17:16:05 | WARNING  | examside             | SMTP not configured — email logged to console.
+  To: user1_wfDsfTNejW@example.com
+  Subject: Verify Your ExamSIDE Email
+  Body preview: 
+    <div style="font-family: 'Inter', sans-serif; max-width: 600px; margin: 0 auto; padding: 40px 20px;">
+        <div style="text-align: center; margin-bottom: 32px;">
+            <h1 style="color: #6366f1; font-size: 28px; margin: 0;">Exam<span style="color: #8b5cf6;">SIDE</span></h1>
+        </div>
+        <div style="background: #1e1b4b; border-radius: 16px; padding: 32px; color: #e2e8f0;">
+            <h2 style="color: white; margin-top: 0;">Verify Your Email</h2>
+            <p>Welcome to ExamSIDE! Please verify your email address to activate your account:</p>
+            <div style="text-align: center; margin: 28px 0;">
+                <a href="https://project-eight-hazel-68.vercel.app/verify-email?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ1c2VyMV93ZkRzZlROZWpXQGV4YW1wbGUuY29tIiwicHVycG9zZSI6ImVtYWlsX3ZlcmlmaWNhdGlvbiIsImV4cCI6MTc4Mzk0MzE2NSwiaWF0IjoxNzgzODU2NzY1fQ.Pa2huoAz080ZyzR-ejt4VTS5_u__ZLkaLlrQFAEwSKA"
+                   style="display: inline-block; padding: 14px 32px; background: linear-gradient(135deg, #10b981, #059669);
+                          color: white; text-decoration: none; border-radius: 12px; font-weight: 700; font-size: 14px;">
+                    Verify Email
+                </a>
+            </div>
+            <p style="color: #94a3b8; font-size: 13px;">This link expires in 24 hours.</p>
+        </div>
+        <p style="color: #64748b; font-size: 11px; text-align: center; margin-top: 20px;">
+            © ExamSIDE — India's premier exam preparation platform
+        </p>
+    </div>
+    
+2026-07-12 17:16:05 | WARNING  | examside             | SMTP not configured — email logged to console.
+  To: user1_wfDsfTNejW@example.com
+  Subject: Welcome to ExamSIDE, User One!
+  Body preview: 
+    <div style="font-family: 'Inter', sans-serif; max-width: 600px; margin: 0 auto; padding: 40px 20px;">
+        <div style="text-align: center; margin-bottom: 32px;">
+            <h1 style="color: #6366f1; font-size: 28px; margin: 0;">Exam<span style="color: #8b5cf6;">SIDE</span></h1>
+        </div>
+        <div style="background: #1e1b4b; border-radius: 16px; padding: 32px; color: #e2e8f0;">
+            <h2 style="color: white; margin-top: 0;">Welcome, User One! 🎉</h2>
+            <p>You've joined India's premier exam preparation platform. Here's what you can do:</p>
+            <ul style="color: #cbd5e1; line-height: 2;">
+                <li>📚 Access 12,000+ past year questions</li>
+                <li>📝 Take chapter-wise practice tests</li>
+                <li>🏆 Compete on leaderboards</li>
+                <li>📊 Track your performance analytics</li>
+            </ul>
+            <div style="text-align: center; margin: 28px 0;">
+                <a href="https://project-eight-hazel-68.vercel.app/dashboard"
+                   style="display: inline-block; padding: 14px 32px; background: linear-gradient(135deg, #6366f1, #8b5cf6);
+                          color: white; text-decoration: none; border-radius: 12px; font-weight: 700; font-size: 14px;">
+                    Start Preparing
+                </a>
+            </div>
+        </div>
+    </div>
+    
+2026-07-12 17:16:05 | INFO     | examside.security    | New signup: user1_wfDsfTNejW@example.com
+2026-07-12 17:16:05 | WARNING  | examside             | SMTP not configured — email logged to console.
+  To: user2_QJotHsRNDO@example.com
+  Subject: Verify Your ExamSIDE Email
+  Body preview: 
+    <div style="font-family: 'Inter', sans-serif; max-width: 600px; margin: 0 auto; padding: 40px 20px;">
+        <div style="text-align: center; margin-bottom: 32px;">
+            <h1 style="color: #6366f1; font-size: 28px; margin: 0;">Exam<span style="color: #8b5cf6;">SIDE</span></h1>
+        </div>
+        <div style="background: #1e1b4b; border-radius: 16px; padding: 32px; color: #e2e8f0;">
+            <h2 style="color: white; margin-top: 0;">Verify Your Email</h2>
+            <p>Welcome to ExamSIDE! Please verify your email address to activate your account:</p>
+            <div style="text-align: center; margin: 28px 0;">
+                <a href="https://project-eight-hazel-68.vercel.app/verify-email?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ1c2VyMl9RSm90SHNSTkRPQGV4YW1wbGUuY29tIiwicHVycG9zZSI6ImVtYWlsX3ZlcmlmaWNhdGlvbiIsImV4cCI6MTc4Mzk0MzE2NSwiaWF0IjoxNzgzODU2NzY1fQ.CElQP7NsLUug3Yo3N0tg3FKnCH-1u2SV8wA6-K3bRj4"
+                   style="display: inline-block; padding: 14px 32px; background: linear-gradient(135deg, #10b981, #059669);
+                          color: white; text-decoration: none; border-radius: 12px; font-weight: 700; font-size: 14px;">
+                    Verify Email
+                </a>
+            </div>
+            <p style="color: #94a3b8; font-size: 13px;">This link expires in 24 hours.</p>
+        </div>
+        <p style="color: #64748b; font-size: 11px; text-align: center; margin-top: 20px;">
+            © ExamSIDE — India's premier exam preparation platform
+        </p>
+    </div>
+    
+2026-07-12 17:16:05 | WARNING  | examside             | SMTP not configured — email logged to console.
+  To: user2_QJotHsRNDO@example.com
+  Subject: Welcome to ExamSIDE, User Two!
+  Body preview: 
+    <div style="font-family: 'Inter', sans-serif; max-width: 600px; margin: 0 auto; padding: 40px 20px;">
+        <div style="text-align: center; margin-bottom: 32px;">
+            <h1 style="color: #6366f1; font-size: 28px; margin: 0;">Exam<span style="color: #8b5cf6;">SIDE</span></h1>
+        </div>
+        <div style="background: #1e1b4b; border-radius: 16px; padding: 32px; color: #e2e8f0;">
+            <h2 style="color: white; margin-top: 0;">Welcome, User Two! 🎉</h2>
+            <p>You've joined India's premier exam preparation platform. Here's what you can do:</p>
+            <ul style="color: #cbd5e1; line-height: 2;">
+                <li>📚 Access 12,000+ past year questions</li>
+                <li>📝 Take chapter-wise practice tests</li>
+                <li>🏆 Compete on leaderboards</li>
+                <li>📊 Track your performance analytics</li>
+            </ul>
+            <div style="text-align: center; margin: 28px 0;">
+                <a href="https://project-eight-hazel-68.vercel.app/dashboard"
+                   style="display: inline-block; padding: 14px 32px; background: linear-gradient(135deg, #6366f1, #8b5cf6);
+                          color: white; text-decoration: none; border-radius: 12px; font-weight: 700; font-size: 14px;">
+                    Start Preparing
+                </a>
+            </div>
+        </div>
+    </div>
+    
+2026-07-12 17:16:05 | INFO     | examside.security    | New signup: user2_QJotHsRNDO@example.com

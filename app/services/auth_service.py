@@ -138,6 +138,13 @@ def signup_user(db: Session, user: UserCreate, request: Request | None = None):
     db.add(new_user)
     db.commit()
     db.refresh(new_user)
+    
+    if user.referral_code:
+        try:
+            from app.services import referral_service
+            referral_service.apply_referral_code(db, new_user.id, user.referral_code)
+        except Exception as e:
+            logger.error(f"Failed to apply referral code for new user {new_user.id}: {e}")
 
     # Send verification email
     try:

@@ -153,3 +153,7 @@
 2026-07-05 10:41:13 | WARNING  | examside.security    | Login failed — email not found: soni12@gmail.com
 2026-07-05 10:41:15 | WARNING  | examside.security    | Login failed — email not found: soni12@gmail.com
 2026-07-05 10:43:27 | INFO     | examside.security    | Login: yash12@gmail.com from 127.0.0.1
+2026-07-12 17:15:27 | INFO     | examside.security    | New signup: user1_eMCcephWvZ@example.com
+2026-07-12 17:15:27 | INFO     | examside.security    | New signup: user2_vNRgVuQyip@example.com
+2026-07-12 17:16:05 | INFO     | examside.security    | New signup: user1_wfDsfTNejW@example.com
+2026-07-12 17:16:05 | INFO     | examside.security    | New signup: user2_QJotHsRNDO@example.com

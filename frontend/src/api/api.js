@@ -121,8 +121,10 @@ export const authService = {
     });
     return response.data;
   },
-  signup: async (name, email, password) => {
-    const response = await API.post('/api/auth/signup', { name, email, password });
+  signup: async (name, email, password, referral_code = '') => {
+    const payload = { name, email, password };
+    if (referral_code) payload.referral_code = referral_code;
+    const response = await API.post('/api/auth/signup', payload);
     return response.data;
   },
   getMe: async () => {

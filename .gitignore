@@ -1,0 +1,11 @@
+node_modules/
+dist/
+.env
+exam.db
+export.sql
+__pycache__/
+*.pyc
+venv/
+.venv/
+.pytest_cache/
+logs/
