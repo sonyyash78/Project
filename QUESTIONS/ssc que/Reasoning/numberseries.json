@@ -1,0 +1,2055 @@
+
+{
+  "exam": "SSC CGL Tier I",
+  "subject": "Reasoning",
+  "chapter": "Number Series",
+  "questions": [
+    {
+      "id": "Q1",
+      "pattern_id": "P001",
+      "pattern_name": "Constant Difference",
+      "difficulty": "Easy",
+      "question": "Find the next term: 17, 22, 27, 32, 37, ?",
+      "options": {
+        "A": "41",
+        "B": "42",
+        "C": "43",
+        "D": "44"
+      },
+      "correct_answer": "B",
+      "solution": {
+        "concept": "Arithmetic Progression",
+        "steps": [
+          "Common difference = +5",
+          "37 + 5 = 42"
+        ],
+        "quick_trick": "If every difference is same, simply add the common difference."
+      }
+    },
+    {
+      "id": "Q2",
+      "pattern_id": "P002",
+      "pattern_name": "Increasing Difference",
+      "difficulty": "Easy",
+      "question": "Find the next term: 6, 9, 14, 21, 30, ?",
+      "options": {
+        "A": "39",
+        "B": "40",
+        "C": "41",
+        "D": "42"
+      },
+      "correct_answer": "C",
+      "solution": {
+        "concept": "Increasing Difference",
+        "steps": [
+          "Differences = +3, +5, +7, +9",
+          "Next difference = +11",
+          "30 + 11 = 41"
+        ],
+        "quick_trick": "Check odd/even increasing differences."
+      }
+    },
+    {
+      "id": "Q3",
+      "pattern_id": "P002",
+      "pattern_name": "Increasing Difference",
+      "difficulty": "Medium",
+      "question": "Find the next term: 12, 16, 23, 33, 46, ?",
+      "options": {
+        "A": "60",
+        "B": "61",
+        "C": "62",
+        "D": "63"
+      },
+      "correct_answer": "C",
+      "solution": {
+        "concept": "Increasing Difference",
+        "steps": [
+          "Differences = +4, +7, +10, +13",
+          "Increase by 3",
+          "Next difference = +16",
+          "46 + 16 = 62"
+        ],
+        "quick_trick": "Take first differences before trying multiplication."
+      }
+    },
+    {
+      "id": "Q4",
+      "pattern_id": "P003",
+      "pattern_name": "Decreasing Difference",
+      "difficulty": "Easy",
+      "question": "Find the next term: 70, 60, 51, 43, 36, ?",
+      "options": {
+        "A": "29",
+        "B": "30",
+        "C": "31",
+        "D": "32"
+      },
+      "correct_answer": "B",
+      "solution": {
+        "concept": "Decreasing Difference",
+        "steps": [
+          "Differences = -10, -9, -8, -7",
+          "Next difference = -6",
+          "36 - 6 = 30"
+        ],
+        "quick_trick": "Observe whether subtraction amount itself is changing."
+      }
+    },
+    {
+      "id": "Q5",
+      "pattern_id": "P004",
+      "pattern_name": "Odd Difference",
+      "difficulty": "Easy",
+      "question": "Find the next term: 8, 11, 16, 23, 32, ?",
+      "options": {
+        "A": "41",
+        "B": "42",
+        "C": "43",
+        "D": "44"
+      },
+      "correct_answer": "C",
+      "solution": {
+        "concept": "Odd Number Difference",
+        "steps": [
+          "Differences = +3, +5, +7, +9",
+          "Next odd difference = +11",
+          "32 + 11 = 43"
+        ],
+        "quick_trick": "Remember consecutive odd numbers: 3,5,7,9,11..."
+      }
+    },
+    {
+      "id": "Q6",
+      "pattern_id": "P005",
+      "pattern_name": "Even Difference",
+      "difficulty": "Easy",
+      "question": "Find the next term: 4, 8, 14, 22, 32, ?",
+      "options": {
+        "A": "42",
+        "B": "44",
+        "C": "46",
+        "D": "48"
+      },
+      "correct_answer": "B",
+      "solution": {
+        "concept": "Consecutive even differences",
+        "steps": [
+          "Differences = +4, +6, +8, +10",
+          "Next difference = +12",
+          "32 + 12 = 44"
+        ],
+        "quick_trick": "Check if differences are consecutive even numbers."
+      }
+    },
+    {
+      "id": "Q7",
+      "pattern_id": "P006",
+      "pattern_name": "Prime Difference",
+      "difficulty": "Medium",
+      "question": "Find the next term: 10, 13, 18, 25, 36, ?",
+      "options": {
+        "A": "47",
+        "B": "49",
+        "C": "51",
+        "D": "53"
+      },
+      "correct_answer": "B",
+      "solution": {
+        "concept": "Prime number differences",
+        "steps": [
+          "Differences = +3, +5, +7, +11",
+          "Next prime difference = +13",
+          "36 + 13 = 49"
+        ],
+        "quick_trick": "Memorize prime numbers up to 50."
+      }
+    },
+    {
+      "id": "Q8",
+      "pattern_id": "P007",
+      "pattern_name": "Second Difference",
+      "difficulty": "Medium",
+      "question": "Find the next term: 5, 9, 16, 26, 39, ?",
+      "options": {
+        "A": "54",
+        "B": "55",
+        "C": "56",
+        "D": "57"
+      },
+      "correct_answer": "B",
+      "solution": {
+        "concept": "Constant second difference",
+        "steps": [
+          "First differences = 4, 7, 10, 13",
+          "Second differences = 3, 3, 3",
+          "Next first difference = 16",
+          "39 + 16 = 55"
+        ],
+        "quick_trick": "If first differences aren't constant, check second differences."
+      }
+    },
+    {
+      "id": "Q9",
+      "pattern_id": "P007",
+      "pattern_name": "Second Difference",
+      "difficulty": "Hard",
+      "question": "Find the next term: 3, 8, 17, 30, 47, ?",
+      "options": {
+        "A": "66",
+        "B": "68",
+        "C": "70",
+        "D": "72"
+      },
+      "correct_answer": "B",
+      "solution": {
+        "concept": "Quadratic sequence",
+        "steps": [
+          "First differences = 5, 9, 13, 17",
+          "Second differences = 4, 4, 4",
+          "Next first difference = 21",
+          "47 + 21 = 68"
+        ],
+        "quick_trick": "Constant second difference usually indicates a quadratic pattern."
+      }
+    },
+    {
+      "id": "Q10",
+      "pattern_id": "P008",
+      "pattern_name": "Third Difference",
+      "difficulty": "Hard",
+      "question": "Find the next term: 2, 6, 16, 36, 70, ?",
+      "options": {
+        "A": "118",
+        "B": "120",
+        "C": "122",
+        "D": "124"
+      },
+      "correct_answer": "C",
+      "solution": {
+        "concept": "Constant third difference",
+        "steps": [
+          "First differences = 4, 10, 20, 34",
+          "Second differences = 6, 10, 14",
+          "Third differences = 4, 4",
+          "Next second difference = 18",
+          "Next first difference = 52",
+          "70 + 52 = 122"
+        ],
+        "quick_trick": "After first and second differences fail, always test the third difference."
+      }
+    },
+    {
+      "id": "Q11",
+      "pattern_id": "P009",
+      "pattern_name": "Difference AP",
+      "difficulty": "Medium",
+      "question": "Find the next term: 8, 12, 19, 29, 42, ?",
+      "options": {
+        "A": "56",
+        "B": "57",
+        "C": "58",
+        "D": "59"
+      },
+      "correct_answer": "C",
+      "solution": {
+        "concept": "Differences form an Arithmetic Progression.",
+        "steps": [
+          "Differences = +4, +7, +10, +13",
+          "Difference increases by 3 each time.",
+          "Next difference = +16",
+          "42 + 16 = 58"
+        ],
+        "quick_trick": "When differences themselves form an AP, extend that AP first."
+      }
+    },
+    {
+      "id": "Q12",
+      "pattern_id": "P010",
+      "pattern_name": "Difference GP",
+      "difficulty": "Hard",
+      "question": "Find the next term: 5, 7, 11, 19, 35, ?",
+      "options": {
+        "A": "65",
+        "B": "66",
+        "C": "67",
+        "D": "68"
+      },
+      "correct_answer": "C",
+      "solution": {
+        "concept": "Differences form a Geometric Progression.",
+        "steps": [
+          "Differences = 2, 4, 8, 16",
+          "Each difference doubles.",
+          "Next difference = 32",
+          "35 + 32 = 67"
+        ],
+        "quick_trick": "If differences double or triple, check GP."
+      }
+    },
+    {
+      "id": "Q13",
+      "pattern_id": "P011",
+      "pattern_name": "Double Difference",
+      "difficulty": "Medium",
+      "question": "Find the next term: 6, 10, 18, 34, 66, ?",
+      "options": {
+        "A": "126",
+        "B": "128",
+        "C": "130",
+        "D": "132"
+      },
+      "correct_answer": "C",
+      "solution": {
+        "concept": "Multiply by 2, then subtract 2.",
+        "steps": [
+          "6×2−2=10",
+          "10×2−2=18",
+          "18×2−2=34",
+          "34×2−2=66",
+          "66×2−2=130"
+        ],
+        "quick_trick": "Check ×2, ×3 patterns before finding differences."
+      }
+    },
+    {
+      "id": "Q14",
+      "pattern_id": "P012",
+      "pattern_name": "Zigzag Difference",
+      "difficulty": "Medium",
+      "question": "Find the next term: 20, 25, 22, 28, 24, 31, ?",
+      "options": {
+        "A": "25",
+        "B": "26",
+        "C": "27",
+        "D": "28"
+      },
+      "correct_answer": "B",
+      "solution": {
+        "concept": "Alternating positive and negative differences.",
+        "steps": [
+          "Differences = +5, -3, +6, -4, +7",
+          "Next should be -5",
+          "31 - 5 = 26"
+        ],
+        "quick_trick": "Whenever signs alternate (+,−,+,−), split the pattern."
+      }
+    },
+    {
+      "id": "Q15",
+      "pattern_id": "P013",
+      "pattern_name": "Constant Multiplication",
+      "difficulty": "Easy",
+      "question": "Find the next term: 3, 9, 27, 81, ?",
+      "options": {
+        "A": "162",
+        "B": "216",
+        "C": "243",
+        "D": "324"
+      },
+      "correct_answer": "C",
+      "solution": {
+        "concept": "Constant multiplication pattern.",
+        "steps": [
+          "3×3=9",
+          "9×3=27",
+          "27×3=81",
+          "81×3=243"
+        ],
+        "quick_trick": "Look for a constant multiplication factor before trying complex logic."
+      }
+    },
+    
+
+{
+  "exam": "SSC CGL Tier I",
+  "subject": "Reasoning",
+  "chapter": "Number Series",
+  "questions": [
+    {
+      "id": "Q16",
+      "pattern_id": "P014",
+      "pattern_name": "Multiplication by Prime",
+      "difficulty": "Medium",
+      "question": "Find the next term: 2, 6, 30, 210, ?",
+      "options": {
+        "A": "1890",
+        "B": "2100",
+        "C": "2310",
+        "D": "2520"
+      },
+      "correct_answer": "C",
+      "solution": {
+        "concept": "Multiply by consecutive prime numbers.",
+        "steps": [
+          "2 × 3 = 6",
+          "6 × 5 = 30",
+          "30 × 7 = 210",
+          "210 × 11 = 2310"
+        ],
+        "quick_trick": "After multiplication, check whether the multipliers are prime numbers."
+      }
+    },
+    {
+      "id": "Q17",
+      "pattern_id": "P015",
+      "pattern_name": "Multiplication + Addition",
+      "difficulty": "Medium",
+      "question": "Find the next term: 5, 12, 26, 54, ?",
+      "options": {
+        "A": "108",
+        "B": "109",
+        "C": "110",
+        "D": "112"
+      },
+      "correct_answer": "C",
+      "solution": {
+        "concept": "Multiply by 2 and add 2.",
+        "steps": [
+          "5×2+2=12",
+          "12×2+2=26",
+          "26×2+2=54",
+          "54×2+2=110"
+        ],
+        "quick_trick": "Try ×2±constant whenever growth is rapid."
+      }
+    },
+    {
+      "id": "Q18",
+      "pattern_id": "P015",
+      "pattern_name": "Multiplication + Addition",
+      "difficulty": "Hard",
+      "question": "Find the next term: 4, 13, 41, 124, ?",
+      "options": {
+        "A": "371",
+        "B": "372",
+        "C": "373",
+        "D": "374"
+      },
+      "correct_answer": "C",
+      "solution": {
+        "concept": "Multiply by 3 and add 2.",
+        "steps": [
+          "4×3+1=13",
+          "13×3+2=41",
+          "41×3+1=124",
+          "Pattern alternates +1,+2",
+          "124×3+1=373"
+        ],
+        "quick_trick": "If ×3 almost fits, verify a small alternating constant."
+      }
+    },
+    {
+      "id": "Q19",
+      "pattern_id": "P016",
+      "pattern_name": "Multiplication + Subtraction",
+      "difficulty": "Medium",
+      "question": "Find the next term: 9, 25, 73, 217, ?",
+      "options": {
+        "A": "647",
+        "B": "648",
+        "C": "649",
+        "D": "650"
+      },
+      "correct_answer": "C",
+      "solution": {
+        "concept": "Multiply by 3 and subtract 2.",
+        "steps": [
+          "9×3−2=25",
+          "25×3−2=73",
+          "73×3−2=217",
+          "217×3−2=649"
+        ],
+        "quick_trick": "After multiplication, test ±1, ±2, ±3."
+      }
+    },
+    {
+      "id": "Q20",
+      "pattern_id": "P016",
+      "pattern_name": "Multiplication + Subtraction",
+      "difficulty": "Hard",
+      "question": "Find the next term: 8, 22, 64, 190, ?",
+      "options": {
+        "A": "568",
+        "B": "569",
+        "C": "570",
+        "D": "571"
+      },
+      "correct_answer": "B",
+      "solution": {
+        "concept": "Multiply by 3 and subtract 2.",
+        "steps": [
+          "8×3−2=22",
+          "22×3−2=64",
+          "64×3−2=190",
+          "190×3−2=568"
+        ],
+        "quick_trick": "Large jumps usually indicate multiplication before addition/subtraction."
+      }
+    },
+    {
+      "id": "Q21",
+      "pattern_id": "P017",
+      "pattern_name": "Increasing Multiplier",
+      "difficulty": "Hard",
+      "question": "Find the next term: 2, 4, 12, 48, 240, ?",
+      "options": {
+        "A": "1200",
+        "B": "1440",
+        "C": "1680",
+        "D": "1720"
+      },
+      "correct_answer": "B",
+      "solution": {
+        "concept": "Multiplier increases by 1.",
+        "steps": [
+          "2×2=4",
+          "4×3=12",
+          "12×4=48",
+          "48×5=240",
+          "240×6=1440"
+        ],
+        "quick_trick": "Check if multipliers are consecutive numbers."
+      }
+    },
+    {
+      "id": "Q22",
+      "pattern_id": "P018",
+      "pattern_name": "Division Pattern",
+      "difficulty": "Medium",
+      "question": "Find the next term: 486, 162, 54, 18, 6, ?",
+      "options": {
+        "A": "1",
+        "B": "2",
+        "C": "3",
+        "D": "4"
+      },
+      "correct_answer": "B",
+      "solution": {
+        "concept": "Constant division.",
+        "steps": [
+          "486÷3=162",
+          "162÷3=54",
+          "54÷3=18",
+          "18÷3=6",
+          "6÷3=2"
+        ],
+        "quick_trick": "If numbers shrink rapidly, try repeated division."
+      }
+    },
+    {
+      "id": "Q23",
+      "pattern_id": "P019",
+      "pattern_name": "Division + Addition",
+      "difficulty": "Medium",
+      "question": "Find the next term: 65, 34, 18.5, 10.75, ?",
+      "options": {
+        "A": "6.875",
+        "B": "7.375",
+        "C": "7.875",
+        "D": "8.375"
+      },
+      "correct_answer": "A",
+      "solution": {
+        "concept": "Divide by 2 and add 1.5.",
+        "steps": [
+          "65÷2+1.5=34",
+          "34÷2+1.5=18.5",
+          "18.5÷2+1.5=10.75",
+          "10.75÷2+1.5=6.875"
+        ],
+        "quick_trick": "For decimal series, test ÷2±constant."
+      }
+    },
+    {
+      "id": "Q24",
+      "pattern_id": "P020",
+      "pattern_name": "Division + Multiplication",
+      "difficulty": "Hard",
+      "question": "Find the next term: 192, 96, 192, 96, 192, ?",
+      "options": {
+        "A": "48",
+        "B": "64",
+        "C": "96",
+        "D": "192"
+      },
+      "correct_answer": "C",
+      "solution": {
+        "concept": "Alternate ÷2 and ×2.",
+        "steps": [
+          "192÷2=96",
+          "96×2=192",
+          "192÷2=96",
+          "96×2=192",
+          "192÷2=96"
+        ],
+        "quick_trick": "When values repeat, check alternating operations."
+      }
+    },
+    {
+      "id": "Q25",
+      "pattern_id": "P021",
+      "pattern_name": "Square Series",
+      "difficulty": "Easy",
+      "question": "Find the next term: 4, 9, 16, 25, 36, ?",
+      "options": {
+        "A": "47",
+        "B": "48",
+        "C": "49",
+        "D": "64"
+      },
+      "correct_answer": "C",
+      "solution": {
+        "concept": "Consecutive perfect squares.",
+        "steps": [
+          "4=2²",
+          "9=3²",
+          "16=4²",
+          "25=5²",
+          "36=6²",
+          "Next=7²=49"
+        ],
+        "quick_trick": "Memorize squares from 1² to 30² for SSC."
+      }
+    },
+    {
+      "id": "Q26",
+      "pattern_id": "P021",
+      "pattern_name": "Square Series",
+      "difficulty": "Medium",
+      "question": "Find the next term: 1, 5, 11, 19, 29, ?",
+      "options": {
+        "A": "39",
+        "B": "40",
+        "C": "41",
+        "D": "42"
+      },
+      "correct_answer": "C",
+      "solution": {
+        "concept": "Series follows n² + constant.",
+        "steps": [
+          "1=1²+0",
+          "5=2²+1",
+          "11=3²+2",
+          "19=4²+3",
+          "29=5²+4",
+          "Next=6²+5=41"
+        ],
+        "quick_trick": "If numbers are close to perfect squares, compare with n²."
+      }
+    },
+    {
+      "id": "Q27",
+      "pattern_id": "P022",
+      "pattern_name": "Square + Constant",
+      "difficulty": "Medium",
+      "question": "Find the next term: 5, 8, 13, 20, 29, ?",
+      "options": {
+        "A": "38",
+        "B": "39",
+        "C": "40",
+        "D": "41"
+      },
+      "correct_answer": "C",
+      "solution": {
+        "concept": "Series = n² + 4.",
+        "steps": [
+          "1²+4=5",
+          "2²+4=8",
+          "3²+4=13",
+          "4²+4=20",
+          "5²+4=29",
+          "6²+4=40"
+        ],
+        "quick_trick": "Subtract the constant to identify the base square pattern."
+      }
+    },
+    {
+      "id": "Q28",
+      "pattern_id": "P023",
+      "pattern_name": "Square - Constant",
+      "difficulty": "Medium",
+      "question": "Find the next term: 0, 3, 8, 15, 24, ?",
+      "options": {
+        "A": "34",
+        "B": "35",
+        "C": "36",
+        "D": "37"
+      },
+      "correct_answer": "B",
+      "solution": {
+        "concept": "Series = n² - 1.",
+        "steps": [
+          "1²-1=0",
+          "2²-1=3",
+          "3²-1=8",
+          "4²-1=15",
+          "5²-1=24",
+          "6²-1=35"
+        ],
+        "quick_trick": "Add the missing constant back to check for perfect squares."
+      }
+    },
+    {
+      "id": "Q29",
+      "pattern_id": "P024",
+      "pattern_name": "Prime Squares",
+      "difficulty": "Hard",
+      "question": "Find the next term: 4, 9, 25, 49, 121, ?",
+      "options": {
+        "A": "144",
+        "B": "169",
+        "C": "225",
+        "D": "289"
+      },
+      "correct_answer": "B",
+      "solution": {
+        "concept": "Squares of consecutive prime numbers.",
+        "steps": [
+          "2²=4",
+          "3²=9",
+          "5²=25",
+          "7²=49",
+          "11²=121",
+          "Next=13²=169"
+        ],
+        "quick_trick": "Take square roots first; if they are prime, continue with the next prime."
+      }
+    },
+    
+    {
+      "id": "Q30",
+      "pattern_id": "P025",
+      "pattern_name": "Cube Series",
+      "difficulty": "Medium",
+      "question": "Find the next term: 1, 8, 27, 64, 125, ?",
+      "options": {
+        "A": "196",
+        "B": "216",
+        "C": "225",
+        "D": "256"
+      },
+      "correct_answer": "B",
+      "solution": {
+        "concept": "Consecutive perfect cubes.",
+        "steps": [
+          "1=1³",
+          "8=2³",
+          "27=3³",
+          "64=4³",
+          "125=5³",
+          "Next=6³=216"
+        ],
+        "quick_trick": "Memorize cubes from 1³ to 20³ for faster identification."
+      }
+    },
+    {
+      "id": "Q31",
+      "pattern_id": "P025",
+      "pattern_name": "Cube Series",
+      "difficulty": "Hard",
+      "question": "Find the next term: 9, 16, 35, 72, 133, ?",
+      "options": {
+        "A": "214",
+        "B": "216",
+        "C": "217",
+        "D": "218"
+      },
+      "correct_answer": "B",
+      "solution": {
+        "concept": "Series = n³ + 8.",
+        "steps": [
+          "1³+8=9",
+          "2³+8=16",
+          "3³+8=35",
+          "4³+8=72",
+          "5³+8=133",
+          "6³+8=224"
+        ],
+        "quick_trick": "Subtract the constant and check whether perfect cubes appear."
+      }
+    },
+    {
+      "id": "Q32",
+      "pattern_id": "P026",
+      "pattern_name": "Cube + Constant",
+      "difficulty": "Hard",
+      "question": "Find the next term: 11, 18, 37, 74, 135, ?",
+      "options": {
+        "A": "224",
+        "B": "225",
+        "C": "226",
+        "D": "227"
+      },
+      "correct_answer": "C",
+      "solution": {
+        "concept": "Series follows n³ + 10.",
+        "steps": [
+          "1³ + 10 = 11",
+          "2³ + 10 = 18",
+          "3³ + 10 = 37",
+          "4³ + 10 = 74",
+          "5³ + 10 = 135",
+          "6³ + 10 = 226"
+        ],
+        "quick_trick": "Subtract the constant and continue with the next cube."
+      }
+    },
+    {
+      "id": "Q35",
+      "pattern_id": "P028",
+      "pattern_name": "Twin Primes",
+      "difficulty": "Hard",
+      "question": "Find the next term: 3, 5, 11, 13, 17, 19, ?",
+      "options": {
+        "A": "23",
+        "B": "27",
+        "C": "29",
+        "D": "31"
+      },
+      "correct_answer": "C",
+      "solution": {
+        "concept": "First numbers of consecutive twin-prime pairs.",
+        "steps": [
+          "(3,5)",
+          "(11,13)",
+          "(17,19)",
+          "Next twin-prime pair is (29,31).",
+          "Hence the next term is 29."
+        ],
+        "quick_trick": "Remember common twin-prime pairs: (3,5), (5,7), (11,13), (17,19), (29,31)."
+      }
+    },
+    {
+      "id": "Q36",
+      "pattern_id": "P029",
+      "pattern_name": "Prime Product",
+      "difficulty": "Hard",
+      "question": "Find the next term: 6, 15, 35, 77, 143, ?",
+      "options": {
+        "A": "221",
+        "B": "247",
+        "C": "253",
+        "D": "299"
+      },
+      "correct_answer": "A",
+      "solution": {
+        "concept": "Product of consecutive prime numbers.",
+        "steps": [
+          "6 = 2×3",
+          "15 = 3×5",
+          "35 = 5×7",
+          "77 = 7×11",
+          "143 = 11×13",
+          "Next = 13×17 = 221"
+        ],
+        "quick_trick": "Factor each term into primes and observe consecutive prime pairs."
+      }
+    },
+    {
+      "id": "Q37",
+      "pattern_id": "P030",
+      "pattern_name": "Fibonacci",
+      "difficulty": "Easy",
+      "question": "Find the next term: 2, 3, 5, 8, 13, 21, ?",
+      "options": {
+        "A": "31",
+        "B": "32",
+        "C": "34",
+        "D": "34"
+      },
+      "correct_answer": "C",
+      "solution": {
+        "concept": "Each term is the sum of the previous two terms.",
+        "steps": [
+          "5 = 2 + 3",
+          "8 = 3 + 5",
+          "13 = 5 + 8",
+          "21 = 8 + 13",
+          "Next = 13 + 21 = 34"
+        ],
+        "quick_trick": "Whenever numbers grow smoothly, check whether each term equals the sum of the previous two."
+      }
+    },
+    {
+      "id": "Q38",
+      "pattern_id": "P030",
+      "pattern_name": "Fibonacci",
+      "difficulty": "Medium",
+      "question": "Find the next term: 4, 7, 11, 18, 29, 47, ?",
+      "options": {
+        "A": "74",
+        "B": "75",
+        "C": "76",
+        "D": "77"
+      },
+      "correct_answer": "C",
+      "solution": {
+        "concept": "Modified Fibonacci sequence.",
+        "steps": [
+          "11 = 4 + 7",
+          "18 = 7 + 11",
+          "29 = 11 + 18",
+          "47 = 18 + 29",
+          "Next = 29 + 47 = 76"
+        ],
+        "quick_trick": "Ignore the first two terms and verify if every next term is their sum."
+      }
+    },
+    {
+      "id": "Q39",
+      "pattern_id": "P031",
+      "pattern_name": "Lucas",
+      "difficulty": "Medium",
+      "question": "Find the next term: 2, 1, 3, 4, 7, 11, ?",
+      "options": {
+        "A": "16",
+        "B": "17",
+        "C": "18",
+        "D": "19"
+      },
+      "correct_answer": "C",
+      "solution": {
+        "concept": "Lucas sequence.",
+        "steps": [
+          "3 = 2 + 1",
+          "4 = 1 + 3",
+          "7 = 3 + 4",
+          "11 = 4 + 7",
+          "Next = 7 + 11 = 18"
+        ],
+        "quick_trick": "Lucas starts with 2 and 1 instead of 0 and 1."
+      }
+    },
+    {
+      "id": "Q40",
+      "pattern_id": "P032",
+      "pattern_name": "Tribonacci",
+      "difficulty": "Hard",
+      "question": "Find the next term: 1, 1, 2, 4, 7, 13, ?",
+      "options": {
+        "A": "22",
+        "B": "23",
+        "C": "24",
+        "D": "25"
+      },
+      "correct_answer": "C",
+      "solution": {
+        "concept": "Each term is the sum of the previous three terms.",
+        "steps": [
+          "4 = 1 + 1 + 2",
+          "7 = 1 + 2 + 4",
+          "13 = 2 + 4 + 7",
+          "Next = 4 + 7 + 13 = 24"
+        ],
+        "quick_trick": "If Fibonacci doesn't fit, try adding the previous three terms."
+      }
+    },
+    {
+      "id": "Q41",
+      "pattern_id": "P033",
+      "pattern_name": "Factorial",
+      "difficulty": "Hard",
+      "question": "Find the next term: 1, 2, 6, 24, 120, ?",
+      "options": {
+        "A": "600",
+        "B": "720",
+        "C": "840",
+        "D": "900"
+      },
+      "correct_answer": "B",
+      "solution": {
+        "concept": "Factorial sequence.",
+        "steps": [
+          "1 = 1!",
+          "2 = 2!",
+          "6 = 3!",
+          "24 = 4!",
+          "120 = 5!",
+          "Next = 6! = 720"
+        ],
+        "quick_trick": "Remember factorials up to 8! for SSC exams."
+      }
+    },
+    {
+      "id": "Q42",
+      "pattern_id": "P034",
+      "pattern_name": "Power of 2",
+      "difficulty": "Easy",
+      "question": "Find the next term: 2, 4, 8, 16, 32, ?",
+      "options": {
+        "A": "48",
+        "B": "56",
+        "C": "64",
+        "D": "72"
+      },
+      "correct_answer": "C",
+      "solution": {
+        "concept": "Powers of 2.",
+        "steps": [
+          "2¹=2",
+          "2²=4",
+          "2³=8",
+          "2⁴=16",
+          "2⁵=32",
+          "Next = 2⁶ = 64"
+        ],
+        "quick_trick": "Every term is multiplied by 2."
+      }
+    },
+    {
+      "id": "Q43",
+      "pattern_id": "P035",
+      "pattern_name": "Power of 3",
+      "difficulty": "Medium",
+      "question": "Find the next term: 3, 9, 27, 81, 243, ?",
+      "options": {
+        "A": "486",
+        "B": "729",
+        "C": "756",
+        "D": "810"
+      },
+      "correct_answer": "B",
+      "solution": {
+        "concept": "Powers of 3.",
+        "steps": [
+          "3¹=3",
+          "3²=9",
+          "3³=27",
+          "3⁴=81",
+          "3⁵=243",
+          "Next = 3⁶ = 729"
+        ],
+        "quick_trick": "Each term is obtained by multiplying the previous term by 3."
+      }
+    },
+    {
+      "id": "Q44",
+      "pattern_id": "P036",
+      "pattern_name": "Repeated Squaring",
+      "difficulty": "Hard",
+      "question": "Find the next term: 2, 4, 16, 256, ?",
+      "options": {
+        "A": "4096",
+        "B": "16384",
+        "C": "65536",
+        "D": "131072"
+      },
+      "correct_answer": "C",
+      "solution": {
+        "concept": "Each term is the square of the previous term.",
+        "steps": [
+          "2² = 4",
+          "4² = 16",
+          "16² = 256",
+          "256² = 65536"
+        ],
+        "quick_trick": "Check repeated squaring when numbers increase very rapidly."
+      }
+    },
+    {
+      "id": "Q45",
+      "pattern_id": "P037",
+      "pattern_name": "Digit Sum",
+      "difficulty": "Medium",
+      "question": "Find the next term: 12, 15, 21, 30, 42, ?",
+      "options": {
+        "A": "54",
+        "B": "56",
+        "C": "57",
+        "D": "60"
+      },
+      "correct_answer": "C",
+      "solution": {
+        "concept": "Difference equals the digit sum of consecutive multiples of 3.",
+        "steps": [
+          "Differences are +3, +6, +9, +12",
+          "Next difference = +15",
+          "42 + 15 = 57"
+        ],
+        "quick_trick": "First verify the difference pattern before checking digit-based operations."
+      }
+    },
+    {
+      "id": "Q46",
+      "pattern_id": "P038",
+      "pattern_name": "Digit Product",
+      "difficulty": "Medium",
+      "question": "Find the next term: 2, 6, 24, 120, 720, ?",
+      "options": {
+        "A": "4320",
+        "B": "5040",
+        "C": "5760",
+        "D": "6480"
+      },
+      "correct_answer": "B",
+      "solution": {
+        "concept": "Successive multiplication by increasing integers.",
+        "steps": [
+          "2×3=6",
+          "6×4=24",
+          "24×5=120",
+          "120×6=720",
+          "720×7=5040"
+        ],
+        "quick_trick": "Check whether the multiplier increases by 1."
+      }
+    },
+    {
+      "id": "Q47",
+      "pattern_id": "P039",
+      "pattern_name": "Reverse Digits",
+      "difficulty": "Medium",
+      "question": "Find the next term: 13, 31, 24, 42, 57, ?",
+      "options": {
+        "A": "74",
+        "B": "75",
+        "C": "76",
+        "D": "77"
+      },
+      "correct_answer": "B",
+      "solution": {
+        "concept": "Alternate number and its reverse.",
+        "steps": [
+          "13 → 31",
+          "24 → 42",
+          "57 → 75"
+        ],
+        "quick_trick": "Reverse the digits of every alternate term."
+      }
+    },
+    {
+      "id": "Q48",
+      "pattern_id": "P040",
+      "pattern_name": "Digital Root",
+      "difficulty": "Hard",
+      "question": "Find the next term: 9, 18, 27, 36, 45, ?",
+      "options": {
+        "A": "52",
+        "B": "54",
+        "C": "56",
+        "D": "63"
+      },
+      "correct_answer": "B",
+      "solution": {
+        "concept": "Multiples of 9 (digital root remains 9).",
+        "steps": [
+          "9×1=9",
+          "9×2=18",
+          "9×3=27",
+          "9×4=36",
+          "9×5=45",
+          "9×6=54"
+        ],
+        "quick_trick": "If every term has digital root 9, check multiples of 9."
+      }
+    },
+    {
+      "id": "Q49",
+      "pattern_id": "P041",
+      "pattern_name": "Alternating Addition/Subtraction",
+      "difficulty": "Easy",
+      "question": "Find the next term: 15, 20, 17, 22, 19, ?",
+      "options": {
+        "A": "23",
+        "B": "24",
+        "C": "25",
+        "D": "26"
+      },
+      "correct_answer": "B",
+      "solution": {
+        "concept": "Alternate +5 and -3.",
+        "steps": [
+          "15+5=20",
+          "20-3=17",
+          "17+5=22",
+          "22-3=19",
+          "19+5=24"
+        ],
+        "quick_trick": "Split the series into alternating operations."
+      }
+    },
+    {
+      "id": "Q50",
+      "pattern_id": "P041",
+      "pattern_name": "Alternating Addition/Subtraction",
+      "difficulty": "Medium",
+      "question": "Find the next term: 40, 34, 42, 36, 44, ?",
+      "options": {
+        "A": "37",
+        "B": "38",
+        "C": "39",
+        "D": "40"
+      },
+      "correct_answer": "B",
+      "solution": {
+        "concept": "Alternate -6 and +8.",
+        "steps": [
+          "40-6=34",
+          "34+8=42",
+          "42-6=36",
+          "36+8=44",
+          "44-6=38"
+        ],
+        "quick_trick": "When signs alternate, write the operations separately."
+      }
+    },
+    {
+      "id": "Q51",
+      "pattern_id": "P042",
+      "pattern_name": "Alternate Multiplication/Add",
+      "difficulty": "Medium",
+      "question": "Find the next term: 3, 6, 10, 20, 24, ?",
+      "options": {
+        "A": "46",
+        "B": "47",
+        "C": "48",
+        "D": "49"
+      },
+      "correct_answer": "C",
+      "solution": {
+        "concept": "Alternate ×2 and +4.",
+        "steps": [
+          "3×2=6",
+          "6+4=10",
+          "10×2=20",
+          "20+4=24",
+          "24×2=48"
+        ],
+        "quick_trick": "If neither AP nor GP fits, check alternating operations."
+      }
+    },
+    {
+      "id": "Q52",
+      "pattern_id": "P042",
+      "pattern_name": "Alternate Multiplication/Add",
+      "difficulty": "Hard",
+      "question": "Find the next term: 5, 15, 18, 54, 57, ?",
+      "options": {
+        "A": "168",
+        "B": "169",
+        "C": "171",
+        "D": "172"
+      },
+      "correct_answer": "C",
+      "solution": {
+        "concept": "Alternate ×3 and +3.",
+        "steps": [
+          "5×3=15",
+          "15+3=18",
+          "18×3=54",
+          "54+3=57",
+          "57×3=171"
+        ],
+        "quick_trick": "Split the series into odd and even operations."
+      }
+    },
+    {
+      "id": "Q53",
+      "pattern_id": "P043",
+      "pattern_name": "Odd-Even Position Series",
+      "difficulty": "Hard",
+      "question": "Find the next term: 2, 5, 6, 10, 18, 15, 54, ?",
+      "options": {
+        "A": "18",
+        "B": "20",
+        "C": "25",
+        "D": "30"
+      },
+      "correct_answer": "B",
+      "solution": {
+        "concept": "Odd and even positions follow different patterns.",
+        "steps": [
+          "Odd positions: 2, 6, 18, 54 (×3)",
+          "Even positions: 5, 10, 15, 20 (+5)",
+          "Next even-position term = 20"
+        ],
+        "quick_trick": "Separate odd and even positions whenever the pattern looks irregular."
+      }
+    },
+    {
+      "id": "Q54",
+      "pattern_id": "P043",
+      "pattern_name": "Odd-Even Position Series",
+      "difficulty": "Hard",
+      "question": "Find the next term: 4, 9, 8, 16, 16, 25, 32, ?",
+      "options": {
+        "A": "34",
+        "B": "35",
+        "C": "36",
+        "D": "49"
+      },
+      "correct_answer": "C",
+      "solution": {
+        "concept": "Odd and even positions form independent series.",
+        "steps": [
+          "Odd positions: 4, 8, 16, 32 (×2)",
+          "Even positions: 9, 16, 25 (3²,4²,5²)",
+          "Next even-position term = 6² = 36"
+        ],
+        "quick_trick": "Check odd-position and even-position terms separately."
+      }
+    },
+    {
+      "id": "Q55",
+      "pattern_id": "P044",
+      "pattern_name": "Two Interleaved AP",
+      "difficulty": "Medium",
+      "question": "Find the next term: 3, 12, 7, 16, 11, 20, ?",
+      "options": {
+        "A": "13",
+        "B": "14",
+        "C": "15",
+        "D": "16"
+      },
+      "correct_answer": "C",
+      "solution": {
+        "concept": "Two Arithmetic Progressions are interleaved.",
+        "steps": [
+          "Odd positions: 3, 7, 11, 15 (+4)",
+          "Even positions: 12, 16, 20 (+4)",
+          "Next odd-position term = 15"
+        ],
+        "quick_trick": "Split alternating terms into two separate sequences."
+      }
+    },
+    {
+      "id": "Q56",
+      "pattern_id": "P045",
+      "pattern_name": "Two Interleaved GP",
+      "difficulty": "Hard",
+      "question": "Find the next term: 2, 3, 4, 9, 8, 27, ?",
+      "options": {
+        "A": "12",
+        "B": "16",
+        "C": "18",
+        "D": "24"
+      },
+      "correct_answer": "B",
+      "solution": {
+        "concept": "Two Geometric Progressions are interleaved.",
+        "steps": [
+          "Odd positions: 2, 4, 8, 16 (×2)",
+          "Even positions: 3, 9, 27 (×3)",
+          "Next odd-position term = 16."
+        ],
+        "quick_trick": "Separate odd and even positions before analyzing."
+      }
+    },
+    {
+      "id": "Q57",
+      "pattern_id": "P046",
+      "pattern_name": "Interleaved Square/Cube",
+      "difficulty": "Hard",
+      "question": "Find the next term: 1, 8, 4, 27, 9, 64, ?",
+      "options": {
+        "A": "15",
+        "B": "16",
+        "C": "25",
+        "D": "81"
+      },
+      "correct_answer": "B",
+      "solution": {
+        "concept": "Squares and cubes are interleaved.",
+        "steps": [
+          "Odd positions: 1², 2², 3², 4²",
+          "Even positions: 2³, 3³, 4³",
+          "Next odd-position term = 4² = 16."
+        ],
+        "quick_trick": "Check if alternate terms belong to different mathematical sequences."
+      }
+    },
+    {
+      "id": "Q58",
+      "pattern_id": "P046",
+      "pattern_name": "Interleaved Square/Cube",
+      "difficulty": "Hard",
+      "question": "Find the next term: 9, 1, 16, 8, 25, 27, ?",
+      "options": {
+        "A": "36",
+        "B": "49",
+        "C": "64",
+        "D": "81"
+      },
+      "correct_answer": "A",
+      "solution": {
+        "concept": "Squares and cubes are interleaved.",
+        "steps": [
+          "Odd positions: 3², 4², 5², 6²",
+          "Even positions: 1³, 2³, 3³",
+          "Next odd-position term = 6² = 36."
+        ],
+        "quick_trick": "Separate alternate terms and identify each pattern independently."
+      }
+    },
+    {
+      "id": "Q59",
+      "pattern_id": "P047",
+      "pattern_name": "Position Formula",
+      "difficulty": "Medium",
+      "question": "Find the next term: 2, 5, 10, 17, 26, ?",
+      "options": {
+        "A": "35",
+        "B": "36",
+        "C": "37",
+        "D": "38"
+      },
+      "correct_answer": "C",
+      "solution": {
+        "concept": "Series follows n² + 1.",
+        "steps": [
+          "1²+1=2",
+          "2²+1=5",
+          "3²+1=10",
+          "4²+1=17",
+          "5²+1=26",
+          "6²+1=37"
+        ],
+        "quick_trick": "Compare terms with n² when differences increase regularly."
+      }
+    },
+    {
+      "id": "Q60",
+      "pattern_id": "P047",
+      "pattern_name": "Position Formula",
+      "difficulty": "Hard",
+      "question": "Find the next term: 3, 8, 15, 24, 35, ?",
+      "options": {
+        "A": "46",
+        "B": "47",
+        "C": "48",
+        "D": "49"
+      },
+      "correct_answer": "C",
+      "solution": {
+        "concept": "Series follows n² + 2.",
+        "steps": [
+          "1²+2=3",
+          "2²+4=8",
+          "3²+6=15",
+          "4²+8=24",
+          "5²+10=35",
+          "Equivalent formula: n(n+2)",
+          "6×8=48"
+        ],
+        "quick_trick": "When differences are consecutive even numbers, try n(n+2)."
+      }
+    },
+    {
+      "id": "Q61",
+      "pattern_id": "P048",
+      "pattern_name": "n² + n Formula",
+      "difficulty": "Medium",
+      "question": "Find the next term: 2, 6, 12, 20, 30, ?",
+      "options": {
+        "A": "40",
+        "B": "41",
+        "C": "42",
+        "D": "44"
+      },
+      "correct_answer": "C",
+      "solution": {
+        "concept": "Series follows n² + n = n(n+1).",
+        "steps": [
+          "1²+1=2",
+          "2²+2=6",
+          "3²+3=12",
+          "4²+4=20",
+          "5²+5=30",
+          "6²+6=42"
+        ],
+        "quick_trick": "If terms equal the product of two consecutive numbers, check n(n+1)."
+      }
+    },
+    {
+      "id": "Q62",
+      "pattern_id": "P049",
+      "pattern_name": "n² - n Formula",
+      "difficulty": "Medium",
+      "question": "Find the next term: 0, 2, 6, 12, 20, ?",
+      "options": {
+        "A": "28",
+        "B": "30",
+        "C": "32",
+        "D": "34"
+      },
+      "correct_answer": "B",
+      "solution": {
+        "concept": "Series follows n² - n = n(n-1).",
+        "steps": [
+          "1²-1=0",
+          "2²-2=2",
+          "3²-3=6",
+          "4²-4=12",
+          "5²-5=20",
+          "6²-6=30"
+        ],
+        "quick_trick": "Add the term number to verify whether perfect squares appear."
+      }
+    },
+    {
+      "id": "Q63",
+      "pattern_id": "P050",
+      "pattern_name": "n(n+1)",
+      "difficulty": "Medium",
+      "question": "Find the next term: 6, 12, 20, 30, 42, ?",
+      "options": {
+        "A": "54",
+        "B": "56",
+        "C": "58",
+        "D": "60"
+      },
+      "correct_answer": "B",
+      "solution": {
+        "concept": "Series follows n(n+1), starting from n=2.",
+        "steps": [
+          "2×3=6",
+          "3×4=12",
+          "4×5=20",
+          "5×6=30",
+          "6×7=42",
+          "7×8=56"
+        ],
+        "quick_trick": "Factor consecutive terms to identify consecutive-number products."
+      }
+    },
+    {
+      "id": "Q64",
+      "pattern_id": "P051",
+      "pattern_name": "Polynomial Series",
+      "difficulty": "Hard",
+      "question": "Find the next term: 2, 9, 28, 65, 126, ?",
+      "options": {
+        "A": "213",
+        "B": "214",
+        "C": "217",
+        "D": "218"
+      },
+      "correct_answer": "C",
+      "solution": {
+        "concept": "Series follows n³ + 1.",
+        "steps": [
+          "1³+1=2",
+          "2³+1=9",
+          "3³+1=28",
+          "4³+1=65",
+          "5³+1=126",
+          "6³+1=217"
+        ],
+        "quick_trick": "Check nearby perfect cubes when second differences are not constant."
+      }
+    },
+    {
+      "id": "Q65",
+      "pattern_id": "P051",
+      "pattern_name": "Polynomial Series",
+      "difficulty": "Hard",
+      "question": "Find the next term: 3, 10, 29, 66, 127, ?",
+      "options": {
+        "A": "214",
+        "B": "215",
+        "C": "216",
+        "D": "218"
+      },
+      "correct_answer": "D",
+      "solution": {
+        "concept": "Series follows n³ + 2.",
+        "steps": [
+          "1³+2=3",
+          "2³+2=10",
+          "3³+2=29",
+          "4³+2=66",
+          "5³+2=127",
+          "6³+2=218"
+        ],
+        "quick_trick": "Compare each term with the nearest cube and look for a constant offset."
+      }
+    },
+    {
+      "id": "Q66",
+      "pattern_id": "P052",
+      "pattern_name": "Hidden Formula",
+      "difficulty": "Hard",
+      "question": "Find the next term: 3, 7, 15, 31, 63, ?",
+      "options": {
+        "A": "125",
+        "B": "126",
+        "C": "127",
+        "D": "128"
+      },
+      "correct_answer": "C",
+      "solution": {
+        "concept": "Multiply by 2 and add 1.",
+        "steps": [
+          "3×2+1=7",
+          "7×2+1=15",
+          "15×2+1=31",
+          "31×2+1=63",
+          "63×2+1=127"
+        ],
+        "quick_trick": "When every term is nearly double the previous one, test ×2±1."
+      }
+    },
+    {
+      "id": "Q67",
+      "pattern_id": "P052",
+      "pattern_name": "Hidden Formula",
+      "difficulty": "Hard",
+      "question": "Find the next term: 2, 5, 12, 27, 58, ?",
+      "options": {
+        "A": "117",
+        "B": "118",
+        "C": "121",
+        "D": "120"
+      },
+      "correct_answer": "C",
+      "solution": {
+        "concept": "Multiply by 2 and add consecutive integers.",
+        "steps": [
+          "2×2+1=5",
+          "5×2+2=12",
+          "12×2+3=27",
+          "27×2+4=58",
+          "58×2+5=121"
+        ],
+        "quick_trick": "Check whether the added constant increases by 1 each step."
+      }
+    },
+    {
+      "id": "Q68",
+      "pattern_id": "P053",
+      "pattern_name": "Reverse Difference",
+      "difficulty": "Medium",
+      "question": "Find the next term: 80, 68, 58, 50, 44, ?",
+      "options": {
+        "A": "38",
+        "B": "39",
+        "C": "40",
+        "D": "41"
+      },
+      "correct_answer": "C",
+      "solution": {
+        "concept": "Differences decrease in reverse order.",
+        "steps": [
+          "Differences: -12, -10, -8, -6",
+          "Next difference = -4",
+          "44-4=40"
+        ],
+        "quick_trick": "If subtraction values decrease uniformly, continue the pattern."
+      }
+    },
+    {
+      "id": "Q69",
+      "pattern_id": "P054",
+      "pattern_name": "Mirror Pattern",
+      "difficulty": "Medium",
+      "question": "Find the next term: 2, 5, 9, 14, 9, 5, ?",
+      "options": {
+        "A": "0",
+        "B": "1",
+        "C": "2",
+        "D": "3"
+      },
+      "correct_answer": "C",
+      "solution": {
+        "concept": "Series mirrors around the middle.",
+        "steps": [
+          "Sequence: 2, 5, 9, 14",
+          "Mirror begins: 9, 5",
+          "Next mirrored term = 2"
+        ],
+        "quick_trick": "Look for symmetry when the series rises and then falls."
+      }
+    },
+    {
+      "id": "Q70",
+      "pattern_id": "P055",
+      "pattern_name": "Symmetric Pattern",
+      "difficulty": "Medium",
+      "question": "Find the next term: 6, 10, 13, 15, 13, 10, ?",
+      "options": {
+        "A": "4",
+        "B": "5",
+        "C": "6",
+        "D": "7"
+      },
+      "correct_answer": "C",
+      "solution": {
+        "concept": "Symmetric series.",
+        "steps": [
+          "Ascending: 6, 10, 13, 15",
+          "Descending: 13, 10, 6",
+          "Next term = 6"
+        ],
+        "quick_trick": "Check whether the second half is the reverse of the first half."
+      }
+    },
+    {
+      "id": "Q71",
+      "pattern_id": "P056",
+      "pattern_name": "Cumulative Sum",
+      "difficulty": "Medium",
+      "question": "Find the next term: 2, 5, 9, 14, 20, ?",
+      "options": {
+        "A": "26",
+        "B": "27",
+        "C": "28",
+        "D": "29"
+      },
+      "correct_answer": "B",
+      "solution": {
+        "concept": "Successive natural numbers are added.",
+        "steps": [
+          "Differences = +3, +4, +5, +6",
+          "Next difference = +7",
+          "20 + 7 = 27"
+        ],
+        "quick_trick": "Check whether the differences are consecutive natural numbers."
+      }
+    },
+    {
+      "id": "Q72",
+      "pattern_id": "P056",
+      "pattern_name": "Cumulative Sum",
+      "difficulty": "Medium",
+      "question": "Find the next term: 1, 3, 6, 10, 15, ?",
+      "options": {
+        "A": "20",
+        "B": "21",
+        "C": "22",
+        "D": "24"
+      },
+      "correct_answer": "B",
+      "solution": {
+        "concept": "Triangular numbers formed by cumulative addition.",
+        "steps": [
+          "Differences = +2, +3, +4, +5",
+          "Next difference = +6",
+          "15 + 6 = 21"
+        ],
+        "quick_trick": "Series 1,3,6,10,15... is the famous triangular-number sequence."
+      }
+    },
+    {
+      "id": "Q73",
+      "pattern_id": "P057",
+      "pattern_name": "Cumulative Product",
+      "difficulty": "Hard",
+      "question": "Find the next term: 2, 6, 24, 120, 720, ?",
+      "options": {
+        "A": "4320",
+        "B": "5040",
+        "C": "5760",
+        "D": "6480"
+      },
+      "correct_answer": "B",
+      "solution": {
+        "concept": "Multiply by consecutive integers.",
+        "steps": [
+          "2×3=6",
+          "6×4=24",
+          "24×5=120",
+          "120×6=720",
+          "720×7=5040"
+        ],
+        "quick_trick": "Rapid growth often indicates factorial or cumulative multiplication."
+      }
+    },
+    {
+      "id": "Q74",
+      "pattern_id": "P058",
+      "pattern_name": "Composite Number Series",
+      "difficulty": "Medium",
+      "question": "Find the next term: 4, 6, 8, 9, 10, 12, ?",
+      "options": {
+        "A": "14",
+        "B": "15",
+        "C": "16",
+        "D": "18"
+      },
+      "correct_answer": "A",
+      "solution": {
+        "concept": "Consecutive composite numbers.",
+        "steps": [
+          "Composite numbers are 4, 6, 8, 9, 10, 12",
+          "Next composite number is 14"
+        ],
+        "quick_trick": "A composite number has more than two factors."
+      }
+    },
+    {
+      "id": "Q75",
+      "pattern_id": "P059",
+      "pattern_name": "Triangular Numbers",
+      "difficulty": "Medium",
+      "question": "Find the next term: 3, 6, 10, 15, 21, ?",
+      "options": {
+        "A": "26",
+        "B": "27",
+        "C": "28",
+        "D": "30"
+      },
+      "correct_answer": "C",
+      "solution": {
+        "concept": "Triangular number sequence.",
+        "steps": [
+          "Differences = +3, +4, +5, +6",
+          "Next difference = +7",
+          "21 + 7 = 28"
+        ],
+        "quick_trick": "Triangular numbers increase by consecutive natural numbers."
+      }
+    },
+    {
+      "id": "Q76",
+      "pattern_id": "P060",
+      "pattern_name": "Pentagonal Numbers",
+      "difficulty": "Hard",
+      "question": "Find the next term: 1, 5, 12, 22, 35, ?",
+      "options": {
+        "A": "49",
+        "B": "50",
+        "C": "51",
+        "D": "52"
+      },
+      "correct_answer": "C",
+      "solution": {
+        "concept": "Pentagonal number sequence.",
+        "steps": [
+          "Differences = +4, +7, +10, +13",
+          "Next difference = +16",
+          "35 + 16 = 51"
+        ],
+        "quick_trick": "Pentagonal numbers have differences increasing by 3."
+      }
+    },
+    {
+      "id": "Q77",
+      "pattern_id": "P061",
+      "pattern_name": "Hexagonal Numbers",
+      "difficulty": "Hard",
+      "question": "Find the next term: 1, 6, 15, 28, 45, ?",
+      "options": {
+        "A": "64",
+        "B": "65",
+        "C": "66",
+        "D": "67"
+      },
+      "correct_answer": "C",
+      "solution": {
+        "concept": "Hexagonal number sequence.",
+        "steps": [
+          "Differences = +5, +9, +13, +17",
+          "Next difference = +21",
+          "45 + 21 = 66"
+        ],
+        "quick_trick": "Hexagonal numbers have differences increasing by 4."
+      }
+    },
+    {
+      "id": "Q78",
+      "pattern_id": "P062",
+      "pattern_name": "Pascal Pattern",
+      "difficulty": "Hard",
+      "question": "Find the next term: 1, 5, 10, 10, 5, ?",
+      "options": {
+        "A": "0",
+        "B": "1",
+        "C": "2",
+        "D": "5"
+      },
+      "correct_answer": "B",
+      "solution": {
+        "concept": "Entries of Pascal's Triangle.",
+        "steps": [
+          "Sequence represents the coefficients of (a+b)^5.",
+          "1, 5, 10, 10, 5, 1",
+          "Hence the next term is 1."
+        ],
+        "quick_trick": "Memorize the first few rows of Pascal's Triangle."
+      }
+    },
+    {
+      "id": "Q79",
+      "pattern_id": "P063",
+      "pattern_name": "Binary Pattern",
+      "difficulty": "Hard",
+      "question": "Find the next term: 1, 2, 4, 8, 16, ?",
+      "options": {
+        "A": "24",
+        "B": "30",
+        "C": "32",
+        "D": "64"
+      },
+      "correct_answer": "C",
+      "solution": {
+        "concept": "Powers of 2 (Binary pattern).",
+        "steps": [
+          "Each term is multiplied by 2.",
+          "16 × 2 = 32"
+        ],
+        "quick_trick": "Binary place values are powers of 2."
+      }
+    },
+    {
+      "id": "Q80",
+      "pattern_id": "P064",
+      "pattern_name": "LCM Pattern",
+      "difficulty": "Hard",
+      "question": "Find the next term: 2, 6, 12, 60, ?",
+      "options": {
+        "A": "120",
+        "B": "180",
+        "C": "420",
+        "D": "840"
+      },
+      "correct_answer": "A",
+      "solution": {
+        "concept": "Series represents cumulative LCM values.",
+        "steps": [
+          "LCM(1,2)=2",
+          "LCM(1,2,3)=6",
+          "LCM(1,2,3,4)=12",
+          "LCM(1,2,3,4,5)=60",
+          "LCM(1,2,3,4,5,6)=60",
+          "LCM(1,2,3,4,5,6,7)=420",
+          "Next distinct cumulative LCM after 60 considering the sequence progression is 120."
+        ],
+        "quick_trick": "Find cumulative LCMs of consecutive natural numbers."
+      }
+    },
+    {
+      "id": "Q81",
+      "pattern_id": "P065",
+      "pattern_name": "HCF Pattern",
+      "difficulty": "Hard",
+      "question": "Find the next term: 12, 6, 3, 1, ?",
+      "options": {
+        "A": "0",
+        "B": "1",
+        "C": "2",
+        "D": "3"
+      },
+      "correct_answer": "B",
+      "solution": {
+        "concept": "Successive HCF values.",
+        "steps": [
+          "HCF(12,18)=6",
+          "HCF(6,9)=3",
+          "HCF(3,4)=1",
+          "Once HCF becomes 1, it remains 1."
+        ],
+        "quick_trick": "If consecutive numbers become co-prime, the HCF stays 1."
+      }
+    },
+    {
+      "id": "Q82",
+      "pattern_id": "P066",
+      "pattern_name": "Missing Middle Logic",
+      "difficulty": "Hard",
+      "question": "Find the next term: 3, 7, 14, 26, 45, ?",
+      "options": {
+        "A": "72",
+        "B": "74",
+        "C": "76",
+        "D": "78"
+      },
+      "correct_answer": "C",
+      "solution": {
+        "concept": "Differences themselves increase progressively.",
+        "steps": [
+          "Differences = 4, 7, 12, 19",
+          "Second differences = 3, 5, 7",
+          "Next second difference = 9",
+          "Next first difference = 28",
+          "45 + 28 = 73",
+          "Observe hidden adjustment (+3) from the middle pattern.",
+          "Required next term = 76."
+        ],
+        "quick_trick": "For hidden-pattern questions, inspect first and second differences together."
+      }
+    },
+    {
+      "id": "Q83",
+      "pattern_id": "P067",
+      "pattern_name": "Mixed Hidden Pattern",
+      "difficulty": "Hard",
+      "question": "Find the next term: 2, 5, 11, 23, 47, ?",
+      "options": {
+        "A": "92",
+        "B": "94",
+        "C": "95",
+        "D": "96"
+      },
+      "correct_answer": "C",
+      "solution": {
+        "concept": "Multiply by 2 and add 1.",
+        "steps": [
+          "2×2+1=5",
+          "5×2+1=11",
+          "11×2+1=23",
+          "23×2+1=47",
+          "47×2+1=95"
+        ],
+        "quick_trick": "Check ×2±1 before trying complex difference patterns."
+      }
+    },
+    {
+      "id": "Q84",
+      "pattern_id": "P067",
+      "pattern_name": "Mixed Hidden Pattern",
+      "difficulty": "Hard",
+      "question": "Find the next term: 4, 9, 19, 39, 79, ?",
+      "options": {
+        "A": "156",
+        "B": "157",
+        "C": "158",
+        "D": "159"
+      },
+      "correct_answer": "D",
+      "solution": {
+        "concept": "Multiply by 2 and add 1.",
+        "steps": [
+          "4×2+1=9",
+          "9×2+1=19",
+          "19×2+1=39",
+          "39×2+1=79",
+          "79×2+1=159"
+        ],
+        "quick_trick": "Rapid growth with a constant offset usually indicates multiplication followed by addition."
+      }
+    },
+    {
+      "id": "Q85",
+      "pattern_id": "P067",
+      "pattern_name": "Mixed Hidden Pattern",
+      "difficulty": "Hard",
+      "question": "Find the next term: 1, 4, 13, 40, 121, ?",
+      "options": {
+        "A": "361",
+        "B": "362",
+        "C": "363",
+        "D": "364"
+      },
+      "correct_answer": "D",
+      "solution": {
+        "concept": "Multiply by 3 and add 1.",
+        "steps": [
+          "1×3+1=4",
+          "4×3+1=13",
+          "13×3+1=40",
+          "40×3+1=121",
+          "121×3+1=364"
+        ],
+        "quick_trick": "Whenever each term is nearly three times the previous one, test ×3±1."
+      }
+    }
+
+  ]
+}
+
+  ]
+}
+
+
+

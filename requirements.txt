@@ -1,0 +1,13 @@
+fastapi>=0.110.0
+uvicorn[standard]>=0.34.0
+bcrypt>=4.2.1
+pydantic[email]>=2.13.4
+pydantic-settings>=2.2.1
+python-jose[cryptography]>=3.5.0
+SQLAlchemy>=2.0.50
+python-multipart>=0.0.20
+pymysql>=1.1.1
+python-dotenv>=1.0.0
+razorpay>=1.4.2
+pymongo>=4.7.0
+google-genai>=0.3.0

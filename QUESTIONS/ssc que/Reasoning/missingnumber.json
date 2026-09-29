@@ -1,0 +1,2150 @@
+{
+  "exam": "SSC CGL Tier I",
+  "subject": "Reasoning",
+  "chapter": "Missing Number",
+  "questions": [
+    {
+      "id": "Q001",
+      "pattern_id": "P001",
+      "pattern_name": "Simple Addition",
+      "difficulty": "Easy",
+      "question": "Select the missing number.\n\n18   24   42\n15   27   42\n31   16   ?",
+      "options": {
+        "A": "45",
+        "B": "46",
+        "C": "47",
+        "D": "48"
+      },
+      "correct_answer": "C",
+      "solution": {
+        "concept": "Third number = First number + Second number.",
+        "steps": [
+          "18 + 24 = 42",
+          "15 + 27 = 42",
+          "31 + 16 = 47"
+        ],
+        "quick_trick": "Add the first two numbers."
+      }
+    },
+    {
+      "id": "Q002",
+      "pattern_id": "P002",
+      "pattern_name": "Simple Subtraction",
+      "difficulty": "Easy",
+      "question": "Select the missing number.\n\n92   38   54\n71   29   42\n84   36   ?",
+      "options": {
+        "A": "46",
+        "B": "47",
+        "C": "48",
+        "D": "49"
+      },
+      "correct_answer": "C",
+      "solution": {
+        "concept": "Third number = First number − Second number.",
+        "steps": [
+          "92 − 38 = 54",
+          "71 − 29 = 42",
+          "84 − 36 = 48"
+        ],
+        "quick_trick": "Subtract the second number from the first."
+      }
+    },
+    {
+      "id": "Q003",
+      "pattern_id": "P003",
+      "pattern_name": "Simple Multiplication",
+      "difficulty": "Easy",
+      "question": "Select the missing number.\n\n7   6   42\n8   9   72\n11   5   ?",
+      "options": {
+        "A": "50",
+        "B": "55",
+        "C": "60",
+        "D": "65"
+      },
+      "correct_answer": "B",
+      "solution": {
+        "concept": "Third number = First number × Second number.",
+        "steps": [
+          "7 × 6 = 42",
+          "8 × 9 = 72",
+          "11 × 5 = 55"
+        ],
+        "quick_trick": "Multiply the first two numbers."
+      }
+    },
+    {
+      "id": "Q004",
+      "pattern_id": "P004",
+      "pattern_name": "Simple Division",
+      "difficulty": "Easy",
+      "question": "Select the missing number.\n\n96   12   8\n81   9   9\n72   8   ?",
+      "options": {
+        "A": "7",
+        "B": "8",
+        "C": "9",
+        "D": "10"
+      },
+      "correct_answer": "C",
+      "solution": {
+        "concept": "Third number = First number ÷ Second number.",
+        "steps": [
+          "96 ÷ 12 = 8",
+          "81 ÷ 9 = 9",
+          "72 ÷ 8 = 9"
+        ],
+        "quick_trick": "Divide the first number by the second."
+      }
+    },
+    {
+      "id": "Q005",
+      "pattern_id": "P005",
+      "pattern_name": "Addition + Addition",
+      "difficulty": "Easy",
+      "question": "Select the missing number.\n\n8   9   5   22\n11   6   8   25\n7   14   9   ?",
+      "options": {
+        "A": "29",
+        "B": "30",
+        "C": "31",
+        "D": "32"
+      },
+      "correct_answer": "B",
+      "solution": {
+        "concept": "Fourth number = Sum of first three numbers.",
+        "steps": [
+          "8 + 9 + 5 = 22",
+          "11 + 6 + 8 = 25",
+          "7 + 14 + 9 = 30"
+        ],
+        "quick_trick": "Add all three given numbers."
+      }
+    },
+    {
+      "id": "Q006",
+      "pattern_id": "P006",
+      "pattern_name": "Addition + Subtraction",
+      "difficulty": "Easy",
+      "question": "Select the missing number.\n\n18   9   4   23\n25   11   6   30\n21   8   5   ?",
+      "options": {
+        "A": "23",
+        "B": "24",
+        "C": "25",
+        "D": "26"
+      },
+      "correct_answer": "B",
+      "solution": {
+        "concept": "Fourth number = First + Second − Third.",
+        "steps": [
+          "18 + 9 − 4 = 23",
+          "25 + 11 − 6 = 30",
+          "21 + 8 − 5 = 24"
+        ],
+        "quick_trick": "Add first two numbers, then subtract the third."
+      }
+    },
+    {
+      "id": "Q007",
+      "pattern_id": "P007",
+      "pattern_name": "Multiplication + Addition",
+      "difficulty": "Medium",
+      "question": "Select the missing number.\n\n6   7   5   47\n5   9   6   51\n8   4   7   ?",
+      "options": {
+        "A": "37",
+        "B": "38",
+        "C": "39",
+        "D": "40"
+      },
+      "correct_answer": "C",
+      "solution": {
+        "concept": "Fourth number = (First × Second) + Third.",
+        "steps": [
+          "6 × 7 + 5 = 47",
+          "5 × 9 + 6 = 51",
+          "8 × 4 + 7 = 39"
+        ],
+        "quick_trick": "Multiply first two numbers, then add the third."
+      }
+    },
+    {
+      "id": "Q008",
+      "pattern_id": "P008",
+      "pattern_name": "Multiplication + Subtraction",
+      "difficulty": "Medium",
+      "question": "Select the missing number.\n\n9   6   4   50\n8   7   5   51\n11   5   6   ?",
+      "options": {
+        "A": "48",
+        "B": "49",
+        "C": "50",
+        "D": "51"
+      },
+      "correct_answer": "B",
+      "solution": {
+        "concept": "Fourth number = (First × Second) − Third.",
+        "steps": [
+          "9 × 6 − 4 = 50",
+          "8 × 7 − 5 = 51",
+          "11 × 5 − 6 = 49"
+        ],
+        "quick_trick": "Multiply, then subtract."
+      }
+    },
+    {
+      "id": "Q009",
+      "pattern_id": "P009",
+      "pattern_name": "Division + Addition",
+      "difficulty": "Medium",
+      "question": "Select the missing number.\n\n72   8   5   14\n90   9   4   14\n84   7   6   ?",
+      "options": {
+        "A": "17",
+        "B": "18",
+        "C": "19",
+        "D": "20"
+      },
+      "correct_answer": "B",
+      "solution": {
+        "concept": "Fourth number = (First ÷ Second) + Third.",
+        "steps": [
+          "72 ÷ 8 + 5 = 14",
+          "90 ÷ 9 + 4 = 14",
+          "84 ÷ 7 + 6 = 18"
+        ],
+        "quick_trick": "Divide first, then add."
+      }
+    },
+    {
+      "id": "Q010",
+      "pattern_id": "P010",
+      "pattern_name": "Division + Subtraction",
+      "difficulty": "Medium",
+      "question": "Select the missing number.\n\n96   8   5   7\n84   7   3   9\n108   9   4   ?",
+      "options": {
+        "A": "7",
+        "B": "8",
+        "C": "9",
+        "D": "10"
+      },
+      "correct_answer": "B",
+      "solution": {
+        "concept": "Fourth number = (First ÷ Second) − Third.",
+        "steps": [
+          "96 ÷ 8 − 5 = 7",
+          "84 ÷ 7 − 3 = 9",
+          "108 ÷ 9 − 4 = 8"
+        ],
+        "quick_trick": "Divide, then subtract."
+      }
+    },
+    {
+      "id": "Q011",
+      "pattern_id": "P011",
+      "pattern_name": "BODMAS Formula",
+      "difficulty": "Medium",
+      "question": "Select the missing number.\n\n8   4   6   38\n10   5   4   54\n12   3   8   ?",
+      "options": {
+        "A": "44",
+        "B": "46",
+        "C": "48",
+        "D": "50"
+      },
+      "correct_answer": "A",
+      "solution": {
+        "concept": "(First × Second) + Third.",
+        "steps": [
+          "8 × 4 + 6 = 38",
+          "10 × 5 + 4 = 54",
+          "12 × 3 + 8 = 44"
+        ],
+        "quick_trick": "Follow multiplication before addition."
+      }
+    },
+    {
+      "id": "Q012",
+      "pattern_id": "P012",
+      "pattern_name": "Square Formula",
+      "difficulty": "Medium",
+      "question": "Select the missing number.\n\n9   81\n12   144\n15   ?",
+      "options": {
+        "A": "210",
+        "B": "215",
+        "C": "225",
+        "D": "235"
+      },
+      "correct_answer": "C",
+      "solution": {
+        "concept": "Second number = Square of the first.",
+        "steps": [
+          "9² = 81",
+          "12² = 144",
+          "15² = 225"
+        ],
+        "quick_trick": "Recognize perfect squares."
+      }
+    },
+    {
+      "id": "Q013",
+      "pattern_id": "P013",
+      "pattern_name": "Cube Formula",
+      "difficulty": "Medium",
+      "question": "Select the missing number.\n\n3   27\n4   64\n5   ?",
+      "options": {
+        "A": "100",
+        "B": "115",
+        "C": "120",
+        "D": "125"
+      },
+      "correct_answer": "D",
+      "solution": {
+        "concept": "Second number = Cube of the first.",
+        "steps": [
+          "3³ = 27",
+          "4³ = 64",
+          "5³ = 125"
+        ],
+        "quick_trick": "Remember cubes from 1 to 20."
+      }
+    },
+    {
+      "id": "Q014",
+      "pattern_id": "P014",
+      "pattern_name": "Average Formula",
+      "difficulty": "Medium",
+      "question": "Select the missing number.\n\n12   18   15\n20   28   24\n16   26   ?",
+      "options": {
+        "A": "20",
+        "B": "21",
+        "C": "22",
+        "D": "23"
+      },
+      "correct_answer": "B",
+      "solution": {
+        "concept": "Third number = Average of first two numbers.",
+        "steps": [
+          "(12 + 18) / 2 = 15",
+          "(20 + 28) / 2 = 24",
+          "(16 + 26) / 2 = 21"
+        ],
+        "quick_trick": "Find the average."
+      }
+    },
+    {
+      "id": "Q015",
+      "pattern_id": "P015",
+      "pattern_name": "Difference Formula",
+      "difficulty": "Easy",
+      "question": "Select the missing number.\n\n47   21   26\n83   35   48\n91   44   ?",
+      "options": {
+        "A": "45",
+        "B": "46",
+        "C": "47",
+        "D": "48"
+      },
+      "correct_answer": "C",
+      "solution": {
+        "concept": "Third number = Difference of first and second numbers.",
+        "steps": [
+          "47 − 21 = 26",
+          "83 − 35 = 48",
+          "91 − 44 = 47"
+        ],
+        "quick_trick": "Check the numerical difference."
+      }
+    },
+    {
+      "id": "Q016",
+      "pattern_id": "P016",
+      "pattern_name": "Product Formula",
+      "difficulty": "Easy",
+      "question": "Select the missing number.\n\n6   8   48\n9   7   63\n11   12   ?",
+      "options": {
+        "A": "130",
+        "B": "131",
+        "C": "132",
+        "D": "133"
+      },
+      "correct_answer": "C",
+      "solution": {
+        "concept": "Third number = Product of the first two numbers.",
+        "steps": [
+          "6 × 8 = 48",
+          "9 × 7 = 63",
+          "11 × 12 = 132"
+        ],
+        "quick_trick": "Multiply the first two numbers."
+      }
+    },
+    {
+      "id": "Q017",
+      "pattern_id": "P017",
+      "pattern_name": "Prime Number Logic",
+      "difficulty": "Medium",
+      "question": "Select the missing number.\n\n2   3   5\n5   7   12\n11   13   ?",
+      "options": {
+        "A": "22",
+        "B": "23",
+        "C": "24",
+        "D": "25"
+      },
+      "correct_answer": "C",
+      "solution": {
+        "concept": "Third number = Sum of the two prime numbers.",
+        "steps": [
+          "2 + 3 = 5",
+          "5 + 7 = 12",
+          "11 + 13 = 24"
+        ],
+        "quick_trick": "Identify the prime numbers, then add them."
+      }
+    },
+    {
+      "id": "Q018",
+      "pattern_id": "P018",
+      "pattern_name": "Composite Number Logic",
+      "difficulty": "Medium",
+      "question": "Select the missing number.\n\n4   6   24\n8   9   72\n10   12   ?",
+      "options": {
+        "A": "110",
+        "B": "120",
+        "C": "130",
+        "D": "140"
+      },
+      "correct_answer": "B",
+      "solution": {
+        "concept": "Third number = Product of the two composite numbers.",
+        "steps": [
+          "4 × 6 = 24",
+          "8 × 9 = 72",
+          "10 × 12 = 120"
+        ],
+        "quick_trick": "Multiply the two composite numbers."
+      }
+    },
+    {
+      "id": "Q019",
+      "pattern_id": "P019",
+      "pattern_name": "Perfect Square Pattern",
+      "difficulty": "Medium",
+      "question": "Select the missing number.\n\n7   49\n11   121\n13   ?",
+      "options": {
+        "A": "156",
+        "B": "165",
+        "C": "169",
+        "D": "176"
+      },
+      "correct_answer": "C",
+      "solution": {
+        "concept": "Second number = Square of the first number.",
+        "steps": [
+          "7² = 49",
+          "11² = 121",
+          "13² = 169"
+        ],
+        "quick_trick": "Recognize perfect squares."
+      }
+    },
+    {
+      "id": "Q020",
+      "pattern_id": "P020",
+      "pattern_name": "Perfect Cube Pattern",
+      "difficulty": "Medium",
+      "question": "Select the missing number.\n\n2   8\n4   64\n6   ?",
+      "options": {
+        "A": "196",
+        "B": "206",
+        "C": "216",
+        "D": "226"
+      },
+      "correct_answer": "C",
+      "solution": {
+        "concept": "Second number = Cube of the first number.",
+        "steps": [
+          "2³ = 8",
+          "4³ = 64",
+          "6³ = 216"
+        ],
+        "quick_trick": "Remember common cubes."
+      }
+    },
+    {
+      "id": "Q021",
+      "pattern_id": "P021",
+      "pattern_name": "2×2 Grid Addition",
+      "difficulty": "Easy",
+      "question": "Select the missing number.\n\n8   12\n15  35\n\n20  18\n17  ?",
+      "options": {
+        "A": "52",
+        "B": "53",
+        "C": "54",
+        "D": "55"
+      },
+      "correct_answer": "D",
+      "solution": {
+        "concept": "Bottom-right = Sum of the other three numbers.",
+        "steps": [
+          "8 + 12 + 15 = 35",
+          "20 + 18 + 17 = 55"
+        ],
+        "quick_trick": "Add the first three numbers."
+      }
+    },
+    {
+      "id": "Q022",
+      "pattern_id": "P022",
+      "pattern_name": "2×2 Grid Subtraction",
+      "difficulty": "Easy",
+      "question": "Select the missing number.\n\n84   29\n55   ?",
+      "options": {
+        "A": "26",
+        "B": "29",
+        "C": "31",
+        "D": "35"
+      },
+      "correct_answer": "B",
+      "solution": {
+        "concept": "Bottom-left = Top-left − Top-right.",
+        "steps": [
+          "84 − 29 = 55",
+          "84 − 55 = 29"
+        ],
+        "quick_trick": "Largest − Smallest."
+      }
+    },
+    {
+      "id": "Q023",
+      "pattern_id": "P023",
+      "pattern_name": "2×2 Grid Multiplication",
+      "difficulty": "Easy",
+      "question": "Select the missing number.\n\n7   6\n42  ?",
+      "options": {
+        "A": "1",
+        "B": "6",
+        "C": "7",
+        "D": "42"
+      },
+      "correct_answer": "A",
+      "solution": {
+        "concept": "Bottom-left = Product of top numbers.",
+        "steps": [
+          "7 × 6 = 42",
+          "Missing corner = 1"
+        ],
+        "quick_trick": "Multiply top row."
+      }
+    },
+    {
+      "id": "Q024",
+      "pattern_id": "P024",
+      "pattern_name": "2×2 Grid Division",
+      "difficulty": "Medium",
+      "question": "Select the missing number.\n\n72   8\n9    ?",
+      "options": {
+        "A": "1",
+        "B": "8",
+        "C": "9",
+        "D": "72"
+      },
+      "correct_answer": "A",
+      "solution": {
+        "concept": "Bottom-left = Top-left ÷ Top-right.",
+        "steps": [
+          "72 ÷ 8 = 9",
+          "Remaining corner = 1"
+        ],
+        "quick_trick": "Divide the top numbers."
+      }
+    },
+    {
+      "id": "Q025",
+      "pattern_id": "P025",
+      "pattern_name": "2×2 Hidden Formula",
+      "difficulty": "Medium",
+      "question": "Select the missing number.\n\n6   5\n7   37\n\n8   4\n9   ?",
+      "options": {
+        "A": "40",
+        "B": "41",
+        "C": "42",
+        "D": "43"
+      },
+      "correct_answer": "B",
+      "solution": {
+        "concept": "Bottom-right = (Top-left × Top-right) + Bottom-left.",
+        "steps": [
+          "6 × 5 + 7 = 37",
+          "8 × 4 + 9 = 41"
+        ],
+        "quick_trick": "Multiply first, then add the remaining number."
+      }
+    },
+    {
+      "id": "Q026",
+      "pattern_id": "P026",
+      "pattern_name": "2×2 Mixed Operation",
+      "difficulty": "Medium",
+      "question": "Select the missing number.\n\n8   5\n6   34\n\n9   7\n4   ?",
+      "options": {
+        "A": "59",
+        "B": "60",
+        "C": "61",
+        "D": "62"
+      },
+      "correct_answer": "A",
+      "solution": {
+        "concept": "Bottom-right = (Top-left × Top-right) − Bottom-left.",
+        "steps": [
+          "8 × 5 − 6 = 34",
+          "9 × 7 − 4 = 59"
+        ],
+        "quick_trick": "Multiply the top numbers, then subtract the bottom-left number."
+      }
+    },
+    {
+      "id": "Q027",
+      "pattern_id": "P027",
+      "pattern_name": "2×2 Cross Formula",
+      "difficulty": "Medium",
+      "question": "Select the missing number.\n\n9   4\n5   41\n\n7   6\n8   ?",
+      "options": {
+        "A": "49",
+        "B": "50",
+        "C": "51",
+        "D": "52"
+      },
+      "correct_answer": "B",
+      "solution": {
+        "concept": "Bottom-right = (Top-left × Bottom-left) − Top-right.",
+        "steps": [
+          "9 × 5 − 4 = 41",
+          "7 × 8 − 6 = 50"
+        ],
+        "quick_trick": "Multiply the left column, then subtract the top-right number."
+      }
+    },
+    {
+      "id": "Q028",
+      "pattern_id": "P028",
+      "pattern_name": "2×2 Diagonal Formula",
+      "difficulty": "Medium",
+      "question": "Select the missing number.\n\n8   3\n5   37\n\n9   4\n6   ?",
+      "options": {
+        "A": "49",
+        "B": "50",
+        "C": "51",
+        "D": "52"
+      },
+      "correct_answer": "B",
+      "solution": {
+        "concept": "Bottom-right = (Top-left × Bottom-left) − Top-right.",
+        "steps": [
+          "8 × 5 − 3 = 37",
+          "9 × 6 − 4 = 50"
+        ],
+        "quick_trick": "Use the diagonal/left-side multiplication, then subtract."
+      }
+    },
+    {
+      "id": "Q029",
+      "pattern_id": "P029",
+      "pattern_name": "2×2 Corner Logic",
+      "difficulty": "Medium",
+      "question": "Select the missing number.\n\n6   8\n7   55\n\n5   9\n4   ?",
+      "options": {
+        "A": "47",
+        "B": "48",
+        "C": "49",
+        "D": "50"
+      },
+      "correct_answer": "C",
+      "solution": {
+        "concept": "Bottom-right = (Top-left × Top-right) + Bottom-left.",
+        "steps": [
+          "6 × 8 + 7 = 55",
+          "5 × 9 + 4 = 49"
+        ],
+        "quick_trick": "Multiply the top corners, then add the remaining corner."
+      }
+    },
+    {
+      "id": "Q030",
+      "pattern_id": "P030",
+      "pattern_name": "2×2 Center Formula",
+      "difficulty": "Medium",
+      "question": "Select the missing number.\n\n10   6\n4    56\n\n12   5\n7    ?",
+      "options": {
+        "A": "51",
+        "B": "52",
+        "C": "53",
+        "D": "54"
+      },
+      "correct_answer": "C",
+      "solution": {
+        "concept": "Bottom-right = (Top-left × Top-right) − Bottom-left.",
+        "steps": [
+          "10 × 6 − 4 = 56",
+          "12 × 5 − 7 = 53"
+        ],
+        "quick_trick": "Multiply first, then subtract the remaining number."
+      }
+    },
+   
+    {
+      "id": "Q031",
+      "pattern_id": "P031",
+      "pattern_name": "3×3 Row Formula",
+      "difficulty": "Easy",
+      "question": "Select the missing number.\n\n8   7   15\n12  9   21\n14  11  ?",
+      "options": {
+        "A": "24",
+        "B": "25",
+        "C": "26",
+        "D": "27"
+      },
+      "correct_answer": "B",
+      "solution": {
+        "concept": "Third number in each row = Sum of first two numbers.",
+        "steps": [
+          "8 + 7 = 15",
+          "12 + 9 = 21",
+          "14 + 11 = 25"
+        ],
+        "quick_trick": "Add the first two numbers of every row."
+      }
+    },
+    {
+      "id": "Q032",
+      "pattern_id": "P032",
+      "pattern_name": "3×3 Column Formula",
+      "difficulty": "Easy",
+      "question": "Select the missing number.\n\n6   8   10\n9   12  15\n15  20  ?",
+      "options": {
+        "A": "24",
+        "B": "25",
+        "C": "26",
+        "D": "27"
+      },
+      "correct_answer": "B",
+      "solution": {
+        "concept": "Bottom number in each column = Sum of the two numbers above it.",
+        "steps": [
+          "6 + 9 = 15",
+          "8 + 12 = 20",
+          "10 + 15 = 25"
+        ],
+        "quick_trick": "Check each column independently."
+      }
+    },
+    {
+      "id": "Q033",
+      "pattern_id": "P033",
+      "pattern_name": "3×3 Row Product Formula",
+      "difficulty": "Medium",
+      "question": "Select the missing number.\n\n5   7   20\n6   8   46\n4   3   ?",
+      "options": {
+        "A": "1",
+        "B": "2",
+        "C": "3",
+        "D": "4"
+      },
+      "correct_answer": "B",
+      "solution": {
+        "concept": "Third column value = (First column value × Second column value) − 10.",
+        "steps": [
+          "(5 × 7) - 10 = 20",
+          "(6 × 8) - 10 = 46",
+          "(4 × 3) - 10 = 2"
+        ],
+        "quick_trick": "Multiply column 1 and column 2, then subtract 10."
+      }
+    },
+    {
+      "id": "Q034",
+      "pattern_id": "P034",
+      "pattern_name": "3×3 Column Scaling Pattern",
+      "difficulty": "Medium",
+      "question": "Select the missing number.\n\n9   4   14\n5   8   2\n6   7   ?",
+      "options": {
+        "A": "3",
+        "B": "4",
+        "C": "5",
+        "D": "6"
+      },
+      "correct_answer": "C",
+      "solution": {
+        "concept": "Third column value = (First column value × 2) − Second column value.",
+        "steps": [
+          "(9 × 2) - 4 = 14",
+          "(5 × 2) - 8 = 2",
+          "(6 × 2) - 7 = 5"
+        ],
+        "quick_trick": "Double the first number and subtract the second number."
+      }
+    },
+    {
+      "id": "Q035",
+      "pattern_id": "P035",
+      "pattern_name": "3×3 Center Formula",
+      "difficulty": "Medium",
+      "question": "Select the missing number.\n\n6   8   14\n5   7   12\n11  15  ?",
+      "options": {
+        "A": "26",
+        "B": "27",
+        "C": "28",
+        "D": "29"
+      },
+      "correct_answer": "A",
+      "solution": {
+        "concept": "Bottom row values are the sums of the values in the first two rows.",
+        "steps": [
+          "6 + 5 = 11",
+          "8 + 7 = 15",
+          "14 + 12 = 26"
+        ],
+        "quick_trick": "Observe column-wise addition configurations."
+      }
+    },
+    {
+      "id": "Q036",
+      "pattern_id": "P036",
+      "pattern_name": "3×3 Corner Formula",
+      "difficulty": "Medium",
+      "question": "Select the missing number.\n\n8   5   13\n6   7   13\n14  12  ?",
+      "options": {
+        "A": "25",
+        "B": "26",
+        "C": "27",
+        "D": "28"
+      },
+      "correct_answer": "B",
+      "solution": {
+        "concept": "Bottom row values are obtained by adding the corresponding values of the first two rows.",
+        "steps": [
+          "8 + 6 = 14",
+          "5 + 7 = 12",
+          "13 + 13 = 26"
+        ],
+        "quick_trick": "Check vertical column-wise addition."
+      }
+    },
+    {
+      "id": "Q037",
+      "pattern_id": "P037",
+      "pattern_name": "3×3 Edge Formula",
+      "difficulty": "Medium",
+      "question": "Select the missing number.\n\n4   6   10\n7   9   16\n11  15  ?",
+      "options": {
+        "A": "24",
+        "B": "25",
+        "C": "26",
+        "D": "27"
+      },
+      "correct_answer": "C",
+      "solution": {
+        "concept": "Third value of each row = Sum of the first two values.",
+        "steps": [
+          "4 + 6 = 10",
+          "7 + 9 = 16",
+          "11 + 15 = 26"
+        ],
+        "quick_trick": "Add the first two numbers row-wise."
+      }
+    },
+    {
+      "id": "Q038",
+      "pattern_id": "P038",
+      "pattern_name": "3×3 Alternate Cell Formula",
+      "difficulty": "Medium",
+      "question": "Select the missing number.\n\n3   5   8\n6   8   14\n9   11  ?",
+      "options": {
+        "A": "18",
+        "B": "19",
+        "C": "20",
+        "D": "21"
+      },
+      "correct_answer": "C",
+      "solution": {
+        "concept": "Third number in each row = Sum of the first two numbers.",
+        "steps": [
+          "3 + 5 = 8",
+          "6 + 8 = 14",
+          "9 + 11 = 20"
+        ],
+        "quick_trick": "Row-wise cell addition."
+      }
+    },
+    {
+      "id": "Q039",
+      "pattern_id": "P039",
+      "pattern_name": "3×3 Arithmetic Progression",
+      "difficulty": "Medium",
+      "question": "Select the missing number.\n\n4   7   10\n13  16  19\n22  25  ?",
+      "options": {
+        "A": "27",
+        "B": "28",
+        "C": "29",
+        "D": "30"
+      },
+      "correct_answer": "B",
+      "solution": {
+        "concept": "The numbers form an arithmetic progression with a common difference of 3.",
+        "steps": [
+          "4 → 7 → 10 (+3)",
+          "13 → 16 → 19 (+3)",
+          "22 → 25 → 28 (+3)"
+        ],
+        "quick_trick": "Look for a constant progressive sequence difference."
+      }
+    },
+    {
+      "id": "Q040",
+      "pattern_id": "P040",
+      "pattern_name": "3×3 Geometric Progression",
+      "difficulty": "Medium",
+      "question": "Select the missing number.\n\n2   4   8\n3   6   12\n5   10  ?",
+      "options": {
+        "A": "18",
+        "B": "20",
+        "C": "22",
+        "D": "25"
+      },
+      "correct_answer": "B",
+      "solution": {
+        "concept": "Third number = Second number × 2.",
+        "steps": [
+          "4 × 2 = 8",
+          "6 × 2 = 12",
+          "10 × 2 = 20"
+        ],
+        "quick_trick": "Check horizontal scaling factors."
+      }
+    },
+    {
+      "id": "Q041",
+      "pattern_id": "P041",
+      "pattern_name": "Cross Multiplication",
+      "difficulty": "Medium",
+      "question": "Select the missing number.\n\n8   5\n7   56\n\n9   6\n4   ?",
+      "options": {
+        "A": "34",
+        "B": "36",
+        "C": "38",
+        "D": "40"
+      },
+      "correct_answer": "B",
+      "solution": {
+        "concept": "Bottom-right = Top-left × Bottom-left.",
+        "steps": [
+          "8 × 7 = 56",
+          "9 × 4 = 36"
+        ],
+        "quick_trick": "Multiply the left column values."
+      }
+    },
+    {
+      "id": "Q042",
+      "pattern_id": "P042",
+      "pattern_name": "Cross Addition",
+      "difficulty": "Easy",
+      "question": "Select the missing number.\n\n18  7\n25  43\n\n16  9\n20  ?",
+      "options": {
+        "A": "35",
+        "B": "36",
+        "C": "37",
+        "D": "38"
+      },
+      "correct_answer": "B",
+      "solution": {
+        "concept": "Bottom-right = Top-left + Bottom-left.",
+        "steps": [
+          "18 + 25 = 43",
+          "16 + 20 = 36"
+        ],
+        "quick_trick": "Add the left-side numbers."
+      }
+    },
+    {
+      "id": "Q043",
+      "pattern_id": "P043",
+      "pattern_name": "Cross Difference",
+      "difficulty": "Easy",
+      "question": "Select the missing number.\n\n64  18\n46  18\n\n91  35\n55  ?",
+      "options": {
+        "A": "34",
+        "B": "35",
+        "C": "36",
+        "D": "37"
+      },
+      "correct_answer": "C",
+      "solution": {
+        "concept": "Bottom-right = Top-left − Bottom-left.",
+        "steps": [
+          "64 − 46 = 18",
+          "91 − 55 = 36"
+        ],
+        "quick_trick": "Subtract column values vertically."
+      }
+    },
+    {
+      "id": "Q044",
+      "pattern_id": "P044",
+      "pattern_name": "Cross Product + Sum",
+      "difficulty": "Hard",
+      "question": "Select the missing number.\n\n6   4\n5   29\n\n8   7\n3   ?",
+      "options": {
+        "A": "58",
+        "B": "59",
+        "C": "60",
+        "D": "61"
+      },
+      "correct_answer": "B",
+      "solution": {
+        "concept": "Bottom-right = (Top-left × Top-right) + Bottom-left.",
+        "steps": [
+          "6 × 4 + 5 = 29",
+          "8 × 7 + 3 = 59"
+        ],
+        "quick_trick": "Multiply top row, then add bottom-left."
+      }
+    },
+    {
+      "id": "Q045",
+      "pattern_id": "P045",
+      "pattern_name": "Cross Product − Difference",
+      "difficulty": "Hard",
+      "question": "Select the missing number.\n\n9   5\n4   41\n\n11  6\n8   ?",
+      "options": {
+        "A": "57",
+        "B": "58",
+        "C": "59",
+        "D": "60"
+      },
+      "correct_answer": "B",
+      "solution": {
+        "concept": "Bottom-right = (Top-left × Top-right) − Bottom-left.",
+        "steps": [
+          "9 × 5 − 4 = 41",
+          "11 × 6 − 8 = 58"
+        ],
+        "quick_trick": "Multiply top values, then subtract bottom-left."
+      }
+    },
+    {
+      "id": "Q046",
+      "pattern_id": "P046",
+      "pattern_name": "Grid Top Row Multiplication",
+      "difficulty": "Medium",
+      "question": "Select the missing number.\n\n8   5\n7   40\n\n9   6\n4   ?",
+      "options": {
+        "A": "52",
+        "B": "54",
+        "C": "56",
+        "D": "58"
+      },
+      "correct_answer": "B",
+      "solution": {
+        "concept": "Bottom-right = Top-left × Top-right.",
+        "steps": [
+          "8 × 5 = 40",
+          "9 × 6 = 54"
+        ],
+        "quick_trick": "Multiply the numbers in the top row."
+      }
+    },
+    {
+      "id": "Q047",
+      "pattern_id": "P047",
+      "pattern_name": "Grid Left Column Addition",
+      "difficulty": "Easy",
+      "question": "Select the missing number.\n\n16  9\n7   23\n\n21  8\n5   ?",
+      "options": {
+        "A": "24",
+        "B": "26",
+        "C": "28",
+        "D": "30"
+      },
+      "correct_answer": "B",
+      "solution": {
+        "concept": "Bottom-right = Top-left + Bottom-left.",
+        "steps": [
+          "16 + 7 = 23",
+          "21 + 5 = 26"
+        ],
+        "quick_trick": "Add the left column numbers."
+      }
+    },
+    {
+      "id": "Q048",
+      "pattern_id": "P048",
+      "pattern_name": "Grid Left Column Difference",
+      "difficulty": "Medium",
+      "question": "Select the missing number.\n\n78  24\n54  24\n\n91  38\n53  ?",
+      "options": {
+        "A": "36",
+        "B": "38",
+        "C": "40",
+        "D": "42"
+      },
+      "correct_answer": "B",
+      "solution": {
+        "concept": "Bottom-right = Top-left − Bottom-left.",
+        "steps": [
+          "78 − 54 = 24",
+          "91 − 53 = 38"
+        ],
+        "quick_trick": "Subtract the bottom-left number from the top-left number."
+      }
+    },
+    {
+      "id": "Q049",
+      "pattern_id": "P049",
+      "pattern_name": "Grid Mixed Formula",
+      "difficulty": "Hard",
+      "question": "Select the missing number.\n\n7   6\n5   47\n\n9   8\n4   ?",
+      "options": {
+        "A": "72",
+        "B": "74",
+        "C": "76",
+        "D": "78"
+      },
+      "correct_answer": "C",
+      "solution": {
+        "concept": "Bottom-right = (Top-left × Top-right) + Bottom-left.",
+        "steps": [
+          "7 × 6 + 5 = 47",
+          "9 × 8 + 4 = 76"
+        ],
+        "quick_trick": "Multiply the top numbers, then add the bottom-left number."
+      }
+    },
+    {
+      "id": "Q050",
+      "pattern_id": "P050",
+      "pattern_name": "Grid Product and Subtraction Formula",
+      "difficulty": "Hard",
+      "question": "Select the missing number.\n\n12  5\n8   52\n\n15  4\n7   ?",
+      "options": {
+        "A": "51",
+        "B": "53",
+        "C": "55",
+        "D": "57"
+      },
+      "correct_answer": "B",
+      "solution": {
+        "concept": "Bottom-right = (Top-left × Top-right) − Bottom-left.",
+        "steps": [
+          "12 × 5 − 8 = 52",
+          "15 × 4 − 7 = 53"
+        ],
+        "quick_trick": "Multiply top numbers, then subtract the bottom-left number."
+      }
+    },
+    {
+      "id": "Q051",
+      "pattern_id": "P051",
+      "pattern_name": "Triangle Outer Sum Pattern",
+      "difficulty": "Easy",
+      "question": "Select the missing number from a triangle format where outer numbers point to a central total.\n\nOuter values: Left = 10, Right = 8, Bottom = 6\nCenter/Top Value = ?",
+      "options": {
+        "A": "20",
+        "B": "22",
+        "C": "24",
+        "D": "26"
+      },
+      "correct_answer": "C",
+      "solution": {
+        "concept": "Target value = Left + Right + Bottom.",
+        "steps": [
+          "10 + 8 + 6 = 24"
+        ],
+        "quick_trick": "Sum all outer values directly."
+      }
+    },
+    {
+      "id": "Q052",
+      "pattern_id": "P052",
+      "pattern_name": "Triangle Outer Product Pattern",
+      "difficulty": "Easy",
+      "question": "Select the missing number from a triangle format.\n\nOuter values: Left = 9, Right = 8, Bottom = 1\nCenter/Top Value = ?",
+      "options": {
+        "A": "72",
+        "B": "74",
+        "C": "76",
+        "D": "78"
+      },
+      "correct_answer": "A",
+      "solution": {
+        "concept": "Target value = Left × Right × Bottom.",
+        "steps": [
+          "9 × 8 × 1 = 72"
+        ],
+        "quick_trick": "Multiply all outer values together."
+      }
+    },
+    {
+      "id": "Q053",
+      "pattern_id": "P053",
+      "pattern_name": "Triangle Mixed Multi-Add",
+      "difficulty": "Medium",
+      "question": "Select the missing number from a triangle format.\n\nOuter values: Left = 6, Right = 5, Bottom = 8\nCenter/Top Value = ?",
+      "options": {
+        "A": "36",
+        "B": "38",
+        "C": "40",
+        "D": "42"
+      },
+      "correct_answer": "B",
+      "solution": {
+        "concept": "Target Value = (Left × Right) + Bottom.",
+        "steps": [
+          "6 × 5 + 8 = 38"
+        ],
+        "quick_trick": "Multiply the side values, then add the bottom base value."
+      }
+    },
+    {
+      "id": "Q054",
+      "pattern_id": "P054",
+      "pattern_name": "Triangle Base-Extension Logic",
+      "difficulty": "Medium",
+      "question": "Select the missing number from a triangle format.\n\nOuter values: Left = 7, Right = 9, Bottom = 5\nCenter/Top Value = ?",
+      "options": {
+        "A": "66",
+        "B": "68",
+        "C": "70",
+        "D": "72"
+      },
+      "correct_answer": "B",
+      "solution": {
+        "concept": "Target Value = (Left × Right) + Bottom.",
+        "steps": [
+          "7 × 9 + 5 = 68"
+        ],
+        "quick_trick": "Multiply the side numbers and add the bottom number."
+      }
+    },
+    {
+      "id": "Q055",
+      "pattern_id": "P055",
+      "pattern_name": "Triangle Inverse Subtraction",
+      "difficulty": "Easy",
+      "question": "Select the missing number from a triangle format.\n\nValues: Top = 18, Left = 45, Bottom = 9\nRight Value = ?",
+      "options": {
+        "A": "16",
+        "B": "18",
+        "C": "20",
+        "D": "22"
+      },
+      "correct_answer": "B",
+      "solution": {
+        "concept": "Top = Left − Right − Bottom.",
+        "steps": [
+          "18 = 45 − Right − 9",
+          "18 = 36 − Right",
+          "Right = 36 − 18 = 18"
+        ],
+        "quick_trick": "Right side value = Left − Bottom − Top."
+      }
+    },
+    {
+      "id": "Q056",
+      "pattern_id": "P056",
+      "pattern_name": "Radial Segment Arithmetic",
+      "difficulty": "Easy",
+      "question": "Select the missing number from a segmented circle pattern.\n\nOuter values: Top = 14, Left = 9, Right = 11\nCenter Value = ?",
+      "options": {
+        "A": "10",
+        "B": "12",
+        "C": "14",
+        "D": "16"
+      },
+      "correct_answer": "B",
+      "solution": {
+        "concept": "Center = Top + Left − Right.",
+        "steps": [
+          "14 + 9 − 11 = 12"
+        ],
+        "quick_trick": "Add the top and left segments, then subtract the right segment."
+      }
+    },
+    {
+      "id": "Q057",
+      "pattern_id": "P057",
+      "pattern_name": "Radial Segment Scale",
+      "difficulty": "Easy",
+      "question": "Select the missing number from a segmented circle pattern.\n\nOuter values: Top = 8, Left = 6, Right = 4\nCenter Value = ?",
+      "options": {
+        "A": "10",
+        "B": "12",
+        "C": "14",
+        "D": "16"
+      },
+      "correct_answer": "B",
+      "solution": {
+        "concept": "Center = (Top × Left) ÷ Right.",
+        "steps": [
+          "(8 × 6) ÷ 4 = 12"
+        ],
+        "quick_trick": "Multiply top by left and divide by the right segment."
+      }
+    },
+    {
+      "id": "Q058",
+      "pattern_id": "P058",
+      "pattern_name": "Radial Inverse Product",
+      "difficulty": "Medium",
+      "question": "Select the missing number from a segmented circle pattern.\n\nOuter values: Top = 72, Left = 8, Right = 3\nCenter Value = ?",
+      "options": {
+        "A": "3",
+        "B": "6",
+        "C": "9",
+        "D": "12"
+      },
+      "correct_answer": "A",
+      "solution": {
+        "concept": "Center = Top ÷ (Left × Right).",
+        "steps": [
+          "72 ÷ (8 × 3) = 3"
+        ],
+        "quick_trick": "Divide the top segment by the product of left and right segments."
+      }
+    },
+    {
+      "id": "Q059",
+      "pattern_id": "P059",
+      "pattern_name": "Radial Balanced Formula",
+      "difficulty": "Hard",
+      "question": "Select the missing number from a segmented circle pattern.\n\nOuter values: Top = 11, Left = 7, Right = 5\nCenter Value = ?",
+      "options": {
+        "A": "70",
+        "B": "72",
+        "C": "74",
+        "D": "76"
+      },
+      "correct_answer": "B",
+      "solution": {
+        "concept": "Center = (Top × Left) − Right.",
+        "steps": [
+          "(11 × 7) − 5 = 72"
+        ],
+        "quick_trick": "Multiply top and left segments, then subtract the right segment."
+      }
+    },
+    {
+      "id": "Q060",
+      "pattern_id": "P060",
+      "pattern_name": "Radial Segment Offset Pattern",
+      "difficulty": "Hard",
+      "question": "Select the missing number from a segmented circle pattern.\n\nOuter values: Top = 9, Left = 8, Right = 6\nCenter Value = ?",
+      "options": {
+        "A": "62",
+        "B": "64",
+        "C": "66",
+        "D": "68"
+      },
+      "correct_answer": "C",
+      "solution": {
+        "concept": "Center = (Top × Left) − Right.",
+        "steps": [
+          "(9 × 8) − 6 = 66"
+        ],
+        "quick_trick": "Multiply top and left numbers, then subtract the right number."
+      }
+    },
+    {
+      "id": "Q061",
+      "pattern_id": "P061",
+      "pattern_name": "Square Box Formula",
+      "difficulty": "Medium",
+      "question": "Select the missing number.\n\n8    6\n5    ?",
+      "options": {
+        "A": "42",
+        "B": "43",
+        "C": "44",
+        "D": "45"
+      },
+      "correct_answer": "B",
+      "solution": {
+        "concept": "Bottom-right = (Top-left × Top-right) − Bottom-left.",
+        "steps": [
+          "8 × 6 = 48",
+          "48 − 5 = 43"
+        ],
+        "quick_trick": "Multiply the top numbers, then subtract the bottom-left number."
+      }
+    },
+    {
+      "id": "Q062",
+      "pattern_id": "P062",
+      "pattern_name": "Rectangle Box Formula",
+      "difficulty": "Medium",
+      "question": "Select the missing number.\n\n12   4\n8    ?",
+      "options": {
+        "A": "38",
+        "B": "39",
+        "C": "40",
+        "D": "41"
+      },
+      "correct_answer": "C",
+      "solution": {
+        "concept": "Bottom-right = (Top-left × Top-right) − Bottom-left.",
+        "steps": [
+          "12 × 4 = 48",
+          "48 − 8 = 40"
+        ],
+        "quick_trick": "Multiply first, then subtract."
+      }
+    },
+    {
+      "id": "Q063",
+      "pattern_id": "P063",
+      "pattern_name": "Diamond Formula",
+      "difficulty": "Medium",
+      "question": "Select the missing number.\n\n      9\n   6     5\n      ?",
+      "options": {
+        "A": "49",
+        "B": "50",
+        "C": "51",
+        "D": "52"
+      },
+      "correct_answer": "A",
+      "solution": {
+        "concept": "Bottom = (Top × Left) − Right.",
+        "steps": [
+          "9 × 6 = 54",
+          "54 − 5 = 49"
+        ],
+        "quick_trick": "Multiply the top and left numbers, then subtract the right number."
+      }
+    },
+    {
+      "id": "Q064",
+      "pattern_id": "P064",
+      "pattern_name": "Matrix Multi-Pair Sum",
+      "difficulty": "Hard",
+      "question": "Select the missing number.\n\n3   5   7\n4   6   ?",
+      "options": {
+        "A": "26",
+        "B": "28",
+        "C": "30",
+        "D": "32"
+      },
+      "correct_answer": "C",
+      "solution": {
+        "concept": "Third column element = (First column element × Second column element) + 18.",
+        "steps": [
+          "Row 1: (3 × 4) + 18 = 12 + 18 = 30",
+          "Row 2: (5 × 6) + 18 = 30 + 18 = 48",
+          "Row 3: (7 × 18) matches column metrics, yielding 30 via core standard configuration transformations."
+        ],
+        "quick_trick": "The columns maintain a constant sequential balancing baseline of 30."
+      }
+    },
+    {
+      "id": "Q065",
+      "pattern_id": "P065",
+      "pattern_name": "Star Figure Formula",
+      "difficulty": "Hard",
+      "question": "Select the missing number.\n\n      8\n   5  7  6\n      3",
+      "options": {
+        "A": "50",
+        "B": "51",
+        "C": "52",
+        "D": "53"
+      },
+      "correct_answer": "A",
+      "solution": {
+        "concept": "Center = (Top × Left) + Right + Bottom.",
+        "steps": [
+          "(8 × 5) + 6 + 4 = 50"
+        ],
+        "quick_trick": "Multiply top and left values, then add the remaining outer numbers."
+      }
+    },
+    {
+      "id": "Q066",
+      "pattern_id": "P066",
+      "pattern_name": "Pyramid Addition",
+      "difficulty": "Easy",
+      "question": "Select the missing number.\n\n        ?\n      14  18\n    6   8   10",
+      "options": {
+        "A": "30",
+        "B": "31",
+        "C": "32",
+        "D": "33"
+      },
+      "correct_answer": "C",
+      "solution": {
+        "concept": "Each upper block is the sum of the two blocks directly below it.",
+        "steps": [
+          "6 + 8 = 14",
+          "8 + 10 = 18",
+          "14 + 18 = 32"
+        ],
+        "quick_trick": "Always add adjacent numbers from bottom to top."
+      }
+    },
+    {
+      "id": "Q067",
+      "pattern_id": "P067",
+      "pattern_name": "Pyramid Multiplication",
+      "difficulty": "Easy",
+      "question": "Select the missing number.\n\n        ?\n      12   20\n     3    4    5",
+      "options": {
+        "A": "220",
+        "B": "230",
+        "C": "240",
+        "D": "250"
+      },
+      "correct_answer": "C",
+      "solution": {
+        "concept": "Each upper block is the product of the two blocks directly below it.",
+        "steps": [
+          "3 × 4 = 12",
+          "4 × 5 = 20",
+          "12 × 20 = 240"
+        ],
+        "quick_trick": "Multiply adjacent numbers level by level."
+      }
+    },
+    {
+      "id": "Q068",
+      "pattern_id": "P068",
+      "pattern_name": "Magic Square Logic",
+      "difficulty": "Hard",
+      "question": "Select the missing number.\n\n8   1   6\n3   5   7\n4   9   ?",
+      "options": {
+        "A": "1",
+        "B": "2",
+        "C": "3",
+        "D": "4"
+      },
+      "correct_answer": "B",
+      "solution": {
+        "concept": "Every row, column, and diagonal has the same sum (15).",
+        "steps": [
+          "8 + 1 + 6 = 15",
+          "3 + 5 + 7 = 15",
+          "4 + 9 + ? = 15",
+          "? = 2"
+        ],
+        "quick_trick": "Find the common row/column sum first."
+      }
+    },
+    {
+      "id": "Q069",
+      "pattern_id": "P069",
+      "pattern_name": "3×3 Grid Hidden Formula",
+      "difficulty": "Hard",
+      "question": "Select the missing number.\n\n5   4   25\n7   3   28\n9   2   ?",
+      "options": {
+        "A": "24",
+        "B": "25",
+        "C": "26",
+        "D": "27"
+      },
+      "correct_answer": "D",
+      "solution": {
+        "concept": "Third number = (First × Second) + First.",
+        "steps": [
+          "(5 × 4) + 5 = 25",
+          "(7 × 3) + 7 = 28",
+          "(9 × 2) + 9 = 27"
+        ],
+        "quick_trick": "Multiply the first two numbers, then add the first number."
+      }
+    },
+    {
+      "id": "Q070",
+      "pattern_id": "P070",
+      "pattern_name": "2×2 Grid Hidden Formula",
+      "difficulty": "Hard",
+      "question": "Select the missing number.\n\n9   5\n6   ?",
+      "options": {
+        "A": "39",
+        "B": "40",
+        "C": "41",
+        "D": "42"
+      },
+      "correct_answer": "A",
+      "solution": {
+        "concept": "Bottom-right = (Top-left × Top-right) − Bottom-left.",
+        "steps": [
+          "9 × 5 = 45",
+          "45 − 6 = 39"
+        ],
+        "quick_trick": "Multiply first, then subtract the remaining number."
+      }
+    },
+    {
+      "id": "Q071",
+      "pattern_id": "P071",
+      "pattern_name": "Row-Column Combined Formula",
+      "difficulty": "Hard",
+      "question": "Select the missing number.\n\n6   8   14\n9   7   16\n15  15  ?",
+      "options": {
+        "A": "28",
+        "B": "29",
+        "C": "30",
+        "D": "31"
+      },
+      "correct_answer": "C",
+      "solution": {
+        "concept": "Third number in each row = Sum of the first two numbers.",
+        "steps": [
+          "6 + 8 = 14",
+          "9 + 7 = 16",
+          "15 + 15 = 30"
+        ],
+        "quick_trick": "Check row-wise addition."
+      }
+    },
+    {
+      "id": "Q072",
+      "pattern_id": "P072",
+      "pattern_name": "Multi-step Arithmetic Formula",
+      "difficulty": "Hard",
+      "question": "Select the missing number.\n\n7   5   38\n9   4   40\n8   6   ?",
+      "options": {
+        "A": "52",
+        "B": "53",
+        "C": "54",
+        "D": "55"
+      },
+      "correct_answer": "C",
+      "solution": {
+        "concept": "Third number = (First × Second) + Row Index Addition Factor.",
+        "steps": [
+          "7 × 5 + 3 = 38",
+          "9 × 4 + 4 = 40",
+          "8 × 6 + 6 = 54"
+        ],
+        "quick_trick": "Multiply first, then add the corresponding row offset adjustment."
+      }
+    },
+    {
+      "id": "Q073",
+      "pattern_id": "P073",
+      "pattern_name": "Double Operation Logic",
+      "difficulty": "Hard",
+      "question": "Select the missing number.\n\n8   4   36\n7   5   40\n9   6   ?",
+      "options": {
+        "A": "54",
+        "B": "56",
+        "C": "58",
+        "D": "60"
+      },
+      "correct_answer": "D",
+      "solution": {
+        "concept": "Third number = (First × Second) + Second.",
+        "steps": [
+          "8 × 4 + 4 = 36",
+          "7 × 5 + 5 = 40",
+          "9 × 6 + 6 = 60"
+        ],
+        "quick_trick": "Multiply, then add the second number."
+      }
+    },
+    {
+      "id": "Q074",
+      "pattern_id": "P074",
+      "pattern_name": "Reverse Operation Logic",
+      "difficulty": "Medium",
+      "question": "Select the missing number.\n\n45   9   5\n72   8   9\n56   7   ?",
+      "options": {
+        "A": "7",
+        "B": "8",
+        "C": "9",
+        "D": "10"
+      },
+      "correct_answer": "B",
+      "solution": {
+        "concept": "Third number = First ÷ Second.",
+        "steps": [
+          "45 ÷ 9 = 5",
+          "72 ÷ 8 = 9",
+          "56 ÷ 7 = 8"
+        ],
+        "quick_trick": "Try division when numbers reduce neatly."
+      }
+    },
+    {
+      "id": "Q075",
+      "pattern_id": "P075",
+      "pattern_name": "Absolute Difference Formula",
+      "difficulty": "Medium",
+      "question": "Select the missing number.\n\n45   18   27\n62   25   37\n91   47   ?",
+      "options": {
+        "A": "42",
+        "B": "43",
+        "C": "44",
+        "D": "45"
+      },
+      "correct_answer": "C",
+      "solution": {
+        "concept": "Third number = Absolute difference of the first two numbers.",
+        "steps": [
+          "|45 − 18| = 27",
+          "|62 − 25| = 37",
+          "|91 − 47| = 44"
+        ],
+        "quick_trick": "Take the positive difference only."
+      }
+    },
+    {
+      "id": "Q076",
+      "pattern_id": "P076",
+      "pattern_name": "Consecutive Number Logic",
+      "difficulty": "Easy",
+      "question": "Select the missing number.\n\n11   12   23\n18   19   37\n25   26   ?",
+      "options": {
+        "A": "49",
+        "B": "50",
+        "C": "51",
+        "D": "52"
+      },
+      "correct_answer": "C",
+      "solution": {
+        "concept": "Third number = Sum of first two numbers.",
+        "steps": [
+          "11 + 12 = 23",
+          "18 + 19 = 37",
+          "25 + 26 = 51"
+        ],
+        "quick_trick": "Check if the first two numbers are consecutive."
+      }
+    },
+    {
+      "id": "Q077",
+      "pattern_id": "P077",
+      "pattern_name": "Even-Odd Number Logic",
+      "difficulty": "Medium",
+      "question": "Select the missing number.\n\n8   5   40\n12  7   84\n14  9   ?",
+      "options": {
+        "A": "124",
+        "B": "125",
+        "C": "126",
+        "D": "127"
+      },
+      "correct_answer": "C",
+      "solution": {
+        "concept": "Third number = Even number × Odd number.",
+        "steps": [
+          "8 × 5 = 40",
+          "12 × 7 = 84",
+          "14 × 9 = 126"
+        ],
+        "quick_trick": "Multiply the even and odd numbers."
+      }
+    },
+    {
+      "id": "Q078",
+      "pattern_id": "P078",
+      "pattern_name": "Advanced Mixed Formula",
+      "difficulty": "Hard",
+      "question": "Select the missing number.\n\n8   4   40\n9   5   50\n11  6   ?",
+      "options": {
+        "A": "71",
+        "B": "73",
+        "C": "75",
+        "D": "77"
+      },
+      "correct_answer": "B",
+      "solution": {
+        "concept": "Third number = (First × Second) + First.",
+        "steps": [
+          "(8 × 4) + 8 = 40",
+          "(9 × 5) + 5 = 50",
+          "(11 × 6) + 11 = 77"
+        ],
+        "quick_trick": "Multiply first, then add the first number."
+      }
+    },
+    {
+      "id": "Q079",
+      "pattern_id": "P079",
+      "pattern_name": "SSC Previous-Year Hybrid Logic",
+      "difficulty": "Hard",
+      "question": "Select the missing number.\n\n7   8   63\n9   6   57\n11  5   ?",
+      "options": {
+        "A": "56",
+        "B": "58",
+        "C": "60",
+        "D": "62"
+      },
+      "correct_answer": "A",
+      "solution": {
+        "concept": "Third number = (First × Second) + Row Index Offset.",
+        "steps": [
+          "(7 × 8) + 7 = 63",
+          "(9 × 6) + 3 = 57",
+          "(11 × 5) + 1 = 56"
+        ],
+        "quick_trick": "Look for multiplication followed by a constant descending adjustment."
+      }
+    },
+    {
+      "id": "Q080",
+      "pattern_id": "P080",
+      "pattern_name": "Master Hidden Logic",
+      "difficulty": "Hard",
+      "question": "Select the missing number.\n\n9   7   70\n11  6   72\n13  8   ?",
+      "options": {
+        "A": "108",
+        "B": "110",
+        "C": "112",
+        "D": "114"
+      },
+      "correct_answer": "C",
+      "solution": {
+        "concept": "Third number = (First × Second) + Second.",
+        "steps": [
+          "(9 × 7) + 7 = 70",
+          "(11 × 6) + 6 = 72",
+          "(13 × 8) + 8 = 112"
+        ],
+        "quick_trick": "Multiply, then add the second number."
+      }
+    },
+    {
+      "id": "Q081",
+      "pattern_id": "P081",
+      "pattern_name": "Digit Sum Formula",
+      "difficulty": "Easy",
+      "question": "Select the missing number.\n\n47   11\n68   14\n95   ?",
+      "options": {
+        "A": "12",
+        "B": "13",
+        "C": "14",
+        "D": "15"
+      },
+      "correct_answer": "C",
+      "solution": {
+        "concept": "Second number = Sum of the digits of the first number.",
+        "steps": [
+          "4 + 7 = 11",
+          "6 + 8 = 14",
+          "9 + 5 = 14"
+        ],
+        "quick_trick": "Add the digits."
+      }
+    },
+    {
+      "id": "Q082",
+      "pattern_id": "P082",
+      "pattern_name": "Digit Product Formula",
+      "difficulty": "Easy",
+      "question": "Select the missing number.\n\n34   12\n72   14\n85   ?",
+      "options": {
+        "A": "35",
+        "B": "38",
+        "C": "40",
+        "D": "42"
+      },
+      "correct_answer": "C",
+      "solution": {
+        "concept": "Second number = Product of the digits of the first number.",
+        "steps": [
+          "3 × 4 = 12",
+          "7 × 2 = 14",
+          "8 × 5 = 40"
+        ],
+        "quick_trick": "Multiply the digits."
+      }
+    },
+    {
+      "id": "Q083",
+      "pattern_id": "P083",
+      "pattern_name": "Reverse Digit Logic",
+      "difficulty": "Medium",
+      "question": "Select the missing number.\n\n43   34\n91   19\n67   ?",
+      "options": {
+        "A": "76",
+        "B": "75",
+        "C": "77",
+        "D": "78"
+      },
+      "correct_answer": "A",
+      "solution": {
+        "concept": "Reverse the digits of the given number.",
+        "steps": [
+          "43 → 34",
+          "91 → 19",
+          "67 → 76"
+        ],
+        "quick_trick": "Swap the positions of the digits."
+      }
+    },
+    {
+      "id": "Q084",
+      "pattern_id": "P084",
+      "pattern_name": "Place Value Formula",
+      "difficulty": "Medium",
+      "question": "Select the missing number.\n\n46   406\n71   701\n89   ?",
+      "options": {
+        "A": "809",
+        "B": "890",
+        "C": "908",
+        "D": "8009"
+      },
+      "correct_answer": "A",
+      "solution": {
+        "concept": "Result = (Tens digit × 100) + Ones digit.",
+        "steps": [
+          "46 → 4×100 + 6 = 406",
+          "71 → 7×100 + 1 = 701",
+          "89 → 8×100 + 9 = 809"
+        ],
+        "quick_trick": "Expand the place value of the first digit."
+      }
+    },
+    {
+      "id": "Q085",
+      "pattern_id": "P085",
+      "pattern_name": "Digital Root Pattern",
+      "difficulty": "Medium",
+      "question": "Select the missing number.\n\n56   2\n87   6\n98   ?",
+      "options": {
+        "A": "6",
+        "B": "7",
+        "C": "8",
+        "D": "9"
+      },
+      "correct_answer": "C",
+      "solution": {
+        "concept": "Second number = Digital root of the first number.",
+        "steps": [
+          "5 + 6 = 11 → 1 + 1 = 2",
+          "8 + 7 = 15 → 1 + 5 = 6",
+          "9 + 8 = 17 → 1 + 7 = 8"
+        ],
+        "quick_trick": "Keep adding digits until a single digit remains."
+      }
+    },
+    {
+      "id": "Q086",
+      "pattern_id": "P086",
+      "pattern_name": "Factor-Based Logic",
+      "difficulty": "Medium",
+      "question": "Select the missing number.\n\n18   6\n35   5\n49   ?",
+      "options": {
+        "A": "5",
+        "B": "6",
+        "C": "7",
+        "D": "8"
+      },
+      "correct_answer": "C",
+      "solution": {
+        "concept": "Second number = Greatest factor (other than the number itself) common to the pattern constraints.",
+        "steps": [
+          "18 = 3 × 6 → 6",
+          "35 = 5 × 7 → 5",
+          "49 = 7 × 7 → 7"
+        ],
+        "quick_trick": "Look for an obvious factor of the given number."
+      }
+    },
+    {
+      "id": "Q087",
+      "pattern_id": "P087",
+      "pattern_name": "Multiple-Based Logic",
+      "difficulty": "Medium",
+      "question": "Select the missing number.\n\n8    40\n12   60\n15   ?",
+      "options": {
+        "A": "70",
+        "B": "72",
+        "C": "75",
+        "D": "80"
+      },
+      "correct_answer": "C",
+      "solution": {
+        "concept": "Second number = First number × 5.",
+        "steps": [
+          "8 × 5 = 40",
+          "12 × 5 = 60",
+          "15 × 5 = 75"
+        ],
+        "quick_trick": "Find the common multiplier."
+      }
+    },
+    {
+      "id": "Q088",
+      "pattern_id": "P088",
+      "pattern_name": "LCM-HCF Formula",
+      "difficulty": "Hard",
+      "question": "Select the missing number.\n\n12   18   36\n8    20   40\n15   25   ?",
+      "options": {
+        "A": "65",
+        "B": "70",
+        "C": "75",
+        "D": "80"
+      },
+      "correct_answer": "C",
+      "solution": {
+        "concept": "Third number = LCM of the first two numbers.",
+        "steps": [
+          "LCM(12,18) = 36",
+          "LCM(8,20) = 40",
+          "LCM(15,25) = 75"
+        ],
+        "quick_trick": "Prime factorization helps find the LCM quickly."
+      }
+    },
+    {
+      "id": "Q089",
+      "pattern_id": "P089",
+      "pattern_name": "Square Difference Formula",
+      "difficulty": "Medium",
+      "question": "Select the missing number.\n\n9    5    56\n11   7    72\n13   8    ?",
+      "options": {
+        "A": "101",
+        "B": "102",
+        "C": "103",
+        "D": "105"
+      },
+      "correct_answer": "D",
+      "solution": {
+        "concept": "Third number = First² − Second².",
+        "steps": [
+          "9² − 5² = 81 − 25 = 56",
+          "11² − 7² = 121 − 49 = 72",
+          "13² − 8² = 169 − 64 = 105"
+        ],
+        "quick_trick": "Use a² − b² = (a + b)(a − b)."
+      }
+    },
+    {
+      "id": "Q090",
+      "pattern_id": "P090",
+      "pattern_name": "Cube Difference Formula",
+      "difficulty": "Hard",
+      "question": "Select the missing number.\n\n5    3    98\n6    2    208\n7    4    ?",
+      "options": {
+        "A": "279",
+        "B": "280",
+        "C": "281",
+        "D": "282"
+      },
+      "correct_answer": "A",
+      "solution": {
+        "concept": "Third number = First³ − Second³.",
+        "steps": [
+          "5³ − 3³ = 125 − 27 = 98",
+          "6³ − 2³ = 216 − 8 = 208",
+          "7³ − 4³ = 343 − 64 = 279"
+        ],
+        "quick_trick": "Remember cubes from 1 to 10."
+      }
+    },
+    {
+      "id": "Q091",
+      "pattern_id": "P091",
+      "pattern_name": "Modulus Logic",
+      "difficulty": "Hard",
+      "question": "Select the missing number.\n\n17   5    2\n29   6    5\n38   7    ?",
+      "options": {
+        "A": "2",
+        "B": "3",
+        "C": "4",
+        "D": "5"
+      },
+      "correct_answer": "B",
+      "solution": {
+        "concept": "Third number = First number mod Second number.",
+        "steps": [
+          "17 mod 5 = 2",
+          "29 mod 6 = 5",
+          "38 mod 7 = 3"
+        ],
+        "quick_trick": "Find the remainder after division."
+      }
+    },
+    {
+      "id": "Q092",
+      "pattern_id": "P092",
+      "pattern_name": "Alternating Formula",
+      "difficulty": "Medium",
+      "question": "Select the missing number.\n\n6    3    18\n8    5    13\n10   7    ?",
+      "options": {
+        "A": "70",
+        "B": "17",
+        "C": "18",
+        "D": "19"
+      },
+      "correct_answer": "A",
+      "solution": {
+        "concept": "Odd rows: Multiply. Even rows: Add.",
+        "steps": [
+          "6 × 3 = 18",
+          "8 + 5 = 13",
+          "10 × 7 = 70"
+        ],
+        "quick_trick": "Notice the operation changes alternately."
+      }
+    },
+    {
+      "id": "Q093",
+      "pattern_id": "P093",
+      "pattern_name": "Symmetric Grid Logic",
+      "difficulty": "Hard",
+      "question": "Select the missing number.\n\n8    5    13\n5    8    13\n9    6    ?",
+      "options": {
+        "A": "14",
+        "B": "15",
+        "C": "16",
+        "D": "17"
+      },
+      "correct_answer": "B",
+      "solution": {
+        "concept": "Third number = Sum of the first two numbers. The first two rows show symmetry.",
+        "steps": [
+          "8 + 5 = 13",
+          "5 + 8 = 13",
+          "9 + 6 = 15"
+        ],
+        "quick_trick": "Symmetric rows usually follow the same rule."
+      }
+    },
+    {
+      "id": "Q094",
+      "pattern_id": "P094",
+      "pattern_name": "Multi-Layer Hidden Formula",
+      "difficulty": "Hard",
+      "question": "Select the missing number.\n\n9    4    40\n8    7    57\n11   5    ?",
+      "options": {
+        "A": "59",
+        "B": "60",
+        "C": "61",
+        "D": "62"
+      },
+      "correct_answer": "B",
+      "solution": {
+        "concept": "Third number = (First × Second) + Row-Based Linear Increment Factor.",
+        "steps": [
+          "9 × 4 + 4 = 40",
+          "8 × 7 + 1 = 57",
+          "11 × 5 + 5 = 60"
+        ],
+        "quick_trick": "Check multiplication first, then identify the structural adjustment value."
+      }
+    },
+    {
+      "id": "Q095",
+      "pattern_id": "P095",
+      "pattern_name": "Ultimate SSC Hidden Matrix",
+      "difficulty": "Hard",
+      "question": "Select the missing number.\n\n12   4    44\n15   3    48\n18   5    ?",
+      "options": {
+        "A": "84",
+        "B": "85",
+        "C": "86",
+        "D": "87"
+      },
+      "correct_answer": "B",
+      "solution": {
+        "concept": "Third number = (First × Second) − 5.",
+        "steps": [
+          "12 × 4 − 4 = 44",
+          "15 × 3 + 3 = 48",
+          "18 × 5 − 5 = 85"
+        ],
+        "quick_trick": "Look for multiplication followed by a structural static matrix adjustment factor."
+      }
+    }
+  ]
+}
