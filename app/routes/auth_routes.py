@@ -86,7 +86,17 @@ def login(
     summary="Get current user",
     description="Return the authenticated user's profile data.",
 )
-def get_me(current_user=Depends(get_current_user)):
+def get_me(current_user=Depends(get_current_user), db: Session = Depends(get_db)):
+    from sqlalchemy import text
+    if current_user.role == "admin":
+        rows = db.execute(text("SELECT id FROM exams")).fetchall()
+        current_user.purchased_exam_ids = [r[0] for r in rows]
+    else:
+        rows = db.execute(
+            text("SELECT exam_id FROM user_exam_subscriptions WHERE user_id = :uid AND valid_until > NOW()"),
+            {"uid": current_user.id}
+        ).fetchall()
+        current_user.purchased_exam_ids = [r[0] for r in rows]
     return current_user
 
 

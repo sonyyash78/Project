@@ -2,9 +2,11 @@ import React, { useEffect, useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { examService } from '../api/api';
+import { useAuth } from '../context/AuthContext';
+import PaymentModal from '../components/PaymentModal';
 import { CardSkeleton } from '../components/SkeletonLoader';
 import { AmbientPage, EmptyState, GlassPanel, MetricCard, PageHeader, SectionTitle } from '../components/enterprise/Ui';
-import { FaCalendarAlt, FaListUl, FaRocket, FaSearch, FaSortAlphaDown, FaTrophy } from 'react-icons/fa';
+import { FaCalendarAlt, FaListUl, FaLock, FaCheckCircle, FaPlayCircle, FaRocket, FaSearch, FaSortAlphaDown, FaTrophy } from 'react-icons/fa';
 
 const gradients = [
   { from: '#6366f1', to: '#8b5cf6' },
@@ -17,7 +19,7 @@ const gradients = [
   { from: '#ec4899', to: '#db2777' },
 ];
 
-const ExamCard = ({ exam, index, onSubjects, onMock }) => {
+const ExamCard = ({ exam, index, hasAccess, onSubjects, onMock, onDemo, onUnlock }) => {
   const grad = gradients[exam.id % gradients.length];
   const [hovered, setHovered] = useState(false);
 
@@ -28,15 +30,27 @@ const ExamCard = ({ exam, index, onSubjects, onMock }) => {
       transition={{ duration: 0.3, delay: Math.min(index * 0.03, 0.24) }}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      onClick={() => onSubjects(exam.id)}
+      onClick={() => {
+        if (hasAccess) {
+          onSubjects(exam.id);
+        } else {
+          onUnlock(exam);
+        }
+      }}
       className={`overflow-hidden rounded-[28px] border ${hovered ? 'border-indigo-400/30 shadow-[0_16px_48px_rgba(99,102,241,0.18)]' : 'border-white/8'} cursor-pointer bg-white/[0.03] backdrop-blur-xl transition-all`}
     >
       <div className="relative flex h-32 flex-col items-center justify-center overflow-hidden px-5 py-5" style={{ background: `linear-gradient(135deg, ${grad.from}dd, ${grad.to}cc)` }}>
         <div className="absolute -bottom-6 -right-6 h-20 w-20 rounded-full bg-white/10" />
         <div className="absolute -left-6 top-0 h-16 w-16 rounded-full bg-white/10" />
-        <div className="absolute right-3 top-3 rounded-full border border-white/20 bg-slate-950/20 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.16em] text-white/85">
-          {exam.category}
+        
+        <div className="absolute right-3 top-3 flex items-center gap-1.5 rounded-full border border-white/20 bg-slate-950/40 px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.16em] text-white/90 backdrop-blur-sm">
+          {hasAccess ? (
+            <span className="flex items-center gap-1 text-emerald-400"><FaCheckCircle /> Unlocked</span>
+          ) : (
+            <span className="flex items-center gap-1 text-amber-300"><FaLock /> ₹{exam.discounted_price || 149} Pass</span>
+          )}
         </div>
+
         <FaTrophy className="absolute bottom-2 left-4 text-[40px] text-white/15" />
         <h3 className="relative z-10 text-center text-lg font-black leading-6 text-white">{exam.exam_name}</h3>
       </div>
@@ -47,33 +61,58 @@ const ExamCard = ({ exam, index, onSubjects, onMock }) => {
             <FaCalendarAlt /> PYQ Bank
           </span>
         </div>
-        <div className="flex gap-2">
-          <button
-            onClick={(event) => {
-              event.stopPropagation();
-              onSubjects(exam.id);
-            }}
-            className="flex-1 rounded-2xl border border-white/10 bg-white/[0.04] px-3 py-2 text-[11px] font-bold text-[var(--text-secondary)] transition hover:border-indigo-400/25 hover:bg-indigo-400/10 hover:text-[var(--text-primary)]"
-          >
-            Chapters
-          </button>
-          <button
-            onClick={(event) => {
-              event.stopPropagation();
-              onMock(exam.id);
-            }}
-            className="flex-1 rounded-2xl px-3 py-2 text-[11px] font-bold text-white transition"
-            style={{ background: `linear-gradient(135deg, ${grad.from}, ${grad.to})`, boxShadow: `0 8px 24px ${grad.from}44` }}
-          >
-            Mock Test
-          </button>
-        </div>
+        
+        {hasAccess ? (
+          <div className="flex gap-2">
+            <button
+              onClick={(event) => {
+                event.stopPropagation();
+                onSubjects(exam.id);
+              }}
+              className="flex-1 rounded-2xl border border-white/10 bg-white/[0.04] px-3 py-2 text-[11px] font-bold text-[var(--text-secondary)] transition hover:border-indigo-400/25 hover:bg-indigo-400/10 hover:text-[var(--text-primary)]"
+            >
+              Chapters
+            </button>
+            <button
+              onClick={(event) => {
+                event.stopPropagation();
+                onMock(exam.id);
+              }}
+              className="flex-1 rounded-2xl px-3 py-2 text-[11px] font-bold text-white transition"
+              style={{ background: `linear-gradient(135deg, ${grad.from}, ${grad.to})`, boxShadow: `0 8px 24px ${grad.from}44` }}
+            >
+              Mock Test
+            </button>
+          </div>
+        ) : (
+          <div className="flex flex-col gap-2">
+            <button
+              onClick={(event) => {
+                event.stopPropagation();
+                onUnlock(exam);
+              }}
+              className="w-full flex items-center justify-center gap-1.5 rounded-2xl bg-gradient-to-r from-indigo-600 to-cyan-500 py-2.5 px-3 text-[11px] font-bold text-white shadow-lg shadow-indigo-600/30 transition hover:brightness-110"
+            >
+              <FaLock className="text-xs" /> Unlock Pass (₹{exam.discounted_price || 149})
+            </button>
+            <button
+              onClick={(event) => {
+                event.stopPropagation();
+                onDemo(exam.id);
+              }}
+              className="w-full flex items-center justify-center gap-1.5 rounded-2xl border border-indigo-400/30 bg-indigo-500/10 py-1.5 px-3 text-[11px] font-bold text-indigo-300 hover:bg-indigo-500/20 transition"
+            >
+              <FaPlayCircle className="text-xs text-indigo-400" /> Free Demo Sprint (10 Qs)
+            </button>
+          </div>
+        )}
       </div>
     </motion.div>
   );
 };
 
 const Exams = () => {
+  const { user, refreshSubscription } = useAuth();
   const navigate = useNavigate();
   const [exams, setExams] = useState([]);
   const [categories, setCategories] = useState([]);
@@ -82,7 +121,11 @@ const Exams = () => {
   const [sortBy, setSortBy] = useState('alphabetical');
   const [loading, setLoading] = useState(true);
   const [page, setPage] = useState(1);
+  const [unlockModalExam, setUnlockModalExam] = useState(null);
   const limit = 20;
+
+  const isAdmin = user?.role === 'admin';
+  const purchasedExamIds = useMemo(() => user?.purchased_exam_ids || [], [user]);
 
   useEffect(() => {
     const fetchExams = async () => {
@@ -93,7 +136,7 @@ const Exams = () => {
           examService.listExams(page, limit, searchQuery, sortBy),
         ]);
         setCategories(Array.isArray(categoryData) ? categoryData : []);
-        setExams(Array.isArray(examData) ? examData : []);
+        setExams(Array.isArray(examData) ? examData : (examData.items || []));
       } catch (err) {
         console.error('Failed to load exams:', err);
       } finally {
@@ -107,6 +150,14 @@ const Exams = () => {
     if (selectedCategory === 'All') return exams;
     return exams.filter((exam) => exam.category?.toLowerCase() === selectedCategory.toLowerCase());
   }, [exams, selectedCategory]);
+
+  const handleUnlock = (exam) => {
+    if (!user) {
+      navigate('/login');
+      return;
+    }
+    setUnlockModalExam(exam);
+  };
 
   return (
     <AmbientPage
@@ -180,15 +231,21 @@ const Exams = () => {
       ) : (
         <>
           <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
-            {filteredExams.map((exam, index) => (
-              <ExamCard
-                key={exam.id}
-                exam={exam}
-                index={index}
-                onSubjects={(id) => navigate(`/subjects?exam_id=${id}`)}
-                onMock={(id) => navigate(`/test?exam_id=${id}&test_type=mock`)}
-              />
-            ))}
+            {filteredExams.map((exam, index) => {
+              const hasAccess = isAdmin || purchasedExamIds.includes(exam.id);
+              return (
+                <ExamCard
+                  key={exam.id}
+                  exam={exam}
+                  index={index}
+                  hasAccess={hasAccess}
+                  onSubjects={(id) => navigate(`/subjects?exam_id=${id}`)}
+                  onMock={(id) => navigate(`/test?exam_id=${id}&test_type=mock`)}
+                  onDemo={(id) => navigate(`/test?exam_id=${id}&test_type=demo`)}
+                  onUnlock={handleUnlock}
+                />
+              );
+            })}
           </div>
 
           {exams.length >= limit ? (
@@ -202,6 +259,17 @@ const Exams = () => {
             </div>
           ) : null}
         </>
+      )}
+
+      {unlockModalExam && (
+        <PaymentModal
+          examId={unlockModalExam.id}
+          onClose={() => setUnlockModalExam(null)}
+          onSuccess={() => {
+            setUnlockModalExam(null);
+            refreshSubscription?.();
+          }}
+        />
       )}
     </AmbientPage>
   );

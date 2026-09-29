@@ -90,3 +90,31 @@ async def generate_content_with_retry(prompt: str, max_retries: int = 5) -> list
             
     logger.error("Failed to generate content after max retries across all keys.")
     raise RuntimeError(f"Failed to generate content after {max_retries} attempts. Last error: {last_error}")
+
+
+async def generate_text_explanation(prompt: str, max_retries: int = 4) -> str:
+    """Generate free-form rich markdown explanations and diagnoses using Gemini pool."""
+    last_error = None
+    for attempt in range(max_retries):
+        current_model = MODELS[attempt % len(MODELS)]
+        try:
+            key_state = key_manager.get_next_key()
+            client = genai.Client(api_key=key_state.key)
+            response = await asyncio.to_thread(
+                client.models.generate_content,
+                model=current_model,
+                contents=prompt,
+                config=types.GenerateContentConfig(
+                    temperature=0.7,
+                )
+            )
+            return response.text.strip()
+        except Exception as e:
+            last_error = e
+            error_str = str(e).lower()
+            if "429" in error_str or "quota" in error_str or "rate limit" in error_str:
+                key_manager.report_failure(key_state, str(e))
+                await asyncio.sleep(0.5)
+            else:
+                await asyncio.sleep(1)
+    return f"AI Explanation temporarily unavailable. Error: {last_error}"

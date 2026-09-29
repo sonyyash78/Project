@@ -90,3 +90,91 @@ def ai_generation_stats(
         raise HTTPException(status_code=403, detail="Admin access required")
     stats = get_generation_stats(db)
     return {"stats": stats}
+
+
+# ── Student Facing AI Features ────────────────────────────────
+from pydantic import BaseModel
+from typing import Optional, Dict, Any
+from app.ai_question_generator.gemini import generate_text_explanation
+from app.models.question_model import Question
+
+student_ai_router = APIRouter(prefix="/api/ai", tags=["Student AI Tools"])
+
+class ExplainQuestionRequest(BaseModel):
+    question_id: Optional[int] = None
+    question_text: Optional[str] = None
+    options: Optional[Dict[str, str]] = None
+    correct_answer: Optional[str] = None
+    subject_name: Optional[str] = None
+
+class DiagnoseResultRequest(BaseModel):
+    exam_name: str
+    score: float
+    total_marks: float
+    accuracy_percentage: float
+    subject_breakdown: Optional[Dict[str, Any]] = None
+    weak_chapters: Optional[List[str]] = []
+
+@student_ai_router.post("/explain-question")
+async def explain_question_with_ai(
+    req: ExplainQuestionRequest,
+    db: Session = Depends(get_db),
+    current_user: User = Depends(get_current_user)
+):
+    q_text = req.question_text
+    options_text = ""
+    correct_ans = req.correct_answer or ""
+    
+    if req.question_id:
+        q = db.query(Question).filter(Question.id == req.question_id).first()
+        if q:
+            q_text = q.question
+            correct_ans = q.correct_option or ""
+            options_text = f"A: {q.option_a}\nB: {q.option_b}\nC: {q.option_c}\nD: {q.option_d}"
+    
+    if not q_text:
+        raise HTTPException(status_code=400, detail="Question text or ID is required")
+        
+    prompt = f"""
+You are India's top competitive exam mentor & subject expert.
+Explain the following question step-by-step with complete clarity:
+
+Question: {q_text}
+Options:
+{options_text}
+Correct Answer: {correct_ans}
+
+Please format your response in clean, beautiful Markdown:
+1. **Core Concept / Formula Used**: State the underlying scientific or mathematical principles.
+2. **Step-by-Step Solution**: Provide clear, logical steps using LaTeX math where necessary ($...$).
+3. **Common Trap / Pitfall**: Explain why students usually pick the wrong option.
+4. **Quick Pro-Tip**: A shortcut or memory trick to solve this in under 45 seconds.
+Keep the tone encouraging, concise, and pedagogical.
+"""
+    explanation = await generate_text_explanation(prompt)
+    return {"status": "success", "explanation": explanation}
+
+@student_ai_router.post("/diagnose-result")
+async def diagnose_test_result(
+    req: DiagnoseResultRequest,
+    current_user: User = Depends(get_current_user)
+):
+    prompt = f"""
+You are an expert AI Exam Strategy Coach.
+Analyze the following test attempt performance for candidate {current_user.name}:
+
+- Target Exam: {req.exam_name}
+- Candidate Score: {req.score} / {req.total_marks} ({req.accuracy_percentage:.1f}% accuracy)
+- Weak Chapters: {', '.join(req.weak_chapters) if req.weak_chapters else 'None specified'}
+- Subject Breakdown: {req.subject_breakdown}
+
+Provide a personalized, encouraging, and actionable **7-Day Score Booster Strategy**:
+1. **Performance Verdict**: Quick assessment of current preparation readiness.
+2. **Critical Weaknesses**: Pinpoint the high-weightage topics causing negative marks.
+3. **7-Day Action Plan**: Day-by-day focused revision blueprint.
+4. **Exam Day Mindset Tip**: One psychological trick to manage time and eliminate negative marking.
+
+Format cleanly in Markdown with bold headers and bullet points.
+"""
+    diagnosis = await generate_text_explanation(prompt)
+    return {"status": "success", "diagnosis": diagnosis}

@@ -2,6 +2,8 @@ import React, { useEffect, useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { browseService } from '../api/api';
+import { useAuth } from '../context/AuthContext';
+import PaymentModal from '../components/PaymentModal';
 import { CardSkeleton } from '../components/SkeletonLoader';
 import {
   AmbientPage,
@@ -14,6 +16,7 @@ import {
 import {
   FaArrowRight,
   FaBookOpen,
+  FaCheckCircle,
   FaChevronDown,
   FaChevronUp,
   FaFolderOpen,
@@ -27,12 +30,17 @@ import {
 import toast from 'react-hot-toast';
 
 const Subjects = () => {
+  const { user, refreshSubscription } = useAuth();
   const navigate = useNavigate();
   const [examMap, setExamMap] = useState([]);
   const [loading, setLoading] = useState(true);
   const [expandedExam, setExpandedExam] = useState(null);
   const [expandedSubject, setExpandedSubject] = useState(null);
   const [searchQuery, setSearchQuery] = useState('');
+  const [unlockModalExam, setUnlockModalExam] = useState(null);
+
+  const isAdmin = user?.role === 'admin';
+  const purchasedExamIds = useMemo(() => user?.purchased_exam_ids || [], [user]);
 
   useEffect(() => {
     const loadSubjectsData = async () => {
@@ -58,7 +66,15 @@ const Subjects = () => {
     return { examCount, subjectCount, chapterCount };
   }, [examMap]);
 
-  const handleChapterClick = (chapterId, chapterName, questionCount) => {
+  const handleChapterClick = (exam, chapterId, chapterName, questionCount, hasAccess) => {
+    if (!user) {
+      navigate('/login');
+      return;
+    }
+    if (!hasAccess) {
+      setUnlockModalExam(exam);
+      return;
+    }
     if (questionCount < 1) {
       toast.error('This practice test is locked. Minimum 1 question required.', { icon: '🔒', duration: 4000 });
       return;
@@ -138,6 +154,8 @@ const Subjects = () => {
         <div className="space-y-4">
           {filteredExamMap.map((exam, examIdx) => {
             const isExamExpanded = expandedExam === exam.id;
+            const hasAccess = isAdmin || purchasedExamIds.includes(exam.id);
+
             return (
               <motion.div
                 key={exam.id}
@@ -163,6 +181,15 @@ const Subjects = () => {
                     </div>
                   </div>
                   <div className="flex items-center gap-3 text-sm text-[var(--text-secondary)]">
+                    {hasAccess ? (
+                      <span className="inline-flex items-center gap-1 rounded-full border border-emerald-500/20 bg-emerald-500/10 px-3 py-1 text-xs font-bold text-emerald-400">
+                        <FaCheckCircle /> Unlocked
+                      </span>
+                    ) : (
+                      <span className="inline-flex items-center gap-1 rounded-full border border-amber-500/20 bg-amber-500/10 px-3 py-1 text-xs font-bold text-amber-300">
+                        <FaLock /> ₹149 Pass
+                      </span>
+                    )}
                     <span className="rounded-full border border-white/10 bg-white/[0.04] px-3 py-1">Open syllabus</span>
                     {isExamExpanded ? <FaChevronUp /> : <FaChevronDown />}
                   </div>
@@ -197,18 +224,22 @@ const Subjects = () => {
                                         <div className="rounded-2xl border border-white/8 bg-white/[0.03] px-3 py-3 text-sm text-[var(--text-muted)]">No chapters available yet.</div>
                                       ) : (
                                         (subject.chapters || []).map((chapter) => {
-                                          const isLocked = chapter.question_count < 1;
+                                          const isLocked = !hasAccess || chapter.question_count < 1;
                                           return (
                                             <button
                                               key={chapter.id}
-                                              onClick={() => handleChapterClick(chapter.id, chapter.name, chapter.question_count)}
-                                              className={`flex w-full items-center justify-between rounded-2xl border px-3 py-3 text-left text-sm transition ${isLocked ? 'border-white/8 bg-white/[0.03] opacity-70' : 'border-white/10 bg-white/[0.04] hover:border-indigo-400/20 hover:bg-indigo-400/10'}`}
+                                              onClick={() => handleChapterClick(exam, chapter.id, chapter.name, chapter.question_count, hasAccess)}
+                                              className={`flex w-full items-center justify-between rounded-2xl border px-3 py-3 text-left text-sm transition ${isLocked ? 'border-white/8 bg-white/[0.03]' : 'border-white/10 bg-white/[0.04] hover:border-indigo-400/20 hover:bg-indigo-400/10'}`}
                                             >
                                               <span className="text-[var(--text-primary)]">{chapter.name}</span>
                                               <span className="flex items-center gap-2 text-xs text-[var(--text-muted)]">
-                                                {isLocked ? (
+                                                {!hasAccess ? (
+                                                  <span className="inline-flex items-center gap-1 rounded-full bg-amber-500/10 px-2.5 py-1 text-amber-300 font-semibold text-[11px]">
+                                                    <FaLock /> Unlock ₹149
+                                                  </span>
+                                                ) : chapter.question_count < 1 ? (
                                                   <span className="inline-flex items-center gap-1 rounded-full bg-rose-500/10 px-2 py-1 text-rose-300">
-                                                    <FaLock /> Locked
+                                                    <FaLock /> 0 Questions
                                                   </span>
                                                 ) : (
                                                   <>
@@ -235,6 +266,17 @@ const Subjects = () => {
             );
           })}
         </div>
+      )}
+
+      {unlockModalExam && (
+        <PaymentModal
+          examId={unlockModalExam.id}
+          onClose={() => setUnlockModalExam(null)}
+          onSuccess={() => {
+            setUnlockModalExam(null);
+            refreshSubscription?.();
+          }}
+        />
       )}
     </AmbientPage>
   );

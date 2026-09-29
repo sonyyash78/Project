@@ -72,7 +72,58 @@ def generate_mock_test(exam_id: int, db: Session = Depends(get_db), current_user
         "category": exam.category,
         "questions": formatted_questions,
         "total_questions": len(formatted_questions),
-        "duration_minutes": max(5, round(total_time_seconds / 60)),  # dynamic duration based on questions
+        "duration_minutes": max(5, round(total_time_seconds / 60)),
+        "positive_marks_default": pos_marks,
+        "negative_marks_default": neg_marks
+    }
+
+
+@router.get("/{exam_id}/demo-test")
+def generate_demo_test(exam_id: int, db: Session = Depends(get_db)):
+    """Free sample test (5-10 questions) available to all students before buying pass."""
+    exam = db.query(Exam).filter(Exam.id == exam_id).first()
+    if not exam:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Exam not found")
+
+    all_q_ids = [q.id for q in db.query(Question.id).filter(Question.exam_id == exam_id).all()]
+    if not all_q_ids:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="No questions found for this exam.")
+
+    sample_size = min(len(all_q_ids), 10)
+    sampled_ids = random.sample(all_q_ids, sample_size)
+    questions = db.query(Question).filter(Question.id.in_(sampled_ids)).all()
+
+    pos_marks = getattr(exam, 'positive_marks', 4.0) or 4.0
+    neg_marks = getattr(exam, 'negative_marks', -1.0) or -1.0
+
+    formatted_questions = []
+    total_time_seconds = 0
+    for q in questions:
+        q_time = q.time if getattr(q, 'time', None) is not None else 60
+        total_time_seconds += q_time
+        formatted_questions.append({
+            "id": q.id,
+            "question": q.question,
+            "question_type": q.question_type or "mcq",
+            "option_a": q.option_a,
+            "option_b": q.option_b,
+            "option_c": q.option_c,
+            "option_d": q.option_d,
+            "difficulty": getattr(q, 'difficulty', 'Medium') or 'Medium',
+            "marks": getattr(q, 'marks', pos_marks) or pos_marks,
+            "negative_marks": getattr(q, 'negative_marks', neg_marks) or neg_marks,
+            "topic": getattr(q, 'topic', None),
+            "chapter_id": q.chapter_id,
+        })
+
+    return {
+        "exam_id": exam.id,
+        "exam_name": f"{exam.exam_name} (Free Demo Sprint)",
+        "category": exam.category,
+        "is_demo": True,
+        "questions": formatted_questions,
+        "total_questions": len(formatted_questions),
+        "duration_minutes": max(5, round(total_time_seconds / 60)),
         "positive_marks_default": pos_marks,
         "negative_marks_default": neg_marks
     }

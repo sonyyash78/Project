@@ -142,6 +142,7 @@ def verify_and_activate(db, user_id: int, payload: dict, billing_name: str, bill
         """), {"uid": user_id, "eid": payment["exam_id"], "order": rz_order_id})
         db.commit()
     else:
+        from sqlalchemy import text
         sub_id = subscription_service.activate_paid_subscription(
             db,
             user_id,
@@ -149,6 +150,24 @@ def verify_and_activate(db, user_id: int, payload: dict, billing_name: str, bill
             payment["billing_cycle"] or "monthly",
             payment["amount"],
         )
+        plan_slug = (payment.get("plan_slug") or "").lower()
+        if "engineering" in plan_slug:
+            exam_rows = db.execute(text("SELECT id FROM exams WHERE category IN ('Engineering', 'Joint Entrance Examination', 'Graduate Aptitude Test in Engineering', 'State Exams')")).fetchall()
+        elif "medical" in plan_slug:
+            exam_rows = db.execute(text("SELECT id FROM exams WHERE category = 'Medical'")).fetchall()
+        elif "banking" in plan_slug or "govt" in plan_slug:
+            exam_rows = db.execute(text("SELECT id FROM exams WHERE category IN ('Banking', 'Government', 'Railway')")).fetchall()
+        else:
+            exam_rows = db.execute(text("SELECT id FROM exams")).fetchall()
+
+        for er in exam_rows:
+            eid = er[0]
+            db.execute(text("""
+                INSERT INTO user_exam_subscriptions (user_id, exam_id, purchased_at, valid_until, payment_order_id)
+                VALUES (:uid, :eid, NOW(), DATE_ADD(NOW(), INTERVAL 1 YEAR), :order)
+                ON DUPLICATE KEY UPDATE valid_until = DATE_ADD(NOW(), INTERVAL 1 YEAR)
+            """), {"uid": user_id, "eid": eid, "order": rz_order_id})
+        db.commit()
 
 
     payment_model.update_payment(

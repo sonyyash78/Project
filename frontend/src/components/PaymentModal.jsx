@@ -1,9 +1,11 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { paymentService } from '../api/api';
+import { useAuth } from '../context/AuthContext';
 import CouponInput from './CouponInput';
 import toast from 'react-hot-toast';
 
 export default function PaymentModal({ planSlug, examId, billingCycle = 'monthly', onClose, onSuccess }) {
+  const { user } = useAuth();
   const [useWallet, setUseWallet] = useState(false);
   const [couponCode, setCouponCode] = useState('');
   const [pricingData, setPricingData] = useState(null);
@@ -66,12 +68,16 @@ export default function PaymentModal({ planSlug, examId, billingCycle = 'monthly
       amount: Math.round(pricingData.gross_total * 100),
       currency: 'INR',
       name: 'ExamSIDE',
-      description: `${planSlug.toUpperCase()} Plan - ${billingCycle}`,
+      description: examId ? `Exam Pass Access (Exam #${examId})` : `${(planSlug || 'Exam Pass').toUpperCase()} - ${billingCycle}`,
       order_id: pricingData.razorpay_order_id,
+      prefill: {
+        name: user?.name || '',
+        email: user?.email || '',
+      },
       handler: async (response) => {
         try {
           await paymentService.verify(response);
-          toast.success('Payment successful! Your plan is now active.');
+          toast.success('Payment successful! Your pass is now active.');
           onSuccess?.();
         } catch (err) {
           toast.error(err.response?.data?.detail || 'Payment verification failed.');

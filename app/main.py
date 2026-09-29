@@ -37,7 +37,7 @@ from app.routes.wallet_routes import router as wallet_router
 from app.routes.referral_routes import router as referral_router
 from app.routes.invoice_routes import router as invoice_router
 from app.routes.admin_routes import router as admin_router
-from app.ai_question_generator.routes import router as ai_generator_router
+from app.ai_question_generator.routes import router as ai_generator_router, student_ai_router
 import app.models  # Ensures all models are registered with Base.metadata
 
 from app.models.progress_model import Bookmark, TestAttempt, QuestionAttempt
@@ -140,6 +140,7 @@ app.include_router(referral_router)
 app.include_router(invoice_router)
 app.include_router(admin_router)
 app.include_router(ai_generator_router)
+app.include_router(student_ai_router)
 
 # ── Root ──────────────────────────────────────────────────────
 

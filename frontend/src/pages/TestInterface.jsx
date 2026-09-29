@@ -14,6 +14,7 @@ import {
   FaFlag,
   FaKeyboard,
   FaLightbulb,
+  FaLock,
   FaRegBookmark,
   FaSave,
   FaSignal,
@@ -231,6 +232,21 @@ const TestInterface = () => {
             setLoading(false);
             return;
           }
+        }
+
+        if (testType === 'demo' && examId) {
+          const data = await examService.getDemoTest(examId);
+          const normalized = (data.questions || []).map((question) => ({
+            ...question,
+            options: fallbackOptions(question),
+          }));
+          setEngineMode('fallback');
+          setQuestions(normalized);
+          setTimeLeft((data.duration_minutes || 10) * 60);
+          setInitialDuration((data.duration_minutes || 10) * 60);
+          setSessionMeta(data);
+          setLoading(false);
+          return;
         }
 
         if (testType === 'mock' && examId) {
@@ -559,18 +575,24 @@ const TestInterface = () => {
   }
 
   if (error || !questions.length) {
+    const isPurchaseRequired = error && (error.toLowerCase().includes('purchase') || error.toLowerCase().includes('access'));
     return (
       <div className="mx-auto flex min-h-screen max-w-3xl items-center px-4 py-10">
         <div className="w-full">
           <EmptyState
-            icon={<FaBookOpen />}
-            title={error ? "Unable to start this exam session" : "Questions Coming Soon!"}
-            description={error || "We are currently generating high-quality questions for this exam chapter. Please check back later!"}
+            icon={isPurchaseRequired ? <FaLock className="text-amber-400" /> : <FaBookOpen />}
+            title={isPurchaseRequired ? "Exam Pass Required (₹149)" : error ? "Unable to start this exam session" : "Questions Coming Soon!"}
+            description={isPurchaseRequired ? "Access to this exam requires an active pass. Get 1 Full Year of unlimited mock tests, chapter practice, and detailed solutions for just ₹149." : (error || "We are currently generating high-quality questions for this exam chapter. Please check back later!")}
           />
-          <div className="mt-8 text-center">
+          <div className="mt-8 flex justify-center gap-3">
             <button onClick={() => navigate(-1)} className="rounded-2xl border border-white/10 bg-white/[0.04] px-6 py-3 text-sm font-bold text-[var(--text-secondary)] hover:text-white transition">
               <FaArrowLeft className="mr-2 inline" /> Go Back
             </button>
+            {isPurchaseRequired && (
+              <button onClick={() => navigate('/pricing')} className="rounded-2xl bg-gradient-to-r from-indigo-600 to-cyan-500 px-6 py-3 text-sm font-bold text-white shadow-lg shadow-indigo-600/30 transition hover:brightness-110">
+                Unlock Exam Pass (₹149)
+              </button>
+            )}
           </div>
         </div>
       </div>

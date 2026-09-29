@@ -38,6 +38,7 @@ class UserResponse(BaseModel):
     notification_enabled: Optional[bool] = True
     subscription_plan: Optional[str] = "free"
     premium_until: Optional[datetime] = None
+    purchased_exam_ids: Optional[list[int]] = []
 
 
 class TokenResponse(BaseModel):

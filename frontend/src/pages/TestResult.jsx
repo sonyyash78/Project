@@ -9,14 +9,18 @@ import {
   FaClock,
   FaDownload,
   FaLayerGroup,
+  FaLightbulb,
+  FaMagic,
   FaPercentage,
+  FaRobot,
   FaShareAlt,
+  FaSpinner,
   FaStar,
   FaTrophy,
   FaTimesCircle,
 } from 'react-icons/fa';
 import toast from 'react-hot-toast';
-import { examEngineService, progressService } from '../api/api';
+import { examEngineService, progressService, studentAiService } from '../api/api';
 import { TableSkeleton } from '../components/SkeletonLoader';
 import { AmbientPage, EmptyState, GlassPanel, MetricCard, PageHeader, ProgressBar, SectionTitle, TinyTrend } from '../components/enterprise/Ui';
 import MarkdownRenderer from '../components/MarkdownRenderer';
@@ -33,6 +37,57 @@ const TestResult = () => {
   const [result, setResult] = useState(null);
   const [legacyResult, setLegacyResult] = useState(null);
   const [expandedId, setExpandedId] = useState(null);
+  const [aiDiagnosis, setAiDiagnosis] = useState(null);
+  const [loadingDiagnosis, setLoadingDiagnosis] = useState(false);
+  const [aiExplanations, setAiExplanations] = useState({});
+
+  const handleGetAiDiagnosis = async () => {
+    if (!normalized) return;
+    setLoadingDiagnosis(true);
+    try {
+      const res = await studentAiService.diagnoseResult({
+        exam_name: result?.exam_name || 'Competitive Mock Test',
+        score: normalized.score,
+        total_marks: normalized.total,
+        accuracy_percentage: normalized.accuracy,
+        weak_chapters: (weakTopics || []).map((t) => t.chapter || t.subject || 'Core Concepts'),
+        subject_breakdown: normalized.subjectAnalysis,
+      });
+      setAiDiagnosis(res.diagnosis);
+      toast.success('AI Score Booster Strategy generated!');
+    } catch (err) {
+      toast.error(err.response?.data?.detail || 'Failed to generate AI diagnosis');
+    } finally {
+      setLoadingDiagnosis(false);
+    }
+  };
+
+  const handleExplainQuestion = async (question) => {
+    const qId = question.question_id;
+    setAiExplanations((prev) => ({
+      ...prev,
+      [qId]: { loading: true, text: '' },
+    }));
+
+    try {
+      const res = await studentAiService.explainQuestion({
+        question_id: qId,
+        question_text: question.question_text,
+        correct_answer: question.correct_answer,
+        subject_name: question.subject_name,
+      });
+      setAiExplanations((prev) => ({
+        ...prev,
+        [qId]: { loading: false, text: res.explanation },
+      }));
+    } catch (err) {
+      setAiExplanations((prev) => ({
+        ...prev,
+        [qId]: { loading: false, text: 'Failed to generate explanation. Please try again.' },
+      }));
+      toast.error('AI explanation failed.');
+    }
+  };
 
   useEffect(() => {
     const loadResult = async () => {
@@ -349,11 +404,39 @@ const TestResult = () => {
             </GlassPanel>
           </div>
 
+          <GlassPanel className="rounded-[30px] p-6 border border-indigo-500/30 bg-gradient-to-br from-indigo-500/10 via-purple-500/5 to-cyan-500/10 shadow-xl">
+            <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+              <div>
+                <div className="inline-flex items-center gap-2 rounded-full border border-indigo-400/30 bg-indigo-500/20 px-3 py-1 text-xs font-bold text-indigo-300">
+                  <FaMagic /> AI Performance Coach
+                </div>
+                <h3 className="mt-2 text-xl font-bold text-white">7-Day AI Score Booster Strategy</h3>
+                <p className="text-xs text-slate-400">Generate a personalized step-by-step diagnostic plan based on your weak topics and timing patterns.</p>
+              </div>
+              <button
+                onClick={handleGetAiDiagnosis}
+                disabled={loadingDiagnosis}
+                className="btn-primary shrink-0 flex items-center gap-2 px-5 py-2.5"
+              >
+                {loadingDiagnosis ? <FaSpinner className="animate-spin" /> : <FaRobot />}
+                {loadingDiagnosis ? 'Analyzing with AI...' : 'Generate AI Strategy'}
+              </button>
+            </div>
+
+            {aiDiagnosis && (
+              <div className="mt-5 rounded-2xl border border-indigo-400/20 bg-slate-950/70 p-5 text-sm leading-7 text-slate-200">
+                <MarkdownRenderer content={aiDiagnosis} />
+              </div>
+            )}
+          </GlassPanel>
+
           <GlassPanel className="rounded-[30px] p-6">
-            <SectionTitle title="Detailed Question Review" subtitle="Open any question to inspect answer quality and explanation." />
+            <SectionTitle title="Detailed Question Review" subtitle="Open any question to inspect answer quality, solutions, and AI explainers." />
             <div className="space-y-3">
               {normalized.questions.map((question, index) => {
                 const open = expandedId === question.question_id;
+                const aiExp = aiExplanations[question.question_id];
+
                 return (
                   <div
                     key={question.question_id}
@@ -392,8 +475,34 @@ const TestResult = () => {
                           </div>
                         </div>
                         <div className="mt-3 rounded-[20px] border border-white/8 bg-white/[0.03] p-4 text-sm leading-7 text-[var(--text-secondary)]">
-                          <div className="mb-2 font-semibold text-[var(--text-primary)]">Solution / explanation</div>
-                          {question.solution ? <MarkdownRenderer content={question.solution} /> : 'No explanation was attached to this question.'}
+                          <div className="flex items-center justify-between mb-2">
+                            <div className="font-semibold text-[var(--text-primary)]">Solution / Explanation</div>
+                            <button
+                              onClick={() => handleExplainQuestion(question)}
+                              disabled={aiExp?.loading}
+                              className="inline-flex items-center gap-1.5 rounded-xl border border-indigo-400/30 bg-indigo-500/20 px-3 py-1 text-xs font-bold text-indigo-300 hover:bg-indigo-500/30 transition"
+                            >
+                              {aiExp?.loading ? (
+                                <>
+                                  <FaSpinner className="animate-spin" /> Explaining...
+                                </>
+                              ) : (
+                                <>
+                                  <FaMagic /> Ask AI Explainer
+                                </>
+                              )}
+                            </button>
+                          </div>
+                          {question.solution ? <MarkdownRenderer content={question.solution} /> : 'No textbook explanation attached.'}
+
+                          {aiExp?.text && (
+                            <div className="mt-4 rounded-xl border border-indigo-500/30 bg-slate-950/90 p-4 text-slate-200">
+                              <div className="flex items-center gap-2 text-xs font-bold text-indigo-400 mb-2">
+                                <FaRobot /> Gemini AI Mentor Step-by-Step Breakdown:
+                              </div>
+                              <MarkdownRenderer content={aiExp.text} />
+                            </div>
+                          )}
                         </div>
                       </div>
                     ) : null}

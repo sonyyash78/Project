@@ -232,6 +232,10 @@ export const examService = {
     const response = await API.get(`/api/exams/${examId}/mock-test`);
     return response.data;
   },
+  getDemoTest: async (examId) => {
+    const response = await API.get(`/api/exams/${examId}/demo-test`);
+    return response.data;
+  },
   createExam: async (examData) => {
     const response = await API.post('/api/exams/', examData);
     return response.data;
@@ -644,14 +648,6 @@ export const aiService = {
     const response = await API.post('/api/admin/ai/generate', payload);
     return response.data;
   },
-  save: async (payload) => {
-    const response = await API.post('/api/admin/ai/save', payload);
-    return response.data;
-  },
-  getHistory: async () => {
-    const response = await API.get('/api/admin/ai/history');
-    return response.data;
-  },
   deleteHistory: async (logId) => {
     const response = await API.delete(`/api/admin/ai/history/${logId}`);
     return response.data;
@@ -659,7 +655,18 @@ export const aiService = {
   getStats: async () => {
     const response = await API.get('/api/admin/ai/stats');
     return response.data;
-  }
+  },
+};
+
+export const studentAiService = {
+  explainQuestion: async (payload) => {
+    const response = await API.post('/api/ai/explain-question', payload);
+    return response.data;
+  },
+  diagnoseResult: async (payload) => {
+    const response = await API.post('/api/ai/diagnose-result', payload);
+    return response.data;
+  },
 };
 
 export default API;
