@@ -4,6 +4,21 @@ import { useAuth } from '../context/AuthContext';
 import CouponInput from './CouponInput';
 import toast from 'react-hot-toast';
 
+const loadRazorpayScript = () => {
+  return new Promise((resolve) => {
+    if (window.Razorpay) {
+      resolve(true);
+      return;
+    }
+    const script = document.createElement('script');
+    script.src = 'https://checkout.razorpay.com/v1/checkout.js';
+    script.async = true;
+    script.onload = () => resolve(true);
+    script.onerror = () => resolve(false);
+    document.body.appendChild(script);
+  });
+};
+
 export default function PaymentModal({ planSlug, examId, billingCycle = 'monthly', onClose, onSuccess }) {
   const { user } = useAuth();
   const [useWallet, setUseWallet] = useState(false);
@@ -46,13 +61,9 @@ export default function PaymentModal({ planSlug, examId, billingCycle = 'monthly
       return;
     }
 
-    if (!window.Razorpay) {
-      // If the payment integration is not configured, show friendly message
-      if (!paymentEnabled) {
-        toast.error('Payment Gateway Coming Soon (Test Mode)');
-      } else {
-        toast.error('Payment gateway not loaded. Please refresh.');
-      }
+    const scriptLoaded = await loadRazorpayScript();
+    if (!scriptLoaded || !window.Razorpay) {
+      toast.error('Payment gateway could not be loaded. Please disable ad-blockers or check your connection.');
       setLoading(false);
       return;
     }
