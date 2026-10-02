@@ -12,6 +12,7 @@ export default function SpyHunt() {
   const [setupMode, setSetupMode] = useState('create'); // 'create' | 'join'
   const [soundEnabled, setSoundEnabled] = useState(true);
   const [showLeaderboardModal, setShowLeaderboardModal] = useState(false);
+  const [showHelpModal, setShowHelpModal] = useState(false);
   const [globalLeaderboard, setGlobalLeaderboard] = useState([]);
   const [notice, setNotice] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
@@ -35,7 +36,7 @@ export default function SpyHunt() {
   // Active Mystery Round State
   const [currentRound, setCurrentRound] = useState(1);
   const [activeCaseId, setActiveCaseId] = useState(null);
-  const [timeRemaining, setTimeRemaining] = useState(60);
+  const [timeRemaining, setTimeRemaining] = useState(90);
   const [introCountdown, setIntroCountdown] = useState(10);
   const [resultsCountdown, setResultsCountdown] = useState(12);
   const [localAnswer, setLocalAnswer] = useState(null); // Selected suspect name
@@ -224,7 +225,7 @@ export default function SpyHunt() {
         setActiveCaseId(resolvedCaseId);
         activeCaseIdRef.current = resolvedCaseId;
 
-        setTimeRemaining(60);
+        setTimeRemaining(90);
         setLocalAnswer(null);
         setIsAnswerLocked(false);
         setRoundScores({});
@@ -580,7 +581,7 @@ export default function SpyHunt() {
       caseId
     });
 
-    setTimeRemaining(60);
+    setTimeRemaining(90);
     setLocalAnswer(null);
     setIsAnswerLocked(false);
     setRoundScores({});
@@ -622,7 +623,7 @@ export default function SpyHunt() {
   const startHostRoundTimer = (roundNum, caseId = null) => {
     if (timerIntervalRef.current) clearInterval(timerIntervalRef.current);
 
-    let seconds = 60;
+    let seconds = 90;
     setTimeRemaining(seconds);
 
     timerIntervalRef.current = setInterval(() => {
@@ -917,8 +918,15 @@ export default function SpyHunt() {
             </button>
 
             <button
+              onClick={() => setShowHelpModal(true)}
+              className="px-3 py-1.5 rounded-xl border border-sky-500/40 bg-sky-500/10 text-sky-300 font-semibold text-xs hover:bg-sky-500/20 transition-all flex items-center gap-1.5 cursor-pointer"
+            >
+              ❓ Guide
+            </button>
+
+            <button
               onClick={() => setShowLeaderboardModal(true)}
-              className="px-3 py-1.5 rounded-xl border border-amber-500/40 bg-amber-500/10 text-amber-300 font-semibold text-xs hover:bg-amber-500/20 transition-all flex items-center gap-1.5"
+              className="px-3 py-1.5 rounded-xl border border-amber-500/40 bg-amber-500/10 text-amber-300 font-semibold text-xs hover:bg-amber-500/20 transition-all flex items-center gap-1.5 cursor-pointer"
             >
               🏆 Archives
             </button>
@@ -1374,6 +1382,37 @@ export default function SpyHunt() {
                   </div>
                 )}
               </div>
+            </div>
+
+            {/* Prominent Case Question & Deduction Objective Card */}
+            <div className="w-full bg-gradient-to-r from-amber-950/70 via-slate-900/95 to-amber-950/70 border-2 border-amber-500/60 rounded-3xl p-5 shadow-2xl backdrop-blur-xl flex flex-col md:flex-row md:items-center justify-between gap-4">
+              <div className="flex-1">
+                <div className="flex items-center gap-2 mb-2">
+                  <span className="px-3 py-1 rounded-full bg-amber-500 text-black font-black text-xs uppercase tracking-wider shadow">
+                    ❓ CASE QUESTION
+                  </span>
+                  <span className="text-xs font-mono font-bold text-amber-300">
+                    Find the culprit among the 3 suspects below
+                  </span>
+                </div>
+                <h3 className="text-base sm:text-xl font-black text-white font-serif tracking-wide leading-snug mb-2">
+                  "{currentCase.question || currentCase.story}"
+                </h3>
+                {currentCase.howToSolve && (
+                  <div className="text-xs text-amber-300/90 font-medium flex items-center gap-2 bg-amber-500/10 px-3 py-1.5 rounded-xl border border-amber-500/20 max-w-fit">
+                    <span>💡 Deduction Tip:</span>
+                    <span>{currentCase.howToSolve}</span>
+                  </div>
+                )}
+              </div>
+
+              {/* Quick How to Play Button */}
+              <button
+                onClick={() => setShowHelpModal(true)}
+                className="self-start md:self-center px-4 py-2.5 rounded-2xl bg-amber-500/20 border border-amber-500/50 hover:bg-amber-500 hover:text-black text-amber-300 text-xs font-black uppercase tracking-wider transition-all flex items-center gap-2 shrink-0 cursor-pointer shadow-lg"
+              >
+                <span>📖 How To Play</span>
+              </button>
             </div>
 
             {/* Investigation Workspace Grid */}
@@ -1833,6 +1872,72 @@ export default function SpyHunt() {
                 Close
               </button>
             </div>
+          </div>
+        </div>
+      )}
+
+      {/* HOW TO PLAY & DEDUCTION GUIDE MODAL */}
+      {showHelpModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-fade-in">
+          <div className="w-full max-w-lg bg-slate-950 border-2 border-amber-500/50 rounded-3xl p-6 sm:p-7 shadow-2xl text-left">
+            <div className="flex items-center justify-between pb-3 border-b border-slate-800 mb-4">
+              <div className="flex items-center gap-2">
+                <span className="text-2xl">🕵️‍♂️</span>
+                <h3 className="text-base font-black text-white font-serif uppercase tracking-wider">
+                  How To Play Spy Hunt
+                </h3>
+              </div>
+              <button
+                onClick={() => setShowHelpModal(false)}
+                className="w-8 h-8 rounded-full bg-slate-800 text-slate-400 hover:text-white flex items-center justify-center font-bold text-sm cursor-pointer"
+              >
+                ✕
+              </button>
+            </div>
+
+            <div className="space-y-3.5 text-xs text-slate-300">
+              <div className="p-3.5 rounded-2xl bg-amber-500/10 border border-amber-500/30 flex items-start gap-3">
+                <span className="text-xl shrink-0">1️⃣</span>
+                <div>
+                  <span className="font-bold text-amber-300 block text-sm mb-0.5">Read the Mystery Question</span>
+                  Look at the top question banner. It tells you what was stolen, where the incident happened, and what time the crime took place.
+                </div>
+              </div>
+
+              <div className="p-3.5 rounded-2xl bg-slate-900 border border-slate-800 flex items-start gap-3">
+                <span className="text-xl shrink-0">2️⃣</span>
+                <div>
+                  <span className="font-bold text-white block text-sm mb-0.5">Examine the 4 Clues</span>
+                  The right column lists 4 pieces of evidence (CCTV, receipts, electronic logs, alibis).
+                  You can also click city map locations to see what evidence leads were found at each venue.
+                </div>
+              </div>
+
+              <div className="p-3.5 rounded-2xl bg-slate-900 border border-slate-800 flex items-start gap-3">
+                <span className="text-xl shrink-0">3️⃣</span>
+                <div>
+                  <span className="font-bold text-white block text-sm mb-0.5">Eliminate Innocent Suspects</span>
+                  Out of the 3 suspects, 2 people have verified alibis (e.g. they were having coffee or caught on camera elsewhere).
+                  The 1 remaining suspect whose story doesn't match the clues is the guilty culprit!
+                </div>
+              </div>
+
+              <div className="p-3.5 rounded-2xl bg-emerald-950/40 border border-emerald-500/40 flex items-start gap-3">
+                <span className="text-xl shrink-0">4️⃣</span>
+                <div>
+                  <span className="font-bold text-emerald-400 block text-sm mb-0.5">Click [ACCUSE] Before Timer Runs Out</span>
+                  Click the suspect's card or the [ACCUSE] button to lock in your deduction.
+                  A correct deduction awards +100 points plus a speed time bonus!
+                </div>
+              </div>
+            </div>
+
+            <button
+              onClick={() => setShowHelpModal(false)}
+              className="mt-6 w-full py-3.5 rounded-2xl bg-amber-500 hover:bg-amber-400 text-black font-black uppercase text-xs tracking-wider transition-all cursor-pointer shadow-lg shadow-amber-500/20"
+            >
+              GOT IT, LET'S INVESTIGATE!
+            </button>
           </div>
         </div>
       )}

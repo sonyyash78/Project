@@ -21,6 +21,8 @@ export const CASES = [
     location: 'MUSEUM',
     locationIcon: '🏛',
     story: 'A priceless diamond disappeared during a private museum gala. Three people were near the exhibition hall.',
+    question: 'Who used the security badge to unlock the exhibition room and steal the diamond at 9:42 PM?',
+    howToSolve: 'Cross-reference alibis: Riya has a cafe receipt, Alex is seen on CCTV exiting. Match the badge owner!',
     suspects: [
       {
         id: 'alex',
@@ -88,6 +90,8 @@ export const CASES = [
     location: 'HOTEL',
     locationIcon: '🏨',
     story: 'During a five-minute blackout, an important confidential file disappeared from Room 407.',
+    question: 'Who entered Room 407 during the 10:15 PM blackout and stole the confidential file?',
+    howToSolve: 'Emma was verified downstairs at the cafe. Leo was in the elevator. See whose keycard opened Room 407!',
     suspects: [
       {
         id: 'emma',
@@ -118,7 +122,7 @@ export const CASES = [
         title: 'Power Grid Telemetry',
         location: 'HOTEL',
         icon: '⚡',
-        text: 'The blackout began at 10:15 PM.'
+        text: 'The blackout began at 10:15 PM and lasted exactly 5 minutes.'
       },
       {
         id: 'c2',
@@ -134,7 +138,7 @@ export const CASES = [
         title: 'Lounge Registry',
         location: 'CAFE',
         icon: '☕',
-        text: 'Another suspect was recorded at the hotel cafe during the blackout.'
+        text: 'Another suspect was recorded having drinks at the hotel cafe during the blackout.'
       },
       {
         id: 'c4',
@@ -155,6 +159,8 @@ export const CASES = [
     location: 'BANK',
     locationIcon: '🏦',
     story: 'A rare painting being transported for an auction disappeared before the security transfer.',
+    question: 'Who entered the storage area at 8:21 PM and carried the stolen painting away?',
+    howToSolve: 'Sam arrived on the train at 8:10 PM. Nora entered the storage room. Who was seen carrying the case away?',
     suspects: [
       {
         id: 'nora',
@@ -185,7 +191,7 @@ export const CASES = [
         title: 'Vault Manifest',
         location: 'BANK',
         icon: '🕒',
-        text: 'The painting was last recorded at 8:20 PM.'
+        text: 'The painting was last recorded safely inside at 8:20 PM.'
       },
       {
         id: 'c2',
@@ -222,6 +228,8 @@ export const CASES = [
     location: 'CAFE',
     locationIcon: '☕',
     story: 'A famous food critic collapsed after sipping an exclusive pour-over at the midnight cafe tasting.',
+    question: 'Who contaminated the food critic\'s coffee mug with toxic almond extract?',
+    howToSolve: 'Marco brewed at the machine. Julian was on the phone outdoors. Who was caught with the poison vial?',
     suspects: [
       {
         id: 'marco',
@@ -289,6 +297,8 @@ export const CASES = [
     location: 'STATION',
     locationIcon: '🚉',
     story: 'A diplomatic briefcase was swapped with counterfeit papers aboard the midnight express train.',
+    question: 'Who used the security override keycard to enter the courier cabin and swap the briefcase?',
+    howToSolve: 'Arthur had authentic documents at boarding. Nadia exited the turnstiles. Who held the override key?',
     suspects: [
       {
         id: 'arthur',
@@ -356,6 +366,8 @@ export const CASES = [
     location: 'BANK',
     locationIcon: '🏦',
     story: 'An encrypted quantum storage drive was extracted from the subterranean vault during routine maintenance.',
+    question: 'Who unbolted the air intake duct behind the vault to extract the quantum storage drive?',
+    howToSolve: 'Dr. Thorne was sealed in the cleanroom. Maya Lin was actively typing on terminal. Whose tool was used?',
     suspects: [
       {
         id: 'aris',
