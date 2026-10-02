@@ -21,67 +21,67 @@ export const CASES = [
     location: 'MUSEUM',
     locationIcon: '🏛',
     story: 'A priceless diamond disappeared during a private museum gala. Three people were near the exhibition hall.',
-    question: 'Who used the security badge to unlock the exhibition room and steal the diamond at 9:42 PM?',
-    howToSolve: 'Cross-reference alibis: Riya has a cafe receipt, Alex is seen on CCTV exiting. Match the badge owner!',
+    question: 'Who used their security badge to unlock the exhibition room and steal the diamond at 9:42 PM?',
+    howToSolve: 'Alex Morgan was at the train station. Riya Sharma was at the cafe. Marcus Lee\'s badge opened the vault!',
     suspects: [
       {
         id: 'alex',
         name: 'Alex Morgan',
         avatar: '👔',
         role: 'Museum Curator',
-        description: 'Oversees VIP exhibits. Claims he was inspecting camera cables in the east wing.'
+        description: 'Oversees VIP exhibits. Left early through the east exit.'
       },
       {
         id: 'riya',
         name: 'Riya Sharma',
         avatar: '💎',
         role: 'Antique Collector',
-        description: 'Observed near the main gallery. Insists she was enjoying espresso during the event.'
+        description: 'Attended the gala. Seen sitting in the museum cafe.'
       },
       {
         id: 'marcus',
         name: 'Marcus Lee',
         avatar: '🛡️',
         role: 'Chief Security Guard',
-        description: 'Possesses master access keys to high-security vaults. Left the museum right after.'
+        description: 'In charge of security keys and access badges for the vault.'
       }
     ],
     clues: [
       {
         id: 'c1',
         num: '01',
-        title: 'Security Log',
+        title: 'Vault Security Log',
         location: 'MUSEUM',
         icon: '📋',
-        text: 'The museum security log shows that the exhibition room was opened at 9:42 PM.'
+        text: 'The museum security log confirms the diamond exhibition vault was unlocked at 9:42 PM.'
       },
       {
         id: 'c2',
         num: '02',
-        title: 'CCTV Surveillance',
+        title: 'Station CCTV Camera',
         location: 'STATION',
         icon: '📹',
-        text: 'CCTV shows one suspect leaving the museum through the east entrance shortly afterward.'
+        text: 'Station CCTV clearly recorded Alex Morgan boarding an express train at 9:35 PM (Alibi verified).'
       },
       {
         id: 'c3',
         num: '03',
-        title: 'Cafe Timestamp',
+        title: 'Cafe Receipt Log',
         location: 'CAFE',
         icon: '☕',
-        text: 'A cafe receipt places another suspect at the cafe during the critical time.'
+        text: 'A cafe timestamped receipt proves Riya Sharma was sitting drinking espresso at 9:42 PM (Alibi verified).'
       },
       {
         id: 'c4',
         num: '04',
-        title: 'Access Badge Verification',
+        title: 'Badge Audit Record',
         location: 'BANK',
         icon: '🔑',
-        text: 'The security badge used to open the exhibition room belongs to the remaining suspect.'
+        text: 'Digital security scanner logs prove the badge used to unlock the vault at 9:42 PM belongs to Marcus Lee!'
       }
     ],
     culprit: 'Marcus Lee',
-    deductionNote: 'The cafe receipt corroborates Riya Sharma’s alibi. CCTV tracks Alex Morgan exiting, while the digital badge used to enter the exhibition room at 9:42 PM belongs to Marcus Lee.'
+    deductionNote: 'Alex Morgan was at the train station at 9:35 PM, and Riya Sharma was drinking espresso at the cafe at 9:42 PM. The security badge used to breach the vault belongs directly to Marcus Lee!'
   },
   {
     id: 'hotel_blackout',
@@ -91,28 +91,28 @@ export const CASES = [
     locationIcon: '🏨',
     story: 'During a five-minute blackout, an important confidential file disappeared from Room 407.',
     question: 'Who entered Room 407 during the 10:15 PM blackout and stole the confidential file?',
-    howToSolve: 'Emma was verified downstairs at the cafe. Leo was in the elevator. See whose keycard opened Room 407!',
+    howToSolve: 'Leo Khan was trapped in the elevator. Emma Stone was at the cafe. Daniel Roy\'s keycard swiped Room 407!',
     suspects: [
       {
         id: 'emma',
         name: 'Emma Stone',
         avatar: '📸',
         role: 'Investigative Journalist',
-        description: 'Resident in suite 302. Inquiring about confidential corporate mergers.'
+        description: 'Resident in suite 302. Claims she was having tea downstairs.'
       },
       {
         id: 'daniel',
         name: 'Daniel Roy',
         avatar: '💼',
         role: 'Systems Consultant',
-        description: 'Contracted for network maintenance. Spotted near service elevators before power loss.'
+        description: 'Contracted for network maintenance. Holds duplicate keycards.'
       },
       {
         id: 'leo',
         name: 'Leo Khan',
         avatar: '🗝️',
         role: 'Hotel Concierge',
-        description: 'Master key administrator on duty. Accountable for 4th-floor floor access.'
+        description: 'Master key administrator on duty during the night shift.'
       }
     ],
     clues: [
@@ -122,35 +122,35 @@ export const CASES = [
         title: 'Power Grid Telemetry',
         location: 'HOTEL',
         icon: '⚡',
-        text: 'The blackout began at 10:15 PM and lasted exactly 5 minutes.'
+        text: 'The blackout began at 10:15 PM and ended at 10:20 PM (a 5-minute window).'
       },
       {
         id: 'c2',
         num: '02',
-        title: 'Elevator Shaft Log',
+        title: 'Elevator Shaft Sensor',
         location: 'BANK',
         icon: '🛗',
-        text: 'The elevator log shows one suspect reached the fourth floor at 10:16 PM.'
+        text: 'The elevator emergency log proves Leo Khan was trapped inside the lift from 10:15 to 10:19 PM (Alibi verified).'
       },
       {
         id: 'c3',
         num: '03',
-        title: 'Lounge Registry',
+        title: 'Cafe Video Surveillance',
         location: 'CAFE',
         icon: '☕',
-        text: 'Another suspect was recorded having drinks at the hotel cafe during the blackout.'
+        text: 'Hotel cafe cameras recorded Emma Stone sitting and drinking tea continuously from 10:10 to 10:25 PM (Alibi verified).'
       },
       {
         id: 'c4',
         num: '04',
-        title: 'Electronic Keycard Audit',
+        title: 'Room 407 Door Lock Log',
         location: 'MUSEUM',
         icon: '💳',
-        text: 'A keycard log shows the remaining suspect opened Room 407.'
+        text: 'The electronic lock audit on Room 407 recorded Daniel Roy\'s personal keycard opening the door at 10:17 PM!'
       }
     ],
     culprit: 'Daniel Roy',
-    deductionNote: 'Emma was verified at the ground cafe, and Leo was registered entering the elevator at 10:16 PM. The electronic door cylinder audit reveals Daniel Roy swiped into Room 407.'
+    deductionNote: 'Leo Khan was trapped in the elevator, and Emma Stone was verified on cafe video. The electronic keycard used to open Room 407 at 10:17 PM belongs to Daniel Roy!'
   },
   {
     id: 'stolen_painting',
@@ -160,14 +160,14 @@ export const CASES = [
     locationIcon: '🏦',
     story: 'A rare painting being transported for an auction disappeared before the security transfer.',
     question: 'Who entered the storage area at 8:21 PM and carried the stolen painting away?',
-    howToSolve: 'Sam arrived on the train at 8:10 PM. Nora entered the storage room. Who was seen carrying the case away?',
+    howToSolve: 'Sam was on Platform 2. Nora was in the appraisal hall. Victor was caught loading the painting crate!',
     suspects: [
       {
         id: 'nora',
         name: 'Nora',
         avatar: '🎨',
         role: 'Fine Art Appraiser',
-        description: 'Certified the authenticity of the painting inside the bank private vault.'
+        description: 'Certified the authenticity of the painting inside the bank vault.'
       },
       {
         id: 'victor',
@@ -188,38 +188,38 @@ export const CASES = [
       {
         id: 'c1',
         num: '01',
-        title: 'Vault Manifest',
+        title: 'Vault Manifest Log',
         location: 'BANK',
         icon: '🕒',
-        text: 'The painting was last recorded safely inside at 8:20 PM.'
+        text: 'The masterpiece painting was verified safely inside the storage room at 8:20 PM.'
       },
       {
         id: 'c2',
         num: '02',
-        title: 'Station Arrival Gate',
+        title: 'Railway Platform Camera',
         location: 'STATION',
         icon: '🚉',
-        text: 'Station CCTV shows one suspect arriving on a train at 8:10 PM.'
+        text: 'Station CCTV shows Sam actively dispatching express freight on Platform 2 from 8:15 to 8:30 PM (Alibi verified).'
       },
       {
         id: 'c3',
         num: '03',
-        title: 'Vault Access System',
+        title: 'Appraisal Hall Scanner',
         location: 'MUSEUM',
         icon: '🔐',
-        text: 'The bank access system recorded another suspect entering the storage room at 8:21 PM.'
+        text: 'Biometric scanners confirm Nora was inside the appraisal gallery speaking with clients at 8:21 PM (Alibi verified).'
       },
       {
         id: 'c4',
         num: '04',
-        title: 'Eyewitness Statement',
+        title: 'Loading Bay Eyewitness',
         location: 'HOTEL',
         icon: '👁️',
-        text: 'A witness saw the remaining suspect leaving the building carrying a large case.'
+        text: 'A security guard witnessed Victor carrying the sealed painting case into an unmarked vehicle at 8:23 PM!'
       }
     ],
     culprit: 'Victor',
-    deductionNote: 'Sam arrived on the train at 8:10 PM, and Nora was recorded entering the storage room at 8:21 PM. The eyewitness testimony identifies Victor carrying the painting case away.'
+    deductionNote: 'Sam was verified on Platform 2, and Nora was in the appraisal gallery. Security eyewitness testimony identifies Victor carrying the painting case away!'
   },
   {
     id: 'poisoned_coffee',
@@ -229,28 +229,28 @@ export const CASES = [
     locationIcon: '☕',
     story: 'A famous food critic collapsed after sipping an exclusive pour-over at the midnight cafe tasting.',
     question: 'Who contaminated the food critic\'s coffee mug with toxic almond extract?',
-    howToSolve: 'Marco brewed at the machine. Julian was on the phone outdoors. Who was caught with the poison vial?',
+    howToSolve: 'Marco stayed at the coffee machine. Julian was on the phone outside. Elena\'s prints were on the poison bottle!',
     suspects: [
       {
         id: 'marco',
         name: 'Marco',
         avatar: '👨‍🍳',
         role: 'Master Barista',
-        description: 'Personally brewed the roast blend. Claims he was strictly calibrated by the steam wand.'
+        description: 'Personally brewed the roast blend at the espresso station.'
       },
       {
         id: 'elena',
         name: 'Elena Rostova',
         avatar: '🕶️',
         role: 'Rival Cafe Owner',
-        description: 'Entered unannounced right before the tasting. Hovered suspiciously around the sugar bar.'
+        description: 'Entered unannounced. Seen hovering around the sugar & condiment bar.'
       },
       {
         id: 'julian',
         name: 'Julian Vance',
         avatar: '📱',
         role: 'Venture Investor',
-        description: 'Financed the bistro chain. Seen outside having a furious argument on his cellphone.'
+        description: 'Financed the bistro chain. Seen outside pacing on the terrace.'
       }
     ],
     clues: [
@@ -260,35 +260,35 @@ export const CASES = [
         title: 'Barista Service Chit',
         location: 'CAFE',
         icon: '☕',
-        text: 'The espresso machine log confirms the order was prepared cleanly at 11:14 PM.'
+        text: 'The espresso machine log confirms the pour-over was brewed at 11:14 PM.'
       },
       {
         id: 'c2',
         num: '02',
-        title: 'Forensic Toxin Report',
+        title: 'Espresso Counter Camera',
         location: 'HOTEL',
         icon: '🧪',
-        text: 'Forensic toxicology detected traces of almond poison introduced directly into the serving cup.'
+        text: 'Counter video confirms Marco never left the grinder and steam wand between 11:10 and 11:20 PM (Alibi verified).'
       },
       {
         id: 'c3',
         num: '03',
-        title: 'Courtyard Surveillance',
+        title: 'Courtyard Phone Records',
         location: 'BANK',
         icon: '📹',
-        text: 'CCTV footage confirms Julian Vance remained outdoors on his phone from 11:10 PM to 11:22 PM.'
+        text: 'CCTV and phone logs prove Julian Vance was speaking outdoors on a business call from 11:10 to 11:22 PM (Alibi verified).'
       },
       {
         id: 'c4',
         num: '04',
-        title: 'Condiment Stand Search',
+        title: 'Forensic Toxin Bottle',
         location: 'MUSEUM',
         icon: '🧴',
-        text: 'A small dropper vial of almond extract with wiped fingerprints was found in Elena Rostova’s coat.'
+        text: 'Forensics found the almond poison dropper bottle beside the sugar bar with Elena Rostova\'s fingerprints!'
       }
     ],
     culprit: 'Elena Rostova',
-    deductionNote: 'Julian Vance was verified on the phone outdoors, and Barista Marco stayed at the espresso machine. Forensic recovery places the poison vial directly inside Elena Rostova’s coat.'
+    deductionNote: 'Marco was stationed at the grinder, and Julian Vance was on the phone outdoors. Forensics found the poison bottle directly matching Elena Rostova\'s fingerprints!'
   },
   {
     id: 'midnight_express',
@@ -298,28 +298,28 @@ export const CASES = [
     locationIcon: '🚉',
     story: 'A diplomatic briefcase was swapped with counterfeit papers aboard the midnight express train.',
     question: 'Who used the security override keycard to enter the courier cabin and swap the briefcase?',
-    howToSolve: 'Arthur had authentic documents at boarding. Nadia exited the turnstiles. Who held the override key?',
+    howToSolve: 'Arthur had the authentic briefcase at boarding. Nadia exited into the street. Officer Kyle opened the lock!',
     suspects: [
       {
         id: 'arthur',
         name: 'Arthur Pendelton',
         avatar: '💼',
         role: 'Diplomatic Courier',
-        description: 'Designated carrier for state secrets. Claims someone tampered with the cabin latch.'
+        description: 'Designated carrier for state secrets.'
       },
       {
         id: 'nadia',
         name: 'Nadia Petrova',
         avatar: '📸',
         role: 'Foreign Reporter',
-        description: 'Boarded without heavy luggage. Kept taking flash photographs near the sleeper cars.'
+        description: 'Boarded without luggage. Seen taking photos on the platform.'
       },
       {
         id: 'kyle',
         name: 'Officer Kyle',
         avatar: '👮',
         role: 'Transit Police Officer',
-        description: 'On night patrol duty. Holds electronic bypass clearance for private passenger cabins.'
+        description: 'Carried electronic master passcards for all passenger cabins.'
       }
     ],
     clues: [
@@ -329,35 +329,35 @@ export const CASES = [
         title: 'Platform Arrival Clock',
         location: 'STATION',
         icon: '🕒',
-        text: 'The midnight express pulled onto Platform 4 at exactly 12:05 AM.'
+        text: 'The midnight express train pulled onto Platform 4 at exactly 12:05 AM.'
       },
       {
         id: 'c2',
         num: '02',
-        title: 'Exit Turnstile Scanner',
-        location: 'CAFE',
-        icon: '🎫',
-        text: 'Station exit turnstiles recorded Nadia Petrova passing through to the outside square at 12:15 AM.'
+        title: 'Baggage Scanner X-Ray',
+        location: 'BANK',
+        icon: '📦',
+        text: 'X-ray scans prove Arthur Pendelton boarded at 12:06 AM with the authentic sealed briefcase intact (Alibi verified).'
       },
       {
         id: 'c3',
         num: '03',
-        title: 'Deadbolt Electronic Log',
-        location: 'HOTEL',
-        icon: '🔑',
-        text: 'The diplomatic cabin deadbolt was overridden with a transit security master card at 12:08 AM.'
+        title: 'Exit Turnstile Scanner',
+        location: 'CAFE',
+        icon: '🎫',
+        text: 'Ticket barriers record Nadia Petrova scanned out to the street square at 12:07 AM (Alibi verified).'
       },
       {
         id: 'c4',
         num: '04',
-        title: 'Courier Luggage Scan',
-        location: 'BANK',
-        icon: '📦',
-        text: 'Baggage X-ray scans verify Arthur entered the train with the authentic sealed documents intact.'
+        title: 'Cabin Electronic Deadbolt',
+        location: 'HOTEL',
+        icon: '🔑',
+        text: 'The courier cabin lock was overridden at 12:08 AM using security badge #402 issued to Officer Kyle!'
       }
     ],
     culprit: 'Officer Kyle',
-    deductionNote: 'Arthur possessed the real documents upon boarding, and Nadia had already exited the station turnstiles. The master electronic override at 12:08 AM belongs exclusively to Officer Kyle.'
+    deductionNote: 'Arthur had the real documents at boarding, and Nadia had already scanned out to the street. The compartment lock was overridden at 12:08 AM using Officer Kyle\'s security badge!'
   },
   {
     id: 'cyber_vault_breach',
@@ -367,28 +367,28 @@ export const CASES = [
     locationIcon: '🏦',
     story: 'An encrypted quantum storage drive was extracted from the subterranean vault during routine maintenance.',
     question: 'Who unbolted the air intake duct behind the vault to extract the quantum storage drive?',
-    howToSolve: 'Dr. Thorne was sealed in the cleanroom. Maya Lin was actively typing on terminal. Whose tool was used?',
+    howToSolve: 'Dr. Thorne was sealed in the cleanroom. Maya Lin was typing in Room 204. Vincent Cross\'s wrench unbolted the vent!',
     suspects: [
       {
         id: 'aris',
         name: 'Dr. Aris Thorne',
         avatar: '🔬',
         role: 'Quantum Physicist',
-        description: 'Created the drive hardware. Claims she was locked inside the cleanroom facility.'
+        description: 'Created the drive hardware. Works in the cleanroom.'
       },
       {
         id: 'maya',
         name: 'Maya Lin',
         avatar: '💻',
         role: 'Cybersecurity Auditor',
-        description: 'Conducted network penetration tests. Flagged repeated brute-force server attempts.'
+        description: 'Conducted network penetration tests from the console room.'
       },
       {
         id: 'vincent',
         name: 'Vincent Cross',
         avatar: '🕶️',
         role: 'Facility Operations Lead',
-        description: 'Maintains vault mechanical vents. Known to carry heavy hydraulic duct tools.'
+        description: 'Maintains vault mechanical vents. Carries custom hydraulic tools.'
       }
     ],
     clues: [
@@ -398,7 +398,7 @@ export const CASES = [
         title: 'Vault Cabinet Sensor',
         location: 'BANK',
         icon: '🗄️',
-        text: 'The quantum vault chassis was mechanically forced open from behind at 2:40 AM.'
+        text: 'The quantum vault cabinet was forced open through the back air intake duct at 2:40 AM.'
       },
       {
         id: 'c2',
@@ -406,27 +406,27 @@ export const CASES = [
         title: 'Cleanroom Airlock Record',
         location: 'MUSEUM',
         icon: '🧬',
-        text: 'Airlock biometric sensors verify Dr. Aris Thorne remained sealed in the laboratory until 3:00 AM.'
+        text: 'Airlock biosensors confirm Dr. Aris Thorne was sealed inside the cleanroom until 3:00 AM (Alibi verified).'
       },
       {
         id: 'c3',
         num: '03',
-        title: 'Terminal Keystroke Audit',
+        title: 'Console Keystroke Log',
         location: 'HOTEL',
         icon: '⌨️',
-        text: 'Maya Lin was confirmed continuously typing audit scripts on the Floor 2 terminal from 2:35 AM to 2:45 AM.'
+        text: 'Server logs confirm Maya Lin was actively typing commands in Room 204 from 2:35 to 2:45 AM (Alibi verified).'
       },
       {
         id: 'c4',
         num: '04',
-        title: 'Ventilation Hatch Inspection',
+        title: 'Ventilation Hatch Tool Marks',
         location: 'STATION',
         icon: '🔧',
-        text: 'The air intake duct directly behind the vault was unbolted with Vincent Cross’s custom wrench.'
+        text: 'Forensic tool analysis proves the duct bolts were unbolted using a wrench labeled with Vincent Cross\'s serial number!'
       }
     ],
     culprit: 'Vincent Cross',
-    deductionNote: 'Dr. Thorne was sealed in the cleanroom, and Maya Lin was logged active on the 2nd floor terminal. The mechanical duct breach behind the vault was executed with Vincent Cross’s wrench.'
+    deductionNote: 'Dr. Thorne was sealed in the cleanroom, and Maya Lin was logged typing in Room 204. The mechanical duct breach behind the vault was executed using Vincent Cross\'s wrench!'
   }
 ];
 

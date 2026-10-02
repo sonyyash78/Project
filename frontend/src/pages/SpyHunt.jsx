@@ -1389,18 +1389,29 @@ export default function SpyHunt() {
               <div className="flex-1">
                 <div className="flex items-center gap-2 mb-2">
                   <span className="px-3 py-1 rounded-full bg-amber-500 text-black font-black text-xs uppercase tracking-wider shadow">
-                    ❓ CASE QUESTION
+                    ❓ QUESTION (SAWAAL)
                   </span>
                   <span className="text-xs font-mono font-bold text-amber-300">
-                    Find the culprit among the 3 suspects below
+                    Identify the culprit from Options A, B, or C
                   </span>
                 </div>
-                <h3 className="text-base sm:text-xl font-black text-white font-serif tracking-wide leading-snug mb-2">
+                <h3 className="text-base sm:text-xl font-black text-white font-serif tracking-wide leading-snug mb-2.5">
                   "{currentCase.question || currentCase.story}"
                 </h3>
+                
+                {/* 3 Options Quick Bar */}
+                <div className="flex flex-wrap items-center gap-2 mb-2">
+                  <span className="text-xs font-bold text-slate-400">OPTIONS:</span>
+                  {currentCase.suspects.map((s, idx) => (
+                    <span key={s.id} className="text-xs px-2.5 py-1 rounded-xl bg-slate-800 border border-slate-700 font-mono text-amber-200">
+                      <strong>Option {['A', 'B', 'C'][idx]}:</strong> {s.name}
+                    </span>
+                  ))}
+                </div>
+
                 {currentCase.howToSolve && (
                   <div className="text-xs text-amber-300/90 font-medium flex items-center gap-2 bg-amber-500/10 px-3 py-1.5 rounded-xl border border-amber-500/20 max-w-fit">
-                    <span>💡 Deduction Tip:</span>
+                    <span>💡 Logic Hint:</span>
                     <span>{currentCase.howToSolve}</span>
                   </div>
                 )}
@@ -1545,19 +1556,23 @@ export default function SpyHunt() {
                 {/* 3 Suspects Card Grid */}
                 <div className="bg-slate-950/80 border border-slate-800 rounded-3xl p-5 shadow-2xl backdrop-blur-xl flex-1 flex flex-col">
                   <div className="flex items-center justify-between mb-3">
-                    <h3 className="text-xs font-black uppercase tracking-wider text-amber-400 flex items-center gap-2">
-                      <span>⚖️</span> Select the Culprit
-                    </h3>
+                    <div>
+                      <h3 className="text-xs font-black uppercase tracking-wider text-amber-400 flex items-center gap-2">
+                        <span>⚖️</span> Select Culprit (Choose Option A, B, or C)
+                      </h3>
+                      <p className="text-[10px] text-slate-400">Read clues to eliminate innocent alibis, then click Accuse</p>
+                    </div>
                     {isAnswerLocked && (
-                      <span className="text-[10px] text-emerald-400 font-bold">
+                      <span className="text-[10px] text-emerald-400 font-bold bg-emerald-950/60 px-2 py-0.5 rounded border border-emerald-500/40">
                         ✓ ACCUSATION SUBMITTED
                       </span>
                     )}
                   </div>
 
                   <div className="grid grid-cols-1 gap-2.5 flex-1">
-                    {currentCase.suspects.map((suspect) => {
+                    {currentCase.suspects.map((suspect, index) => {
                       const isChosen = localAnswer === suspect.name;
+                      const optionLetter = ['A', 'B', 'C'][index] || (index + 1);
                       return (
                         <div
                           key={suspect.id}
@@ -1571,10 +1586,15 @@ export default function SpyHunt() {
                           }`}
                         >
                           <div className="flex items-center gap-3">
+                            {/* Option Letter Tag */}
+                            <div className="w-10 h-10 rounded-xl bg-amber-500/15 border border-amber-500/30 flex flex-col items-center justify-center shrink-0">
+                              <span className="text-[9px] font-mono text-amber-400 font-bold leading-none">OPT</span>
+                              <span className="text-sm font-black text-white leading-none">{optionLetter}</span>
+                            </div>
                             <span className="text-3xl">{suspect.avatar}</span>
                             <div>
                               <div className="flex items-center gap-2">
-                                <span className="font-extrabold text-xs text-white">
+                                <span className="font-extrabold text-sm text-white">
                                   {suspect.name}
                                 </span>
                                 <span className="text-[10px] text-amber-300 font-mono">
@@ -1593,8 +1613,8 @@ export default function SpyHunt() {
                             </span>
                           ) : (
                             !isAnswerLocked && (
-                              <button className="px-3 py-1 rounded-xl bg-slate-800 text-slate-300 text-[10px] font-bold uppercase hover:bg-amber-500 hover:text-black transition-colors">
-                                Accuse
+                              <button className="px-3.5 py-1.5 rounded-xl bg-amber-500/20 text-amber-300 border border-amber-500/40 text-xs font-bold uppercase hover:bg-amber-500 hover:text-black transition-colors">
+                                Accuse [{optionLetter}]
                               </button>
                             )
                           )}
