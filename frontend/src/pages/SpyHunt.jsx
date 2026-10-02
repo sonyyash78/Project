@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { DETECTIVE_CHARACTERS, getDetectiveById } from '../game/characters';
-import { CASES, LOCATIONS, MAP_CONNECTIONS, getCaseByRound } from '../game/cases';
+import { CASES, LOCATIONS, MAP_CONNECTIONS, getCaseByRound, getCaseById, generateMatchCasePlan } from '../game/cases';
 import { SpyHuntNetwork } from '../game/network';
 import { DetectiveAudio } from '../game/sound';
 import { getSpyLeaderboard, recordSpyMatchResults, resetSpyLeaderboard } from '../game/leaderboard';
@@ -34,7 +34,10 @@ export default function SpyHunt() {
 
   // Active Mystery Round State
   const [currentRound, setCurrentRound] = useState(1);
-  const [timeRemaining, setTimeRemaining] = useState(30);
+  const [activeCaseId, setActiveCaseId] = useState(null);
+  const [timeRemaining, setTimeRemaining] = useState(60);
+  const [introCountdown, setIntroCountdown] = useState(10);
+  const [resultsCountdown, setResultsCountdown] = useState(12);
   const [localAnswer, setLocalAnswer] = useState(null); // Selected suspect name
   const [isAnswerLocked, setIsAnswerLocked] = useState(false);
   const [roundScores, setRoundScores] = useState({}); // { [playerId]: points }
@@ -43,9 +46,12 @@ export default function SpyHunt() {
   // Networking & Timers
   const networkRef = useRef(null);
   const timerIntervalRef = useRef(null);
-  const roundEndTimeRef = useRef(null);
+  const introTimerRef = useRef(null);
+  const resultsTimerRef = useRef(null);
+  const matchCasePlanRef = useRef([]);
+  const activeCaseIdRef = useRef(null);
 
-  // Synchronized State References (Prevents stale closure bug during room joining)
+  // Synchronized State References (Prevents stale closure bug during room joining and round progression)
   const isHostRef = useRef(isHost);
   const playersRef = useRef(players);
   const phaseRef = useRef(phase);
@@ -64,6 +70,18 @@ export default function SpyHunt() {
   useEffect(() => {
     currentRoundRef.current = currentRound;
   }, [currentRound]);
+  useEffect(() => {
+    activeCaseIdRef.current = activeCaseId;
+  }, [activeCaseId]);
+
+  // Clean up all timers on unmount
+  useEffect(() => {
+    return () => {
+      if (timerIntervalRef.current) clearInterval(timerIntervalRef.current);
+      if (introTimerRef.current) clearInterval(introTimerRef.current);
+      if (resultsTimerRef.current) clearInterval(resultsTimerRef.current);
+    };
+  }, []);
 
   // Initialize and check URL parameters on mount
   useEffect(() => {
@@ -196,31 +214,55 @@ export default function SpyHunt() {
 
       // 4. HOST STARTS CASE INVESTIGATION
       case 'CASE_START':
+        if (timerIntervalRef.current) clearInterval(timerIntervalRef.current);
+        if (introTimerRef.current) clearInterval(introTimerRef.current);
+        if (resultsTimerRef.current) clearInterval(resultsTimerRef.current);
+
         setCurrentRound(packet.round);
-        setTimeRemaining(30);
+        currentRoundRef.current = packet.round;
+        const resolvedCaseId = packet.caseId || null;
+        setActiveCaseId(resolvedCaseId);
+        activeCaseIdRef.current = resolvedCaseId;
+
+        setTimeRemaining(60);
         setLocalAnswer(null);
         setIsAnswerLocked(false);
         setRoundScores({});
         setLastRoundResult(null);
 
-        const targetCase = getCaseByRound(packet.round);
+        const targetCase = getCaseByRound(packet.round, resolvedCaseId);
         setSelectedLocation(targetCase.location);
 
-        // Show brief case intro overlay
+        // Show comprehensive case briefing overlay for 10 seconds
         setPhase('CASE_INTRO');
+        setIntroCountdown(10);
         playSfx('clue');
 
-        setTimeout(() => {
-          setPhase('INVESTIGATION');
-        }, 3000);
+        let introSecs = 10;
+        introTimerRef.current = setInterval(() => {
+          introSecs -= 1;
+          setIntroCountdown(introSecs);
+          if (introSecs <= 0) {
+            clearInterval(introTimerRef.current);
+            setPhase('INVESTIGATION');
+            if (hostActive) {
+              startHostRoundTimer(packet.round, resolvedCaseId);
+            }
+          }
+        }, 1000);
+        break;
+
+      case 'FORCE_START_INVESTIGATION':
+        if (introTimerRef.current) clearInterval(introTimerRef.current);
+        setPhase('INVESTIGATION');
         break;
 
       // 5. CLOCK TICK FROM HOST
       case 'TIMER_TICK':
         setTimeRemaining(packet.timeRemaining);
-        if (packet.timeRemaining <= 5 && packet.timeRemaining > 0) {
+        if (packet.timeRemaining <= 10 && packet.timeRemaining > 0) {
           playSfx('tick', true);
-        } else if (packet.timeRemaining % 5 === 0) {
+        } else if (packet.timeRemaining % 10 === 0) {
           playSfx('tick', false);
         }
         break;
@@ -235,7 +277,7 @@ export default function SpyHunt() {
           if (hostActive) {
             const allLocked = next.every((p) => p.isLocked);
             if (allLocked) {
-              handleHostEvaluateRound(next, currentRoundRef.current, packet.remainingTime || 1);
+              handleHostEvaluateRound(next, currentRoundRef.current, packet.remainingTime || 1, activeCaseIdRef.current);
             } else {
               networkRef.current?.broadcast({
                 type: 'SYNC_LOCKED_STATUS',
@@ -274,6 +316,10 @@ export default function SpyHunt() {
 
       // 10. REMATCH / PLAY AGAIN
       case 'RESTART_GAME':
+        if (timerIntervalRef.current) clearInterval(timerIntervalRef.current);
+        if (introTimerRef.current) clearInterval(introTimerRef.current);
+        if (resultsTimerRef.current) clearInterval(resultsTimerRef.current);
+
         setPlayers((prev) =>
           prev.map((p) => ({
             ...p,
@@ -284,6 +330,12 @@ export default function SpyHunt() {
           }))
         );
         setCurrentRound(1);
+        currentRoundRef.current = 1;
+        setActiveCaseId(null);
+        activeCaseIdRef.current = null;
+        if (packet.newCasePlan) {
+          matchCasePlanRef.current = packet.newCasePlan;
+        }
         setLocalAnswer(null);
         setIsAnswerLocked(false);
         setPhase('LOBBY');
@@ -496,11 +548,22 @@ export default function SpyHunt() {
       return;
     }
     setErrorMessage('');
-    startRoundOnHost(1);
+    // Generate 3 randomized distinct cases for this match from the pool of 6
+    const plan = generateMatchCasePlan();
+    matchCasePlanRef.current = plan;
+    startRoundOnHost(1, plan[0]);
   };
 
-  const startRoundOnHost = (roundNum) => {
+  const startRoundOnHost = (roundNum, targetCaseId = null) => {
     if (timerIntervalRef.current) clearInterval(timerIntervalRef.current);
+    if (introTimerRef.current) clearInterval(introTimerRef.current);
+    if (resultsTimerRef.current) clearInterval(resultsTimerRef.current);
+
+    const caseId = targetCaseId || matchCasePlanRef.current[roundNum - 1] || getCaseByRound(roundNum).id;
+    activeCaseIdRef.current = caseId;
+    setActiveCaseId(caseId);
+    currentRoundRef.current = roundNum;
+    setCurrentRound(roundNum);
 
     // Reset round states
     setPlayers((prev) =>
@@ -513,32 +576,55 @@ export default function SpyHunt() {
 
     networkRef.current?.broadcast({
       type: 'CASE_START',
-      round: roundNum
+      round: roundNum,
+      caseId
     });
 
-    setCurrentRound(roundNum);
-    setTimeRemaining(30);
+    setTimeRemaining(60);
     setLocalAnswer(null);
     setIsAnswerLocked(false);
     setRoundScores({});
     setLastRoundResult(null);
 
-    const targetCase = getCaseByRound(roundNum);
+    const targetCase = getCaseByRound(roundNum, caseId);
     setSelectedLocation(targetCase.location);
 
     setPhase('CASE_INTRO');
+    setIntroCountdown(10);
     playSfx('clue');
 
-    setTimeout(() => {
-      setPhase('INVESTIGATION');
-      startHostRoundTimer(roundNum);
-    }, 3000);
+    let introSecs = 10;
+    introTimerRef.current = setInterval(() => {
+      introSecs -= 1;
+      setIntroCountdown(introSecs);
+      if (introSecs <= 0) {
+        clearInterval(introTimerRef.current);
+        setPhase('INVESTIGATION');
+        startHostRoundTimer(roundNum, caseId);
+      }
+    }, 1000);
   };
 
-  const startHostRoundTimer = (roundNum) => {
+  const handleHostSkipIntro = () => {
+    const hostActive = isHostRef.current || !!networkRef.current?.isHost;
+    if (!hostActive) return;
+
+    if (introTimerRef.current) clearInterval(introTimerRef.current);
+
+    networkRef.current?.broadcast({
+      type: 'FORCE_START_INVESTIGATION'
+    });
+
+    setPhase('INVESTIGATION');
+    startHostRoundTimer(currentRoundRef.current, activeCaseIdRef.current);
+  };
+
+  const startHostRoundTimer = (roundNum, caseId = null) => {
     if (timerIntervalRef.current) clearInterval(timerIntervalRef.current);
 
-    let seconds = 30;
+    let seconds = 60;
+    setTimeRemaining(seconds);
+
     timerIntervalRef.current = setInterval(() => {
       seconds -= 1;
       setTimeRemaining(seconds);
@@ -548,9 +634,9 @@ export default function SpyHunt() {
         timeRemaining: seconds
       });
 
-      if (seconds <= 5 && seconds > 0) {
+      if (seconds <= 10 && seconds > 0) {
         playSfx('tick', true);
-      } else if (seconds % 5 === 0) {
+      } else if (seconds % 10 === 0) {
         playSfx('tick', false);
       }
 
@@ -558,7 +644,7 @@ export default function SpyHunt() {
         clearInterval(timerIntervalRef.current);
         // Time expired: auto-lock and evaluate
         setPlayers((latestPlayers) => {
-          handleHostEvaluateRound(latestPlayers, roundNum, 0);
+          handleHostEvaluateRound(latestPlayers, roundNum, 0, caseId);
           return latestPlayers;
         });
       }
@@ -588,17 +674,17 @@ export default function SpyHunt() {
   };
 
   // Host authoritative evaluation
-  const handleHostEvaluateRound = (playerList, roundNum, timeBonusRemaining) => {
+  const handleHostEvaluateRound = (playerList, roundNum, timeBonusRemaining, caseId = null) => {
     if (timerIntervalRef.current) clearInterval(timerIntervalRef.current);
 
-    const activeCase = getCaseByRound(roundNum);
+    const activeCase = getCaseByRound(roundNum, caseId || activeCaseIdRef.current);
     const correctCulprit = activeCase.culprit;
 
     const roundScoreMap = {};
     const updatedPlayers = playerList.map((p) => {
       const isCorrect = p.currentAnswer === correctCulprit;
-      // 100 pts + time bonus (up to 60 pts based on speed)
-      const pointsEarned = isCorrect ? 100 + Math.max(0, Math.floor((timeBonusRemaining || 0) * 2)) : 0;
+      // 100 pts + time bonus (up to 40 pts based on remaining speed)
+      const pointsEarned = isCorrect ? 100 + Math.max(0, Math.floor((timeBonusRemaining || 0) * 0.6)) : 0;
       roundScoreMap[p.id] = pointsEarned;
 
       return {
@@ -611,6 +697,7 @@ export default function SpyHunt() {
 
     const resultData = {
       round: roundNum,
+      caseId: activeCase.id,
       culprit: correctCulprit,
       explanation: activeCase.deductionNote,
       roundScores: roundScoreMap,
@@ -628,6 +715,8 @@ export default function SpyHunt() {
   // Apply result on all clients
   const handleApplyRoundResult = (resultData) => {
     if (timerIntervalRef.current) clearInterval(timerIntervalRef.current);
+    if (resultsTimerRef.current) clearInterval(resultsTimerRef.current);
+    if (introTimerRef.current) clearInterval(introTimerRef.current);
 
     setPlayers(resultData.updatedPlayers);
     setRoundScores(resultData.roundScores);
@@ -637,6 +726,7 @@ export default function SpyHunt() {
     });
 
     setPhase('ROUND_RESULT');
+    setResultsCountdown(12);
 
     const myPoints = resultData.roundScores[playerId] || 0;
     if (myPoints > 0) {
@@ -645,44 +735,89 @@ export default function SpyHunt() {
       playSfx('wrong');
     }
 
-    // Auto-advance or conclude
-    if (resultData.round < 3) {
-      setTimeout(() => {
-        if (isHost) {
-          startRoundOnHost(resultData.round + 1);
-        }
-      }, 6500);
-    } else {
-      // Round 3 completed: conclude match after viewing results
-      setTimeout(() => {
-        if (isHost) {
-          networkRef.current?.broadcast({
-            type: 'MATCH_CONCLUDED',
-            finalPlayers: resultData.updatedPlayers
-          });
-        }
-        setPhase('FINAL_RESULTS');
-        playSfx('victory');
+    // Auto-advance countdown with live display
+    let countdown = 12;
+    resultsTimerRef.current = setInterval(() => {
+      countdown -= 1;
+      setResultsCountdown(countdown);
 
-        // Persist to all-time leaderboard
-        const saved = recordSpyMatchResults(
-          resultData.updatedPlayers.map((p) => ({
-            name: p.name,
-            character: p.character,
-            points: p.score,
-            casesSolved: p.casesSolved
-          }))
-        );
-        setGlobalLeaderboard(saved);
-      }, 6500);
+      if (countdown <= 0) {
+        clearInterval(resultsTimerRef.current);
+        const hostActive = isHostRef.current || !!networkRef.current?.isHost;
+        if (resultData.round < 3) {
+          if (hostActive) {
+            const nextCaseId = matchCasePlanRef.current[resultData.round] || null;
+            startRoundOnHost(resultData.round + 1, nextCaseId);
+          }
+        } else {
+          if (hostActive) {
+            networkRef.current?.broadcast({
+              type: 'MATCH_CONCLUDED',
+              finalPlayers: resultData.updatedPlayers
+            });
+          }
+          setPhase('FINAL_RESULTS');
+          playSfx('victory');
+
+          // Persist to all-time leaderboard
+          const saved = recordSpyMatchResults(
+            resultData.updatedPlayers.map((p) => ({
+              name: p.name,
+              character: p.character,
+              points: p.score,
+              casesSolved: p.casesSolved
+            }))
+          );
+          setGlobalLeaderboard(saved);
+        }
+      }
+    }, 1000);
+  };
+
+  // Host manual instant advance (no waiting required)
+  const handleHostAdvanceNextRound = () => {
+    const hostActive = isHostRef.current || !!networkRef.current?.isHost;
+    if (!hostActive) return;
+
+    if (resultsTimerRef.current) clearInterval(resultsTimerRef.current);
+
+    if (currentRound < 3) {
+      const nextCaseId = matchCasePlanRef.current[currentRound] || null;
+      startRoundOnHost(currentRound + 1, nextCaseId);
+    } else {
+      networkRef.current?.broadcast({
+        type: 'MATCH_CONCLUDED',
+        finalPlayers: playersRef.current
+      });
+      setPhase('FINAL_RESULTS');
+      playSfx('victory');
+
+      const saved = recordSpyMatchResults(
+        playersRef.current.map((p) => ({
+          name: p.name,
+          character: p.character,
+          points: p.score,
+          casesSolved: p.casesSolved
+        }))
+      );
+      setGlobalLeaderboard(saved);
     }
   };
 
   // Play Again trigger
   const handlePlayAgain = () => {
-    if (isHost) {
+    const hostActive = isHostRef.current || !!networkRef.current?.isHost;
+    if (hostActive) {
+      if (timerIntervalRef.current) clearInterval(timerIntervalRef.current);
+      if (introTimerRef.current) clearInterval(introTimerRef.current);
+      if (resultsTimerRef.current) clearInterval(resultsTimerRef.current);
+
+      const newPlan = generateMatchCasePlan();
+      matchCasePlanRef.current = newPlan;
+
       networkRef.current?.broadcast({
-        type: 'RESTART_GAME'
+        type: 'RESTART_GAME',
+        newCasePlan: newPlan
       });
       setPlayers((prev) =>
         prev.map((p) => ({
@@ -694,6 +829,9 @@ export default function SpyHunt() {
         }))
       );
       setCurrentRound(1);
+      currentRoundRef.current = 1;
+      setActiveCaseId(null);
+      activeCaseIdRef.current = null;
       setLocalAnswer(null);
       setIsAnswerLocked(false);
       setPhase('LOBBY');
@@ -702,10 +840,16 @@ export default function SpyHunt() {
     }
   };
 
+  const formatTime = (secs) => {
+    const m = Math.floor(Math.max(0, secs) / 60);
+    const s = Math.max(0, secs) % 60;
+    return `${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
+  };
+
   // -------------------------------------------------------------------
   // RENDER HELPERS
   // -------------------------------------------------------------------
-  const currentCase = getCaseByRound(currentRound);
+  const currentCase = getCaseByRound(currentRound, activeCaseId);
   const myPlayer = players.find((p) => p.id === playerId) || {
     name: playerName,
     character: selectedCharId,
@@ -1121,22 +1265,60 @@ export default function SpyHunt() {
         {/* VIEW 4: CASE BRIEFING / INTRO OVERLAY                             */}
         {/* ================================================================= */}
         {phase === 'CASE_INTRO' && (
-          <div className="w-full max-w-2xl bg-slate-950/95 border-2 border-amber-500/50 rounded-3xl p-8 shadow-2xl text-center my-auto animate-fade-in">
-            <div className="text-xs font-mono font-bold uppercase tracking-widest text-amber-400 mb-2">
-              CONFIDENTIAL CASE DOSSIER • ROUND {currentCase.round} OF 3
+          <div className="w-full max-w-2xl bg-slate-950/95 border-2 border-amber-500/50 rounded-3xl p-6 sm:p-8 shadow-2xl text-center my-auto animate-fade-in backdrop-blur-2xl">
+            <div className="flex items-center justify-between mb-3">
+              <span className="text-xs font-mono font-bold uppercase tracking-widest text-amber-400">
+                CONFIDENTIAL DOSSIER • ROUND {currentRound} OF 3
+              </span>
+              <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-500/15 border border-amber-500/30 text-amber-300 font-mono text-xs font-bold">
+                <span>⏱</span>
+                <span>Briefing: {introCountdown}s</span>
+              </div>
             </div>
-            <h2 className="text-3xl sm:text-4xl font-serif font-black text-white tracking-wide mb-3">
+
+            <h2 className="text-2xl sm:text-4xl font-serif font-black text-white tracking-wide mb-3">
               {currentCase.title}
             </h2>
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-900 border border-amber-500/30 text-amber-300 text-xs font-semibold mb-6">
-              <span>{currentCase.locationIcon}</span>
+
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-900 border border-amber-500/30 text-amber-300 text-xs font-semibold mb-4">
+              <span className="text-base">{currentCase.locationIcon}</span>
               <span>CRIME SCENE: {currentCase.location}</span>
             </div>
-            <p className="text-sm sm:text-base text-slate-300 italic max-w-xl mx-auto mb-8 font-serif leading-relaxed">
-              "{currentCase.story}"
-            </p>
-            <div className="text-xs font-mono text-amber-400 animate-pulse font-bold uppercase tracking-wider">
-              ⏱ Opening Crime Scene Clues & Suspect Dossiers...
+
+            {/* Prominent, readable case story */}
+            <div className="p-4 sm:p-5 rounded-2xl bg-slate-900/90 border border-slate-800 text-left mb-4 shadow-inner">
+              <span className="text-[10px] font-mono font-bold uppercase tracking-widest text-amber-400/90 block mb-1">
+                CASE INCIDENT SUMMARY (READ CAREFULLY)
+              </span>
+              <p className="text-sm sm:text-base text-slate-100 font-serif leading-relaxed italic">
+                "{currentCase.story}"
+              </p>
+            </div>
+
+            {/* Investigation instructions */}
+            <div className="p-3 rounded-xl bg-amber-500/10 border border-amber-500/30 text-xs text-amber-200/90 mb-6 text-left flex items-start gap-2.5">
+              <span className="text-base">🔍</span>
+              <div>
+                <span className="font-bold text-amber-300">INVESTIGATION MISSION: </span>
+                Click city map locations to inspect all 4 clues. Cross-examine the 3 suspect alibis and deduce the culprit before the 60-second investigation clock runs out!
+              </div>
+            </div>
+
+            {/* Host Skip / Start Button */}
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
+              {(isHostRef.current || isHost) ? (
+                <button
+                  onClick={handleHostSkipIntro}
+                  className="w-full sm:w-auto px-6 py-3 rounded-2xl bg-gradient-to-r from-amber-500 via-amber-400 to-yellow-500 text-black font-black text-xs uppercase tracking-wider hover:brightness-110 shadow-lg shadow-amber-500/20 transition-all flex items-center justify-center gap-2 cursor-pointer"
+                >
+                  <span>START INVESTIGATION NOW</span>
+                  <span>➔</span>
+                </button>
+              ) : (
+                <div className="text-xs text-slate-400 font-mono italic">
+                  Investigation begins in {introCountdown}s... or when Host starts.
+                </div>
+              )}
             </div>
           </div>
         )}
@@ -1147,40 +1329,44 @@ export default function SpyHunt() {
         {phase === 'INVESTIGATION' && (
           <div className="w-full max-w-5xl flex flex-col gap-5 my-auto">
             {/* Top Investigation HUD */}
-            <div className="w-full bg-slate-950/85 border border-amber-500/30 rounded-2xl p-4 shadow-xl backdrop-blur-xl flex flex-wrap items-center justify-between gap-4">
+            <div className="w-full bg-slate-950/90 border border-amber-500/30 rounded-2xl p-4 shadow-xl backdrop-blur-xl flex flex-wrap items-center justify-between gap-4">
               {/* Case Title & Story Header */}
-              <div>
-                <div className="flex items-center gap-2">
-                  <span className="text-xs font-mono font-bold uppercase text-amber-400">
-                    ROUND {currentCase.round}/3:
+              <div className="flex-1 min-w-[280px]">
+                <div className="flex items-center gap-2 mb-1">
+                  <span className="text-xs font-mono font-bold uppercase text-amber-400 bg-amber-500/10 px-2 py-0.5 rounded-full border border-amber-500/30">
+                    ROUND {currentRound}/3
                   </span>
                   <h2 className="text-base font-black text-white tracking-wide font-serif">
                     {currentCase.title}
                   </h2>
                 </div>
-                <p className="text-[11px] text-slate-400 line-clamp-1 italic max-w-md">
+                <p className="text-xs text-slate-300 font-serif italic max-w-2xl leading-normal">
                   "{currentCase.story}"
                 </p>
               </div>
 
-              {/* Synchronized 30-Second Countdown Timer */}
+              {/* Synchronized 60-Second Countdown Timer */}
               <div className="flex items-center gap-3">
                 <div className="text-right">
                   <div className="text-[9px] font-mono font-bold uppercase text-slate-400">
-                    Investigation Timer
+                    Investigation Time
                   </div>
                   <div
                     className={`text-2xl sm:text-3xl font-black font-mono tracking-wider ${
-                      timeRemaining <= 5 ? 'text-rose-500 animate-pulse' : 'text-amber-300'
+                      timeRemaining <= 10
+                        ? 'text-rose-500 animate-pulse'
+                        : timeRemaining <= 30
+                        ? 'text-amber-300'
+                        : 'text-emerald-400'
                     }`}
                   >
-                    00:{timeRemaining.toString().padStart(2, '0')}
+                    {formatTime(timeRemaining)}
                   </div>
                 </div>
 
                 {isAnswerLocked ? (
                   <div className="px-3.5 py-1.5 rounded-xl bg-emerald-500/20 border border-emerald-500/50 text-emerald-300 font-black text-xs uppercase tracking-wider flex items-center gap-1.5">
-                    <span>🔒</span> ANSWER LOCKED
+                    <span>🔒</span> ACCUSATION LOCKED
                   </div>
                 ) : (
                   <div className="px-3.5 py-1.5 rounded-xl bg-amber-500/20 border border-amber-500/50 text-amber-300 font-bold text-xs uppercase tracking-wider animate-pulse">
@@ -1459,10 +1645,34 @@ export default function SpyHunt() {
               </div>
             </div>
 
-            <div className="text-xs text-slate-400 italic">
-              {currentRound < 3
-                ? `Advancing to Mystery Round ${currentRound + 1} in a few seconds...`
-                : 'Compiling Final Case Dossier & Champions...'}
+            {/* Auto-advance Countdown & Host Manual Advance Button */}
+            <div className="pt-2 border-t border-slate-800/80 flex flex-col items-center gap-3">
+              <div className="text-xs text-amber-300/90 font-mono flex items-center gap-2">
+                <span>⏱</span>
+                <span>
+                  {currentRound < 3
+                    ? `Next Mystery (Round ${currentRound + 1}) begins automatically in ${resultsCountdown}s...`
+                    : `Final Championship dossier reveals in ${resultsCountdown}s...`}
+                </span>
+              </div>
+
+              {(isHostRef.current || isHost) ? (
+                <button
+                  onClick={handleHostAdvanceNextRound}
+                  className="w-full sm:w-auto px-6 py-3 rounded-2xl bg-gradient-to-r from-amber-500 via-amber-400 to-yellow-500 text-black font-black text-xs uppercase tracking-wider hover:brightness-110 shadow-lg shadow-amber-500/20 active:scale-[0.98] transition-all cursor-pointer flex items-center justify-center gap-2"
+                >
+                  <span>
+                    {currentRound < 3
+                      ? `PROCEED TO ROUND ${currentRound + 1} NOW`
+                      : 'REVEAL FINAL CHAMPIONSHIP LEADERBOARD'}
+                  </span>
+                  <span>➔</span>
+                </button>
+              ) : (
+                <p className="text-[11px] text-slate-400 italic">
+                  Waiting for Lead Detective or auto-advance ({resultsCountdown}s)...
+                </p>
+              )}
             </div>
           </div>
         )}
