@@ -1,4 +1,4 @@
-// Web Audio API Synthesizer for 100% reliable in-browser SFX
+// Web Audio API Synthesizer for Detective Noir Sound FX
 let audioCtx = null;
 
 const getAudioContext = () => {
@@ -15,60 +15,9 @@ const getAudioContext = () => {
   return audioCtx;
 };
 
-export const SoundFX = {
-  // Orb collection chime
-  orbCollect: (isGolden = false) => {
-    try {
-      const ctx = getAudioContext();
-      if (!ctx) return;
-      const osc = ctx.createOscillator();
-      const gain = ctx.createGain();
-
-      const startFreq = isGolden ? 640 : 440;
-      const endFreq = isGolden ? 980 : 660;
-
-      osc.type = isGolden ? 'triangle' : 'sine';
-      osc.frequency.setValueAtTime(startFreq, ctx.currentTime);
-      osc.frequency.exponentialRampToValueAtTime(endFreq, ctx.currentTime + 0.12);
-
-      gain.gain.setValueAtTime(0.2, ctx.currentTime);
-      gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.12);
-
-      osc.connect(gain);
-      gain.connect(ctx.destination);
-
-      osc.start();
-      osc.stop(ctx.currentTime + 0.12);
-    } catch {
-      // Audio errors silenced safely
-    }
-  },
-
-  // Dash burst effect
-  dash: () => {
-    try {
-      const ctx = getAudioContext();
-      if (!ctx) return;
-      const osc = ctx.createOscillator();
-      const gain = ctx.createGain();
-
-      osc.type = 'sawtooth';
-      osc.frequency.setValueAtTime(180, ctx.currentTime);
-      osc.frequency.exponentialRampToValueAtTime(60, ctx.currentTime + 0.18);
-
-      gain.gain.setValueAtTime(0.15, ctx.currentTime);
-      gain.gain.linearRampToValueAtTime(0.01, ctx.currentTime + 0.18);
-
-      osc.connect(gain);
-      gain.connect(ctx.destination);
-
-      osc.start();
-      osc.stop(ctx.currentTime + 0.18);
-    } catch {}
-  },
-
-  // Countdown clock tick
-  tick: (isAlert = false) => {
+export const DetectiveAudio = {
+  // Clue discovery / inspect sound (subtle click & chime)
+  clueInspect: () => {
     try {
       const ctx = getAudioContext();
       if (!ctx) return;
@@ -76,21 +25,67 @@ export const SoundFX = {
       const gain = ctx.createGain();
 
       osc.type = 'sine';
-      osc.frequency.setValueAtTime(isAlert ? 880 : 440, ctx.currentTime);
+      osc.frequency.setValueAtTime(520, ctx.currentTime);
+      osc.frequency.exponentialRampToValueAtTime(780, ctx.currentTime + 0.08);
 
-      gain.gain.setValueAtTime(isAlert ? 0.25 : 0.08, ctx.currentTime);
-      gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.08);
+      gain.gain.setValueAtTime(0.12, ctx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.09);
 
       osc.connect(gain);
       gain.connect(ctx.destination);
 
       osc.start();
-      osc.stop(ctx.currentTime + 0.08);
+      osc.stop(ctx.currentTime + 0.09);
     } catch {}
   },
 
-  // Round victory jingle
-  roundWin: () => {
+  // Countdown timer tick (urgent when <= 5s)
+  timerTick: (isUrgent = false) => {
+    try {
+      const ctx = getAudioContext();
+      if (!ctx) return;
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+
+      osc.type = isUrgent ? 'sawtooth' : 'sine';
+      osc.frequency.setValueAtTime(isUrgent ? 880 : 440, ctx.currentTime);
+
+      gain.gain.setValueAtTime(isUrgent ? 0.18 : 0.06, ctx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.06);
+
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+
+      osc.start();
+      osc.stop(ctx.currentTime + 0.06);
+    } catch {}
+  },
+
+  // Answer locked confirmation (stamp/thud)
+  lockAnswer: () => {
+    try {
+      const ctx = getAudioContext();
+      if (!ctx) return;
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+
+      osc.type = 'triangle';
+      osc.frequency.setValueAtTime(320, ctx.currentTime);
+      osc.frequency.exponentialRampToValueAtTime(160, ctx.currentTime + 0.14);
+
+      gain.gain.setValueAtTime(0.2, ctx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.15);
+
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+
+      osc.start();
+      osc.stop(ctx.currentTime + 0.15);
+    } catch {}
+  },
+
+  // Correct deduction reward
+  correctAnswer: () => {
     try {
       const ctx = getAudioContext();
       if (!ctx) return;
@@ -98,25 +93,51 @@ export const SoundFX = {
       notes.forEach((freq, idx) => {
         const osc = ctx.createOscillator();
         const gain = ctx.createGain();
-        const startTime = ctx.currentTime + idx * 0.09;
+        const start = ctx.currentTime + idx * 0.08;
 
         osc.type = 'triangle';
-        osc.frequency.setValueAtTime(freq, startTime);
+        osc.frequency.setValueAtTime(freq, start);
 
-        gain.gain.setValueAtTime(0.2, startTime);
-        gain.gain.exponentialRampToValueAtTime(0.01, startTime + 0.18);
+        gain.gain.setValueAtTime(0.18, start);
+        gain.gain.exponentialRampToValueAtTime(0.001, start + 0.2);
 
         osc.connect(gain);
         gain.connect(ctx.destination);
 
-        osc.start(startTime);
-        osc.stop(startTime + 0.18);
+        osc.start(start);
+        osc.stop(start + 0.2);
       });
     } catch {}
   },
 
-  // Grand Match Champion victory fanfare
-  victory: () => {
+  // Incorrect deduction
+  wrongAnswer: () => {
+    try {
+      const ctx = getAudioContext();
+      if (!ctx) return;
+      const notes = [260, 220, 180];
+      notes.forEach((freq, idx) => {
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        const start = ctx.currentTime + idx * 0.1;
+
+        osc.type = 'sawtooth';
+        osc.frequency.setValueAtTime(freq, start);
+
+        gain.gain.setValueAtTime(0.15, start);
+        gain.gain.exponentialRampToValueAtTime(0.001, start + 0.2);
+
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+
+        osc.start(start);
+        osc.stop(start + 0.2);
+      });
+    } catch {}
+  },
+
+  // Final case closed fanfare
+  caseClosed: () => {
     try {
       const ctx = getAudioContext();
       if (!ctx) return;
@@ -124,19 +145,19 @@ export const SoundFX = {
       notes.forEach((freq, idx) => {
         const osc = ctx.createOscillator();
         const gain = ctx.createGain();
-        const startTime = ctx.currentTime + idx * 0.14;
+        const start = ctx.currentTime + idx * 0.12;
 
         osc.type = 'square';
-        osc.frequency.setValueAtTime(freq, startTime);
+        osc.frequency.setValueAtTime(freq, start);
 
-        gain.gain.setValueAtTime(0.18, startTime);
-        gain.gain.exponentialRampToValueAtTime(0.01, startTime + 0.28);
+        gain.gain.setValueAtTime(0.15, start);
+        gain.gain.exponentialRampToValueAtTime(0.001, start + 0.28);
 
         osc.connect(gain);
         gain.connect(ctx.destination);
 
-        osc.start(startTime);
-        osc.stop(startTime + 0.28);
+        osc.start(start);
+        osc.stop(start + 0.28);
       });
     } catch {}
   }

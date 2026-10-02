@@ -1,73 +1,63 @@
-const LEADERBOARD_KEY = 'CYBER_ARENA_LEADERBOARD_V1';
+const SPY_LEADERBOARD_KEY = 'SPY_HUNT_LEADERBOARD_V1';
 
-const DEFAULT_SEEDED_CHAMPIONS = [
-  { id: 'c1', name: 'NexusPrime', character: 'volt', wins: 28, matches: 32, highScore: 185, winRate: '87.5%' },
-  { id: 'c2', name: 'AegisShield', character: 'aegis', wins: 24, matches: 30, highScore: 160, winRate: '80.0%' },
-  { id: 'c3', name: 'Valkyrie9', character: 'pyro', wins: 21, matches: 27, highScore: 195, winRate: '77.7%' },
-  { id: 'c4', name: 'ShadowDrifter', character: 'void', wins: 19, matches: 25, highScore: 150, winRate: '76.0%' },
-  { id: 'c5', name: 'CircuitBreaker', character: 'volt', wins: 15, matches: 22, highScore: 140, winRate: '68.1%' }
+const SEEDED_TOP_DETECTIVES = [
+  { id: 'd1', name: 'Sherlock Vance', character: 'detective', points: 300, casesSolved: 3, matches: 1 },
+  { id: 'd2', name: 'CipherZero', character: 'hacker', points: 280, casesSolved: 3, matches: 1 },
+  { id: 'd3', name: 'Agent Cross', character: 'agent', points: 250, casesSolved: 2, matches: 1 },
+  { id: 'd4', name: 'Dr. Sterling', character: 'scientist', points: 210, casesSolved: 2, matches: 1 },
+  { id: 'd5', name: 'Inspector Roy', character: 'investigator', points: 190, casesSolved: 1, matches: 1 }
 ];
 
-export const getLeaderboard = () => {
+export const getSpyLeaderboard = () => {
   try {
-    const raw = localStorage.getItem(LEADERBOARD_KEY);
+    const raw = localStorage.getItem(SPY_LEADERBOARD_KEY);
     if (!raw) {
-      localStorage.setItem(LEADERBOARD_KEY, JSON.stringify(DEFAULT_SEEDED_CHAMPIONS));
-      return DEFAULT_SEEDED_CHAMPIONS;
+      localStorage.setItem(SPY_LEADERBOARD_KEY, JSON.stringify(SEEDED_TOP_DETECTIVES));
+      return SEEDED_TOP_DETECTIVES;
     }
     return JSON.parse(raw);
   } catch {
-    return DEFAULT_SEEDED_CHAMPIONS;
+    return SEEDED_TOP_DETECTIVES;
   }
 };
 
-export const recordMatchResult = ({ winner, p1, p2, roundsData }) => {
+export const recordSpyMatchResults = (playerResults = []) => {
   try {
-    const list = getLeaderboard();
+    const list = getSpyLeaderboard();
 
-    const updatePlayer = (player, didWin, finalScore) => {
-      let existing = list.find((item) => item.name.toLowerCase() === player.name.toLowerCase());
+    playerResults.forEach((res) => {
+      let existing = list.find((item) => item.name.toLowerCase() === res.name.toLowerCase());
       if (existing) {
+        existing.points += res.points;
+        existing.casesSolved += res.casesSolved;
         existing.matches += 1;
-        if (didWin) existing.wins += 1;
-        existing.highScore = Math.max(existing.highScore, finalScore);
-        existing.character = player.character;
-        existing.winRate = ((existing.wins / existing.matches) * 100).toFixed(1) + '%';
+        existing.character = res.character;
       } else {
         list.push({
-          id: 'player-' + Date.now() + '-' + Math.random().toString(36).substring(2, 6),
-          name: player.name,
-          character: player.character,
-          wins: didWin ? 1 : 0,
-          matches: 1,
-          highScore: finalScore,
-          winRate: didWin ? '100%' : '0%'
+          id: 'det-' + Date.now() + '-' + Math.random().toString(36).substring(2, 6),
+          name: res.name,
+          character: res.character,
+          points: res.points,
+          casesSolved: res.casesSolved,
+          matches: 1
         });
       }
-    };
+    });
 
-    const p1Won = winner === 'p1';
-    const p2Won = winner === 'p2';
-
-    updatePlayer(p1, p1Won, p1.totalScore || 0);
-    updatePlayer(p2, p2Won, p2.totalScore || 0);
-
-    // Sort by wins then highScore
-    list.sort((a, b) => b.wins - a.wins || b.highScore - a.highScore);
-
-    localStorage.setItem(LEADERBOARD_KEY, JSON.stringify(list));
+    list.sort((a, b) => b.points - a.points || b.casesSolved - a.casesSolved);
+    localStorage.setItem(SPY_LEADERBOARD_KEY, JSON.stringify(list));
     return list;
   } catch (err) {
-    console.error('Error saving leaderboard:', err);
-    return getLeaderboard();
+    console.error('Error saving spy leaderboard:', err);
+    return getSpyLeaderboard();
   }
 };
 
-export const resetLeaderboard = () => {
+export const resetSpyLeaderboard = () => {
   try {
-    localStorage.setItem(LEADERBOARD_KEY, JSON.stringify(DEFAULT_SEEDED_CHAMPIONS));
-    return DEFAULT_SEEDED_CHAMPIONS;
+    localStorage.setItem(SPY_LEADERBOARD_KEY, JSON.stringify(SEEDED_TOP_DETECTIVES));
+    return SEEDED_TOP_DETECTIVES;
   } catch {
-    return DEFAULT_SEEDED_CHAMPIONS;
+    return SEEDED_TOP_DETECTIVES;
   }
 };

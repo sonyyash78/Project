@@ -1,41 +1,74 @@
-# ⚔️ Cyber Duel 2P — Real-Time Multiplayer Arena
+# 🕵️ SPY HUNT — Real-Time Multiplayer Detective Mystery Game
 
-A fast-paced, 2-player competitive real-time web arena built with **React 19**, **Vite**, **HTML5 Canvas**, and **WebRTC (PeerJS) / BroadcastChannel**.
+> *"Find the culprit before time runs out."*  
+> **2–8 players • 3 mysteries • Real-time multiplayer**
 
 ---
 
-## 🚀 Deployed Public URL & Verification
+## 🚀 Live Production Game URL & Repository
+- **Production Live URL**: [https://sonyyash78.github.io/Project/](https://sonyyash78.github.io/Project/)
 - **GitHub Repository**: [https://github.com/sonyyash78/Project](https://github.com/sonyyash78/Project)
-- **Production Live URL (GitHub Pages)**: [https://sonyyash78.github.io/Project/](https://sonyyash78.github.io/Project/)
 
 ---
 
-## 🎯 12 Prioritized Core Deliverables
+## 🎯 Game Overview & Core Features
 
-| # | Requirement | Implementation Details |
-|---|---|---|
-| **1** | **Real Multiplayer** | Direct browser-to-browser P2P networking via **WebRTC DataChannels (PeerJS)** with automatic **BroadcastChannel** fallback for zero-latency local tab testing. |
-| **2** | **Create / Join Room** | Host generates a unique 6-character room code (e.g., `NEON-482`) with 1-click **Copy Room Code**, **Copy Shareable Link** (`?room=CODE`), and instant 2-player test launcher. Peers enter room code or click invite links to join immediately. |
-| **3** | **2-Player Synchronization** | 60 FPS requestAnimationFrame canvas loop synchronizing player positions, velocity vectors, dash states, and collision coordinates with linear interpolation (lerp). |
-| **4** | **3 Playable Rounds** | Structured match flow with exactly 3 rounds. Round-by-round recap dialogs, 3-second intermission countdowns, and a final Grand Champion declaration with full 3-round scorecard. |
-| **5** | **Timer** | Prominent HUD round timer counting down synchronously from 30 seconds to 0 with low-time warning pulses and audio alerts. |
-| **6** | **Scoring** | Real-time score tallies (+10 for standard energy orbs, +25 for golden super stars). Displays floating score popups and tracks round wins (⭐). |
-| **7** | **Leaderboard** | Live in-game round scorecard plus persistent **All-Time Hall of Fame Leaderboard** stored in `localStorage` tracking Wins, Matches, High Score, and Win Rate. |
-| **8** | **Basic Map** | 800×500 tactical cyber arena featuring glowing neon perimeter boundaries, 6 geometric barrier obstacles with circle-to-box collision physics, and dynamic spawning collectible orbs. |
-| **9** | **Character Selection** | 4 distinct combat heroes with unique attributes: **⚡ VOLT** (Speedster, +20% move speed), **🛡️ AEGIS** (Titan Guardian, 2x magnet collection aura), **🔥 PYRO** (Solar Striker, turbo dash burst), and **👻 PHANTOM** (Void Weaver, phase glide handling). |
-| **10** | **GitHub** | Version controlled with clean commits pushed to GitHub repository `sonyyash78/Project`. |
-| **11** | **Production Deployment** | Automated CI/CD pipeline via GitHub Actions deploying static production build to GitHub Pages and Vercel configuration. |
-| **12** | **Public URL Verification** | Publicly accessible production URL with verified HTTP 200 responses, interactive room joining, and gameplay functionality. |
+SPY HUNT is a polished, fast-paced 2–8 player detective mystery game. Players join the same investigation room with custom detective characters and race against a synchronized 30-second clock to inspect clues across an interactive city map and deduce the true culprit.
+
+### 🔍 1. Complete Detective Mystery Flow
+1. **Home Screen**: Elegant detective dossier aesthetic with Create Room & Join Room actions.
+2. **Identity & Detective Selection**: Choose your detective alias and select from 5 distinct cosmetic detective characters:
+   - 🕵️ **Detective** (*The Sleuth*) — "Expert at connecting evidence."
+   - 🔍 **Investigator** (*The Forensic*) — "Master of physical clues."
+   - 💻 **Hacker** (*Cyber Watch*) — "Specialist in digital clues."
+   - 🔬 **Scientist** (*The Pathologist*) — "Analyzes forensic records."
+   - 🕶️ **Agent** (*Operative Shadow*) — "Covert surveillance specialist."
+3. **Multiplayer Lobby**:
+   - Unique 5-character room code (e.g., `SH7K9`).
+   - Real-time roster showing 2 to 8 connected detectives with avatars, names, and Host badge.
+   - 1-click **Copy Room Code**, **Copy Shareable Link** (`?room=CODE`), and instant **"Open 2nd Detective Tab"** test launcher.
+   - Host-gated start requiring at least 2 players.
+4. **Interactive 2D City Investigation Map**:
+   - 5 connected crime scene locations:
+     - 🏛 **MUSEUM** (Exhibition & Historical Archives)
+     - 🏦 **BANK** (Vault & Financial Terminal)
+     - 🏨 **HOTEL** (Grand Central Suites & Lobbies)
+     - 🚉 **STATION** (Metro Junction & Cargo Platforms)
+     - ☕ **CAFE** (Roastery & Public Lounge)
+   - Clickable locations to uncover specific evidence leads.
+5. **3 Playable Mystery Cases (3 Playable Rounds)**:
+   - **Case 1: The Missing Diamond** (Location: Museum, Culprit: Marcus Lee)
+   - **Case 2: The Hotel Blackout** (Location: Hotel, Culprit: Daniel Roy)
+   - **Case 3: The Stolen Painting** (Location: Bank, Culprit: Victor)
+6. **Case Clues & Suspect Selection**:
+   - 4 clear, logically deducible clue cards per case (e.g. `EVIDENCE #01 Security Log`).
+   - 3 suspect cards per case. Selecting a suspect triggers **ANSWER LOCKED** to prevent answer changing.
+7. **Synchronized 30-Second Timer**:
+   - Large HUD countdown clock (`00:30` to `00:00`) synchronized across all players.
+   - Automatically locks answers when timer hits 0.
+8. **Scoring & Deductions**:
+   - Correct deduction: **100 points** + time speed bonus.
+   - Incorrect or unanswered: **0 points**.
+   - Server/host authoritative scoring to prevent duplicate scoring or cheating.
+9. **Round Results & Live Leaderboard**:
+   - Culprit reveal with logical case deduction explanation.
+   - Individual outcome indicator (✓ Correct or ✕ Incorrect).
+   - Live round standings table before transitioning to the next mystery.
+10. **Final Results & All-Time Archives**:
+    - Grand Case Closed podium declaring the champion detective.
+    - Full match breakdown table of cases solved and points scored.
+    - **PLAY AGAIN** (resets to Case 1) and **RETURN TO LOBBY** actions.
+    - Persistent **Hall of Master Detectives** leaderboard stored in `localStorage`.
+11. **Disconnect & Host Migration**:
+    - Disconnect events are handled smoothly without crashing the room.
+    - Automatic Host migration to the next active detective if the host leaves.
 
 ---
 
-## 🕹️ Controls
-
-- **Desktop (Keyboard)**:
-  - `W` / `A` / `S` / `D` or `Arrow Keys`: Move player
-  - `Spacebar`: Turbo Dash burst (Cooldown: 2s)
-- **Mobile (Touch)**:
-  - On-screen 4-way D-Pad + Dedicated **⚡ DASH** action button
+## 🕹️ Controls & Accessibility
+- **Desktop & Laptop**: Mouse/Trackpad point-and-click on map locations, clues, and suspect dossiers.
+- **Mobile & Tablet**: Touch-optimized cards, responsive map, and quick tap suspect accusations.
+- **Audio**: Web Audio API synthesized typewriter clicks, timer ticks, answer locks, and victory fanfares with toggle control.
 
 ---
 
@@ -46,14 +79,11 @@ A fast-paced, 2-player competitive real-time web arena built with **React 19**, 
 git clone https://github.com/sonyyash78/Project.git
 cd Project
 
-# 2. Install frontend dependencies
+# 2. Install dependencies & build
 cd frontend
 npm install
-
-# 3. Start local development server
-npm run dev
-
-# 4. Or build and preview production bundle
 npm run build
+
+# 3. Preview locally
 npm run preview
 ```

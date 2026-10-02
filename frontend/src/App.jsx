@@ -9,7 +9,7 @@ import Footer from './components/Footer';
 import PageLoader from './components/PageLoader';
 
 // Lazy load pages for performance
-const MultiplayerArena = lazy(() => import('./pages/MultiplayerArena'));
+const SpyHunt = lazy(() => import('./pages/SpyHunt'));
 const Home = lazy(() => import('./pages/Home'));
 const Subjects = lazy(() => import('./pages/Subjects'));
 const Exams = lazy(() => import('./pages/Exams'));
@@ -53,8 +53,8 @@ const PageTransition = ({ children }) => {
 // Layout component
 const AppLayout = () => {
   const location = useLocation();
-  // Hide Navbar & Footer in test interface and arena for immersive experience
-  const isDedicatedGame = location.pathname === '/' || location.pathname === '/arena' || location.pathname === '/test';
+  // Hide Navbar & Footer in test interface and spyhunt for immersive experience
+  const isDedicatedGame = location.pathname === '/' || location.pathname === '/spyhunt' || location.pathname === '/arena' || location.pathname === '/test';
 
   return (
     <div
@@ -96,8 +96,9 @@ const AppLayout = () => {
         <Suspense fallback={<PageLoader />}>
           <PageTransition>
             <Routes>
-              <Route path="/" element={<MultiplayerArena />} />
-              <Route path="/arena" element={<MultiplayerArena />} />
+              <Route path="/" element={<SpyHunt />} />
+              <Route path="/spyhunt" element={<SpyHunt />} />
+              <Route path="/arena" element={<SpyHunt />} />
               <Route path="/home" element={<Home />} />
               <Route path="/subjects" element={<Subjects />} />
               <Route path="/exams" element={<Exams />} />
