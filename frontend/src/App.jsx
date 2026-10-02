@@ -1,5 +1,5 @@
 import React, { Suspense, lazy } from 'react';
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import { AuthProvider } from './context/AuthContext';
 import { ThemeProvider } from './context/ThemeContext';
@@ -9,6 +9,7 @@ import Footer from './components/Footer';
 import PageLoader from './components/PageLoader';
 
 // Lazy load pages for performance
+const MultiplayerArena = lazy(() => import('./pages/MultiplayerArena'));
 const Home = lazy(() => import('./pages/Home'));
 const Subjects = lazy(() => import('./pages/Subjects'));
 const Exams = lazy(() => import('./pages/Exams'));
@@ -52,8 +53,8 @@ const PageTransition = ({ children }) => {
 // Layout component
 const AppLayout = () => {
   const location = useLocation();
-  // Hide Navbar & Footer in test interface for immersive experience
-  const isTestPage = location.pathname === '/test';
+  // Hide Navbar & Footer in test interface and arena for immersive experience
+  const isDedicatedGame = location.pathname === '/' || location.pathname === '/arena' || location.pathname === '/test';
 
   return (
     <div
@@ -89,13 +90,15 @@ const AppLayout = () => {
         }}
       />
 
-      {!isTestPage && <Navbar />}
+      {!isDedicatedGame && <Navbar />}
 
       <main style={{ flex: 1 }}>
         <Suspense fallback={<PageLoader />}>
           <PageTransition>
             <Routes>
-              <Route path="/" element={<Home />} />
+              <Route path="/" element={<MultiplayerArena />} />
+              <Route path="/arena" element={<MultiplayerArena />} />
+              <Route path="/home" element={<Home />} />
               <Route path="/subjects" element={<Subjects />} />
               <Route path="/exams" element={<Exams />} />
               <Route path="/questions" element={<Questions />} />
@@ -121,7 +124,7 @@ const AppLayout = () => {
         </Suspense>
       </main>
 
-      {!isTestPage && <Footer />}
+      {!isDedicatedGame && <Footer />}
     </div>
   );
 };

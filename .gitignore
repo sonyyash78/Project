@@ -15,3 +15,6 @@ venv/
 .pytest_cache/
 logs/
 .system_generated/
+*.tex
+make_doc.py
+make_ppt.py
