@@ -45,6 +45,26 @@ export default function SpyHunt() {
   const timerIntervalRef = useRef(null);
   const roundEndTimeRef = useRef(null);
 
+  // Synchronized State References (Prevents stale closure bug during room joining)
+  const isHostRef = useRef(isHost);
+  const playersRef = useRef(players);
+  const phaseRef = useRef(phase);
+  const currentRoundRef = useRef(currentRound);
+  const handleNetworkMessageRef = useRef();
+
+  useEffect(() => {
+    isHostRef.current = isHost;
+  }, [isHost]);
+  useEffect(() => {
+    playersRef.current = players;
+  }, [players]);
+  useEffect(() => {
+    phaseRef.current = phase;
+  }, [phase]);
+  useEffect(() => {
+    currentRoundRef.current = currentRound;
+  }, [currentRound]);
+
   // Initialize and check URL parameters on mount
   useEffect(() => {
     setGlobalLeaderboard(getSpyLeaderboard());
@@ -76,15 +96,17 @@ export default function SpyHunt() {
   };
 
   // -------------------------------------------------------------------
-  // MULTIPLAYER MESSAGE ROUTER
+  // MULTIPLAYER MESSAGE ROUTER (USES REFS TO PREVENT STALE CLOSURES)
   // -------------------------------------------------------------------
   const handleNetworkMessage = useCallback((packet) => {
     if (!packet || typeof packet !== 'object') return;
 
+    const hostActive = isHostRef.current || !!networkRef.current?.isHost;
+
     switch (packet.type) {
       // 1. GUEST REQUESTS TO JOIN
       case 'PLAYER_JOIN_REQUEST':
-        if (isHost) {
+        if (hostActive) {
           setPlayers((prev) => {
             if (prev.length >= 8) {
               networkRef.current?.broadcast({
@@ -98,12 +120,11 @@ export default function SpyHunt() {
             const existingIndex = prev.findIndex((p) => p.id === packet.playerId);
             let updatedList;
             if (existingIndex >= 0) {
-              updatedList = [...prev];
-              updatedList[existingIndex] = {
-                ...updatedList[existingIndex],
-                name: packet.playerName,
-                character: packet.character
-              };
+              updatedList = prev.map((p) =>
+                p.id === packet.playerId
+                  ? { ...p, name: packet.playerName, character: packet.character }
+                  : p
+              );
             } else {
               updatedList = [
                 ...prev,
@@ -120,12 +141,12 @@ export default function SpyHunt() {
               ];
             }
 
-            // Host broadcasts updated full room state to all players
+            // Immediately broadcast full updated state to all connected players
             networkRef.current?.broadcast({
               type: 'SYNC_ROOM_STATE',
               players: updatedList,
-              currentRound,
-              phase
+              currentRound: currentRoundRef.current,
+              phase: phaseRef.current
             });
 
             return updatedList;
@@ -135,11 +156,25 @@ export default function SpyHunt() {
 
       // 2. HOST SYNCHRONIZES ROOM STATE TO GUESTS
       case 'SYNC_ROOM_STATE':
-        if (!isHost) {
-          setPlayers(packet.players || []);
-          if (packet.phase && packet.phase !== phase) {
+        if (!hostActive) {
+          if (packet.players && packet.players.length > 0) {
+            setPlayers(packet.players);
+          }
+          if (packet.phase && packet.phase !== 'LOBBY' && packet.phase !== phaseRef.current) {
             setPhase(packet.phase);
           }
+        }
+        break;
+
+      // New peer connection event on host
+      case 'PEER_CONNECTED':
+        if (hostActive) {
+          networkRef.current?.broadcast({
+            type: 'SYNC_ROOM_STATE',
+            players: playersRef.current,
+            currentRound: currentRoundRef.current,
+            phase: phaseRef.current
+          });
         }
         break;
 
@@ -147,12 +182,12 @@ export default function SpyHunt() {
       case 'UPDATE_PROFILE':
         setPlayers((prev) => {
           const next = prev.map((p) => (p.id === packet.playerId ? { ...p, character: packet.character, name: packet.name } : p));
-          if (isHost) {
+          if (hostActive) {
             networkRef.current?.broadcast({
               type: 'SYNC_ROOM_STATE',
               players: next,
-              currentRound,
-              phase
+              currentRound: currentRoundRef.current,
+              phase: phaseRef.current
             });
           }
           return next;
@@ -197,11 +232,10 @@ export default function SpyHunt() {
             p.id === packet.playerId ? { ...p, currentAnswer: packet.answer, isLocked: true } : p
           );
 
-          // If Host, verify if all active players have submitted
-          if (isHost) {
+          if (hostActive) {
             const allLocked = next.every((p) => p.isLocked);
             if (allLocked) {
-              handleHostEvaluateRound(next, currentRound, packet.remainingTime || 1);
+              handleHostEvaluateRound(next, currentRoundRef.current, packet.remainingTime || 1);
             } else {
               networkRef.current?.broadcast({
                 type: 'SYNC_LOCKED_STATUS',
@@ -216,7 +250,7 @@ export default function SpyHunt() {
 
       // 7. SYNC LOCKED STATUS ONLY (keeps answers secret until reveal)
       case 'SYNC_LOCKED_STATUS':
-        if (!isHost && packet.players) {
+        if (!hostActive && packet.players) {
           setPlayers((prev) =>
             prev.map((p) => {
               const item = packet.players.find((x) => x.id === p.id);
@@ -275,7 +309,47 @@ export default function SpyHunt() {
       default:
         break;
     }
-  }, [isHost, phase, currentRound, playerId, playSfx]);
+  }, [playerId, playSfx]);
+
+  // Keep ref pointing to latest handler on every render
+  useEffect(() => {
+    handleNetworkMessageRef.current = handleNetworkMessage;
+  });
+
+  // Guest periodic join beacon in lobby until at least 2 players connected
+  useEffect(() => {
+    if (phase !== 'LOBBY' || isHost) return;
+
+    const pingHost = () => {
+      networkRef.current?.sendToHost({
+        type: 'PLAYER_JOIN_REQUEST',
+        playerId,
+        playerName,
+        character: selectedCharId
+      });
+    };
+
+    pingHost();
+    const interval = setInterval(pingHost, 1000);
+    return () => clearInterval(interval);
+  }, [phase, isHost, playerId, playerName, selectedCharId]);
+
+  // Host periodic state sync in lobby
+  useEffect(() => {
+    if (phase !== 'LOBBY' || !isHost) return;
+
+    const heartbeat = () => {
+      networkRef.current?.broadcast({
+        type: 'SYNC_ROOM_STATE',
+        players: playersRef.current,
+        currentRound: currentRoundRef.current,
+        phase: phaseRef.current
+      });
+    };
+
+    const interval = setInterval(heartbeat, 1500);
+    return () => clearInterval(interval);
+  }, [phase, isHost]);
 
   // Host migration logic to avoid crashing if host leaves
   const handleHostMigration = () => {
@@ -326,6 +400,7 @@ export default function SpyHunt() {
       const code = 'SH' + Math.floor(100 + Math.random() * 900);
       setActiveRoomCode(code);
       setIsHost(true);
+      isHostRef.current = true;
 
       const hostPlayer = {
         id: playerId,
@@ -338,6 +413,7 @@ export default function SpyHunt() {
         isLocked: false
       };
       setPlayers([hostPlayer]);
+      playersRef.current = [hostPlayer];
 
       initNetwork(code, true, hostPlayer);
       setPhase('LOBBY');
@@ -350,6 +426,7 @@ export default function SpyHunt() {
 
       setActiveRoomCode(trimmedCode);
       setIsHost(false);
+      isHostRef.current = false;
 
       const guestPlayer = {
         id: playerId,
@@ -362,6 +439,7 @@ export default function SpyHunt() {
         isLocked: false
       };
       setPlayers([guestPlayer]);
+      playersRef.current = [guestPlayer];
 
       initNetwork(trimmedCode, false, guestPlayer);
       setPhase('LOBBY');
@@ -373,13 +451,17 @@ export default function SpyHunt() {
       networkRef.current.destroy();
     }
 
+    isHostRef.current = hostFlag;
+
     networkRef.current = new SpyHuntNetwork({
       roomId: code,
       playerId,
       playerName: profile.name,
       character: profile.character,
       isHost: hostFlag,
-      onMessage: handleNetworkMessage,
+      onMessage: (packet, source) => {
+        handleNetworkMessageRef.current?.(packet, source);
+      },
       onStatusChange: ({ status }) => {
         if (status === 'CONNECTED_TO_HOST') {
           showToast('Connected to room!');

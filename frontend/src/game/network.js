@@ -78,6 +78,14 @@ export class SpyHuntNetwork {
 
       this.peer.on('error', (err) => {
         console.warn('Peer note:', err.type || err);
+        // If host peer is not yet available, retry connecting after a brief delay
+        if (err.type === 'peer-unavailable' && !this.isHost && !this.isDestroyed) {
+          setTimeout(() => {
+            if (!this.isDestroyed && !this.isHost) {
+              this.connectToHost();
+            }
+          }, 1200);
+        }
       });
     } catch (e) {
       console.warn('PeerJS init fallback', e);
@@ -89,28 +97,32 @@ export class SpyHuntNetwork {
     const sanitized = this.roomId.replace(/[^a-zA-Z0-9]/g, '').toLowerCase();
     const hostPeerId = `sphost-${sanitized}`;
 
-    const conn = this.peer.connect(hostPeerId, { reliable: true });
-    this.hostConnection = conn;
+    try {
+      const conn = this.peer.connect(hostPeerId, { reliable: true });
+      this.hostConnection = conn;
 
-    conn.on('open', () => {
-      this.onStatusChange({ status: 'CONNECTED_TO_HOST', isHost: false });
-      // Send join introduction
-      this.sendToHost({
-        type: 'PLAYER_JOIN_REQUEST',
-        playerId: this.playerId,
-        playerName: this.playerName,
-        character: this.character
+      conn.on('open', () => {
+        this.onStatusChange({ status: 'CONNECTED_TO_HOST', isHost: false });
+        // Send join introduction immediately
+        this.sendToHost({
+          type: 'PLAYER_JOIN_REQUEST',
+          playerId: this.playerId,
+          playerName: this.playerName,
+          character: this.character
+        });
       });
-    });
 
-    conn.on('data', (data) => {
-      this.handlePacket(data, 'webrtc');
-    });
+      conn.on('data', (data) => {
+        this.handlePacket(data, 'webrtc');
+      });
 
-    conn.on('close', () => {
-      this.onStatusChange({ status: 'HOST_DISCONNECTED', isHost: false });
-      this.onMessage({ type: 'HOST_LEFT' });
-    });
+      conn.on('close', () => {
+        this.onStatusChange({ status: 'HOST_DISCONNECTED', isHost: false });
+        this.onMessage({ type: 'HOST_LEFT' });
+      });
+    } catch (err) {
+      console.warn('connectToHost error:', err);
+    }
 
     // Also send via BroadcastChannel immediately
     this.broadcast({
